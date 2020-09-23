@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import {ButtonBaseWithLink} from '../components/SharedStyles';
@@ -43,7 +43,8 @@ const Banner = styled.div`
   width: 100%;
 `;
 
-export const LandingSplash: React.FC = () => {
+export const HomePage: React.FC = () => {
+  const [ count, setCount ] = useState(0);
   return (
     <Page>
       <Banner>
@@ -60,6 +61,10 @@ export const LandingSplash: React.FC = () => {
         <ColouredSquare fill={blue} />
         Start a rehab session
       </StartButton>
+      <p>{count}</p>
+      <button onClick={() => setCount(count + 1)}>
+        Count
+      </button>
     </Page>
   );
 };
