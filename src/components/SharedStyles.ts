@@ -9,7 +9,7 @@ export interface ButtonStyleProps { background?: string; color?: string; }
 const buttonStyle = `
   border: none;
   font-size: 12px;
-  border-radius: 30px;
+  border-radius: 10px;
   text-transform: uppercase;
   font-weight: 800;
   z-index: 1;

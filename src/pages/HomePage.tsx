@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import {ButtonBaseWithLink} from '../components/SharedStyles';
-import {ColouredSquare, ColouredPaw} from '../assets/svg/ColouredShapes';
+import {ColouredPaw} from '../assets/svg/ColouredShapes';
 import { gutterWidth, bannerHeight, green, red, blue } from '../utils/constants';
-import {ThreeBars} from '../assets/svg/ThreeBars';
+import {RehabDawg} from '../assets/svg/Dawg';
 
 
 const LogoWrapper = styled.div`
@@ -51,11 +51,12 @@ export const HomePage: React.FC = () => {
       <Banner>
       </Banner>
       <LogoWrapper>
-        <ThreeBars style={{ margin: '0.9em', transform: 'rotate(deg)' }}/>
         <Logo>
-          pick rehab walk
+          pick a rehab walk <br />
+          <RehabDawg fill={green}/>
+          <RehabDawg fill={blue}/>
+          <RehabDawg fill={red}/>
         </Logo>
-        <ThreeBars style={{ margin: '0.9em', transform: 'rotate(90deg)' }}/>
       </LogoWrapper>
       <StartButton to="/walks/">
         <ColouredPaw fill={green} />

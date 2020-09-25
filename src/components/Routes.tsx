@@ -29,4 +29,4 @@ export default Routes;
 // read up on react-router-dom
 // read up on local storage
 // how to store data 
-// where does the state live? with regad to the components
+// where does the state live? with regard to the components
