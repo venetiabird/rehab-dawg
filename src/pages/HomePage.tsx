@@ -52,7 +52,7 @@ export const HomePage: React.FC = () => {
       </Banner>
       <LogoWrapper>
         <Logo>
-          pick a rehab walk <br />
+          Rehab Dawg <br />
           <RehabDawg fill={green}/>
           <RehabDawg fill={blue}/>
           <RehabDawg fill={red}/>
