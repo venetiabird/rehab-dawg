@@ -4,6 +4,7 @@ import {useLocation, Route, Switch} from 'react-router-dom'; // read up on this
 
 import { appMaxWidth } from '../utils/constants';
 import { HomePage } from '../pages/HomePage';
+import { WalksPage } from '../pages/WalksPage';
 
 const MaxWidthContainer = styled.div`
   max-width: ${appMaxWidth}px;
@@ -18,6 +19,7 @@ const Routes: React.FC = () => {
       <Switch location={location}>
         <Route path="/" exact component={HomePage} />
         <Route path="/home" exact component={HomePage} />
+        <Route path="/walks" exact component={WalksPage} />
       </Switch>
     </MaxWidthContainer>
   );

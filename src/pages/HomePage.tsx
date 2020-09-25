@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import {ButtonBaseWithLink} from '../components/SharedStyles';
-import {ColouredSquare} from '../assets/svg/ColouredDot';
-import { gutterWidth, bannerHeight, blue } from '../utils/constants';
+import {ColouredSquare, ColouredPaw} from '../assets/svg/ColouredShapes';
+import { gutterWidth, bannerHeight, green, red, blue } from '../utils/constants';
 import {ThreeBars} from '../assets/svg/ThreeBars';
+
 
 const LogoWrapper = styled.div`
   display: flex;
@@ -44,7 +45,7 @@ const Banner = styled.div`
 `;
 
 export const HomePage: React.FC = () => {
-  const [ count, setCount ] = useState(0);
+  // const [ count, setCount ] = useState(0);
   return (
     <Page>
       <Banner>
@@ -52,19 +53,26 @@ export const HomePage: React.FC = () => {
       <LogoWrapper>
         <ThreeBars style={{ margin: '0.9em', transform: 'rotate(deg)' }}/>
         <Logo>
-          Billie Dawg Way
+          pick rehab walk
         </Logo>
         <ThreeBars style={{ margin: '0.9em', transform: 'rotate(90deg)' }}/>
       </LogoWrapper>
-      <p>The Little Dawg is getting back her mobility, her passport back to <strong>FUN</strong></p>
-      <StartButton to="/workouts/">
-        <ColouredSquare fill={blue} />
-        Start a rehab session
+      <StartButton to="/walks/">
+        <ColouredPaw fill={green} />
+        5 minutes
       </StartButton>
-      <p>{count}</p>
+      <StartButton to="/walks/">
+        <ColouredPaw fill={blue} />
+        10 minutes
+      </StartButton>
+      <StartButton to="/walks/">
+        <ColouredPaw fill={red}/>
+        15 minutes
+      </StartButton>
+      {/* <p>{count}</p>
       <button onClick={() => setCount(count + 1)}>
         Count
-      </button>
+      </button> */}
     </Page>
   );
 };
