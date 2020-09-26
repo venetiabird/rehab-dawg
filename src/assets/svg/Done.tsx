@@ -1,11 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import { CloudDone } from '@styled-icons/material-twotone/CloudDone';
+import { Bone } from '@styled-icons/fa-solid/Bone';
 
-const DoneDawg = styled(CloudDone)`
-  height: 70px;
-  width: 70px;
-  margin-left: 0px;
+const DoneDawg = styled(Bone)`
+  height: 60px;
+  width: 60px;
 `;
 
 interface Props {
