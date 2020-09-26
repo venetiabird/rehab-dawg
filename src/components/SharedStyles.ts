@@ -14,7 +14,7 @@ const buttonStyle = `
   font-weight: 800;
   z-index: 1;
   text-decoration: none;
-  padding: 0 25px;
+  padding: 0 15px;
   display: flex;
   align-items: center;
   justify-content: center;

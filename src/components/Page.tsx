@@ -2,12 +2,28 @@ import React from 'react';
 import styled from 'styled-components';
 // import { useLocation } from 'react-router-dom';
 
+import Navigation from './Navigation';
+
 import { 
   gutterWidth,
   bannerHeight
 } from '../utils/constants';
 
-const Heading = styled.h1`
+const PageContainer = styled.div`
+  height: 450px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+`;
+
+// background-image: linear-gradient(to bottom right, ${peach}, ${orange}); 
+// height: calc(100vh - 50px);
+// display: flex;
+// flex-direction: column;
+// justify-content: space-around;
+
+const Heading = styled.h2`
   margin: ${gutterWidth}px;
 `;
 
@@ -21,7 +37,6 @@ const Hr = styled.hr`
 
 interface Props {
   heading: string;
-  hideNvaigation?: boolean;
 }
 
 export const Page: React.FC<Props> = ({
@@ -31,9 +46,12 @@ export const Page: React.FC<Props> = ({
   // const location = useLocation();
   return (
     <>
-      <Heading>{heading}</Heading>
-      <Hr />
-      {children}
+      <PageContainer>
+        <Heading>{heading}</Heading>
+        <Hr />
+        {children}
+      </PageContainer>
+      {/* <Navigation /> */}
     </>
   );
 };

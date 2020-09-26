@@ -1,10 +1,14 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components';
 
 import {ButtonBaseWithLink} from '../components/SharedStyles';
 import {ColouredPaw} from '../assets/svg/ColouredShapes';
-import { gutterWidth, bannerHeight, green, red, blue } from '../utils/constants';
+import { gutterWidth, green, red, blue, orange } from '../utils/constants';
 import {RehabDawg} from '../assets/svg/Dawg';
+import Navigation from '../components/Navigation';
+import Notification from '../components/Notification';
+import { Walk } from '../utils/types';
+// import useLocalStorage from '../hooks/useLocalStorage';
 
 
 const LogoWrapper = styled.div`
@@ -37,43 +41,50 @@ const Page = styled.div`
   padding: 0 ${gutterWidth}px;
 `;
 
-const Banner = styled.div`
-  height: ${bannerHeight}px;
-  display: flex;
-  align-items: center;
-  width: 100%;
-`;
+// const Banner = styled.div`
+//   height: ${bannerHeight}px;
+//   display: flex;
+//   align-items: center;
+//   width: 100%;
+// `;
 
 export const HomePage: React.FC = () => {
-  // const [ count, setCount ] = useState(0);
+  const [ history, setHistory ] = useState({}); 
+  // const [ history, setHistory ] = useLocalStorage<Walk[]>('history', []); 
   return (
-    <Page>
-      <Banner>
-      </Banner>
-      <LogoWrapper>
-        <Logo>
-          Rehab Dawg <br />
-          <RehabDawg fill={green}/>
-          <RehabDawg fill={blue}/>
-          <RehabDawg fill={red}/>
-        </Logo>
-      </LogoWrapper>
-      <StartButton to="/walks/">
-        <ColouredPaw fill={green} />
-        5 minutes
-      </StartButton>
-      <StartButton to="/walks/">
-        <ColouredPaw fill={blue} />
-        10 minutes
-      </StartButton>
-      <StartButton to="/walks/">
-        <ColouredPaw fill={red}/>
-        15 minutes
-      </StartButton>
-      {/* <p>{count}</p>
-      <button onClick={() => setCount(count + 1)}>
-        Count
-      </button> */}
-    </Page>
+    <>
+      <Page>
+        {/* <Banner>
+          
+        </Banner> */}
+        <LogoWrapper>
+          <Logo>
+            Rehab Dawg <br />
+            <RehabDawg fill={green}/>
+            <RehabDawg fill={blue}/>
+            <RehabDawg fill={orange}/>
+            <RehabDawg fill={red}/>
+          </Logo>
+        </LogoWrapper>
+        <StartButton to="/walks/short" onClick={() => setHistory({ name: 'short', date: Date.now()})}>
+          <ColouredPaw fill={green} />
+          5 minutes
+        </StartButton>
+        <StartButton to="/walks/medium">
+          <ColouredPaw fill={blue} />
+          10 minutes
+        </StartButton>
+        <StartButton to="/walks/long">
+          <ColouredPaw fill={orange}/>
+          15 minutes
+        </StartButton>
+        <StartButton to="/walks/long">
+          <ColouredPaw fill={red}/>
+          20 minutes
+        </StartButton>
+        <Notification history={history} />
+      </Page>
+      <Navigation />
+    </>
   );
 };
