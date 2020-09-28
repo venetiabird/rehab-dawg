@@ -62,23 +62,18 @@ export const HomePage: React.FC = () => {
             Rehab Dawg <br />
             <RehabDawg fill={green}/>
             <RehabDawg fill={blue}/>
-            <RehabDawg fill={orange}/>
             <RehabDawg fill={red}/>
           </Logo>
         </LogoWrapper>
-        <StartButton to="/walks/short" onClick={() => setHistory({ name: 'short', date: Date.now()})}>
+        <StartButton to="/walks/green" onClick={() => setHistory({ name: 'short', date: Date.now(), startTime: Date.now()})}>
           <ColouredPaw fill={green} />
           5 minutes
         </StartButton>
-        <StartButton to="/walks/medium">
+        <StartButton to="/walks/blue">
           <ColouredPaw fill={blue} />
           10 minutes
         </StartButton>
-        <StartButton to="/walks/long">
-          <ColouredPaw fill={orange}/>
-          15 minutes
-        </StartButton>
-        <StartButton to="/walks/long">
+        <StartButton to="/walks/red">
           <ColouredPaw fill={red}/>
           20 minutes
         </StartButton>

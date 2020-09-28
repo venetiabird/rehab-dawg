@@ -5,6 +5,7 @@ import { Bone } from '@styled-icons/fa-solid/Bone';
 const DoneDawg = styled(Bone)`
   height: 60px;
   width: 60px;
+  font: courier;
 `;
 
 interface Props {
@@ -12,5 +13,7 @@ interface Props {
 }
 
 export const DoneWalk: React.FC<Props> = ({ fill = 'black'}) => (
-  <DoneDawg color={fill}/>
+  <DoneDawg color={fill}>
+    Done!
+  </DoneDawg>
 );

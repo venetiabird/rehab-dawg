@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { useParams } from 'react-router-dom';
 
 import {Page} from '../../components/Page';
 import {Timer} from '../../components/Timer';
@@ -8,7 +9,7 @@ import {DoneWalk} from '../../assets/svg/Done';
 import {ResumeWalk} from '../../assets/svg/Resume';
 import {RehabDawg} from '../../assets/svg/Dawg';
 import {ButtonBaseWithLink} from '../../components/SharedStyles';
-import { green, darkgreen, white, orange } from '../../utils/constants';
+import { white, darkgreen, orange } from '../../utils/constants';
 
 const PauseResumeContainer = styled.div`
   display: flex;
@@ -23,27 +24,41 @@ const DoneButton = styled(ButtonBaseWithLink)`
   width: 120px;
 `;
 
+type Walk = 'green' | 'blue' | 'red'
+
+const walkMap = {
+  'green': 5,
+  'blue': 10,
+  'red': 15
+};
+
+const sessionTime = (walkName: Walk): number => {
+  return walkMap[walkName];
+};
+
 export const ActiveWalk: React.FC = () => {
-  const [ count, setCount ] = useState(0);
+  const [ history, setHistory ] = useState({}); 
+  const { walkGrade } = useParams();
+  const walkTime = sessionTime(walkGrade);
   return (
     <>
       <Page heading={'Walk Session'}>
-        <RehabDawg fill={green}/>
-        <Timer />
+        <RehabDawg fill={walkGrade}/>
+        <Timer walkTimer={walkTime} />
         <PauseResumeContainer>
-          <PauseWalk fill={orange} />
-          <ResumeWalk fill={darkgreen} />
+          <PauseWalk fill={orange} handleClick={() => alert('Pausing!')}/>
+          <ResumeWalk fill={darkgreen} handleClick={() => alert('Resuming')}/>
         </PauseResumeContainer>
         {/* <DoneWalk fill={lightblue}>Done</DoneWalk> */}
         <DoneButton to="/home">
-          <DoneWalk fill={green}>
+          <DoneWalk fill={white}>
           Done!
           </DoneWalk>
         </DoneButton>
-        <button onClick={() => setCount(count + 1)}>
+        {/* <button onClick={() => setCount(count + 1)}>
           Count
         </button>
-        {count}
+        {count} */}
       </Page>
     </>
   );

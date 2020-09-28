@@ -9,8 +9,11 @@ const PauseDawg = styled(Pause)`
 
 interface Props {
   fill?: string;
+  handleClick: () => void;
 }
 
-export const PauseWalk: React.FC<Props> = ({ fill = 'black'}) => (
-  <PauseDawg color={fill}/>
+export const PauseWalk: React.FC<Props> = ({ fill = 'black',   handleClick }) => (
+  <a href='#'>
+    <PauseDawg color={fill} onClick={handleClick} />
+  </a> 
 );

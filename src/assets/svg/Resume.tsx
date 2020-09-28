@@ -10,8 +10,11 @@ const ResumeDawg = styled(Play)`
 
 interface Props {
   fill?: string;
+  handleClick: () => void;
 }
 
-export const ResumeWalk: React.FC<Props> = ({ fill = 'black'}) => (
-  <ResumeDawg color={fill}/>
+export const ResumeWalk: React.FC<Props> = ({ fill = 'black', handleClick}) => (
+  <a href='#'>
+    <ResumeDawg color={fill} onClick={handleClick}/>
+  </a>
 );
