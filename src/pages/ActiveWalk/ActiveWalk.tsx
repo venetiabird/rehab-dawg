@@ -4,24 +4,14 @@ import { useParams } from 'react-router-dom';
 
 import {Page} from '../../components/Page';
 import {Timer} from '../../components/Timer';
-import {PauseWalk} from '../../assets/svg/Pause';
 import {DoneWalk} from '../../assets/svg/Done';
-import {ResumeWalk} from '../../assets/svg/Resume';
 import {RehabDawg} from '../../assets/svg/Dawg';
-import {ButtonBaseWithLink} from '../../components/SharedStyles';
-import { white, darkgreen, orange } from '../../utils/constants';
-
-const PauseResumeContainer = styled.div`
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  width: 100px;
-`;
+import {ButtonBaseWithLink, Logo, LogoWrapper} from '../../components/SharedStyles';
+import { white } from '../../utils/constants';
 
 const DoneButton = styled(ButtonBaseWithLink)`
   background: black;
-  height: 80px;
-  width: 120px;
+  width: 25%;
 `;
 
 type Walk = 'green' | 'blue' | 'red'
@@ -42,18 +32,19 @@ export const ActiveWalk: React.FC = () => {
   const walkTime = sessionTime(walkGrade);
   return (
     <>
-      <Page heading={'Walk Session'}>
-        <RehabDawg fill={walkGrade}/>
+      <Page heading={''}>
+        <LogoWrapper>
+          <Logo>
+            Walk Session <br />
+            <RehabDawg fill={walkGrade}/>
+          </Logo>
+        </LogoWrapper>
         <Timer walkTime={walkTime} />
-        <PauseResumeContainer>
-          <PauseWalk fill={orange} handleClick={() => alert('Pausing!')}/>
-          <ResumeWalk fill={darkgreen} handleClick={() => alert('Resuming')}/>
-        </PauseResumeContainer>
-        {/* <DoneWalk fill={lightblue}>Done</DoneWalk> */}
+        {/* <DoneWalk fill={'lightblue'}>Done</DoneWalk> */}
         <DoneButton to="/home">
-          <DoneWalk fill={white}>
-          Done!
-          </DoneWalk>
+          <DoneWalk fill={white} />
+          Done
+          <DoneWalk fill={white} />
         </DoneButton>
         {/* <button onClick={() => setCount(count + 1)}>
           Count

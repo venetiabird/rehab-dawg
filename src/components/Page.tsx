@@ -6,7 +6,6 @@ import Navigation from './Navigation';
 
 import { 
   gutterWidth,
-  bannerHeight
 } from '../utils/constants';
 
 const PageContainer = styled.div`
@@ -15,6 +14,7 @@ const PageContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
+  padding: 0 ${gutterWidth}px;
 `;
 
 // background-image: linear-gradient(to bottom right, ${peach}, ${orange}); 
@@ -25,14 +25,9 @@ const PageContainer = styled.div`
 
 const Heading = styled.h2`
   margin: ${gutterWidth}px;
-`;
-
-const Hr = styled.hr`
-  position: sticky
-  top: ${bannerHeight}px
-  border: none;
-  margin: 0;
-  border-bottom: solid 0.5px lightgrey;
+  font-family: 'Muli', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 900;
+  font-size: 2em;
 `;
 
 interface Props {
@@ -48,7 +43,6 @@ export const Page: React.FC<Props> = ({
     <>
       <PageContainer>
         <Heading>{heading}</Heading>
-        <Hr />
         {children}
       </PageContainer>
       {/* <Navigation /> */}

@@ -1,40 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
+import {ResumeWalk} from '../assets/svg/Resume';
+import {PauseWalk} from '../assets/svg/Pause';
+import {timeLeftInMilliseconds, formatTimeLeft} from '../utils/timeFormatter';
+import { darkgreen, orange } from '../utils/constants';
+
 const CountDownDawg = styled.div`
-  height: 80px;
+  height: 10px;
   font-size: 28px;
   font: courier;
   font-weight: 800; 
   text-align: center;
   display: flex;
 `;
+const PauseResumeContainer = styled.div`
+  display: flex;
+`;
 interface Props {
   walkTime: number;
 }
-
-interface Dictionary<T> {
-  [key: string]: T;
-}
-
-const timeLeftInMilliseconds = (walkTimeMilliSeconds: number): number => {
-  const difference = walkTimeMilliSeconds  - 1000;
-  if (difference > 0) {
-    return difference;
-  }
-  return 0;
-};
-
-const formatTimeLeft = (difference: number): Dictionary<number> | string => {
-  if (difference > 0) {
-    const minutes = Math.floor((difference / 1000 / 60) % 60);
-    const seconds = Math.floor((difference / 1000) % 60);
-    return `${pad(minutes)}:${pad(seconds)}`;
-  } 
-  return 'All done!';
-};
-
-const pad = (input: number): string => input.toString().padStart(2, '0');
 
 export const Timer: React.FC<Props> = ({ walkTime = 0 }) => {
   const walkTimeMilli = walkTime * 60 * 1000;
@@ -52,6 +37,10 @@ export const Timer: React.FC<Props> = ({ walkTime = 0 }) => {
       <CountDownDawg>
         {formatTimeLeft(timeLeft)}
       </CountDownDawg>
+      <PauseResumeContainer>
+        <PauseWalk fill={orange} handleClick={() => alert('Pausing!')}/>
+        <ResumeWalk fill={darkgreen} handleClick={() => alert('Resuming')}/>
+      </PauseResumeContainer>
     </>
   );
 };

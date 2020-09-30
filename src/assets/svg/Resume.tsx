@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import { Play } from '@styled-icons/fa-solid/Play';
 
 const ResumeDawg = styled(Play)`
-  height: 50px;
-  width: 50px;
+  height: 30px;
+  width: 30px;
   margin-left: 30px;
 `;
 

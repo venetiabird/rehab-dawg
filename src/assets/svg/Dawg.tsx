@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import { GuideDog } from '@styled-icons/foundation/GuideDog';
 
 const Dawg = styled(GuideDog)`
-  height: 30px;
-  width: 30px;
+  height: 45px;
+  width: 45px;
   margin-left: 0px;
 `;
 

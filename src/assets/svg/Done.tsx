@@ -3,9 +3,9 @@ import styled from 'styled-components';
 import { Bone } from '@styled-icons/fa-solid/Bone';
 
 const DoneDawg = styled(Bone)`
-  height: 60px;
-  width: 60px;
-  font: courier;
+  height: 15px;
+  width: 15px;
+  padding: 5px;
 `;
 
 interface Props {

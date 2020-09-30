@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import { Pause } from '@styled-icons/fa-solid/Pause';
 
 const PauseDawg = styled(Pause)`
-  height: 50px;
-  width: 50px;
+  height: 30px;
+  width: 30px;
 `;
 
 interface Props {
