@@ -39,7 +39,7 @@ const Notification = (history: any) => { // how to make this type safe?!!
   // console.log('Walks', history);
   return (
     <NotificationContainer>
-      <NotificationText>Start logging Rehab Walks!</NotificationText>
+      <NotificationText>Start logging those Rehab Walks!</NotificationText>
     </NotificationContainer>
   );
 };

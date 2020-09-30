@@ -3,11 +3,11 @@ import styled from 'styled-components';
 
 import {ButtonBaseWithLink} from '../components/SharedStyles';
 import {ColouredPaw} from '../assets/svg/ColouredShapes';
-import { gutterWidth, green, red, blue, orange } from '../utils/constants';
+import { gutterWidth, green, red, blue } from '../utils/constants';
 import {RehabDawg} from '../assets/svg/Dawg';
 import Navigation from '../components/Navigation';
 import Notification from '../components/Notification';
-import { Walk } from '../utils/types';
+// import { Walk } from '../utils/types';
 // import useLocalStorage from '../hooks/useLocalStorage';
 
 
@@ -17,13 +17,12 @@ const LogoWrapper = styled.div`
   justify-content: space-between;
 `;
 
-const Logo = styled.h1`
+const Logo = styled.h2`
   font-family: 'Muli', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 900;
   font-size: 2em;
   border-radius: 0;
   padding: 0;
-  margin-left: 8px;
   color: black;
 `;
 
@@ -75,7 +74,7 @@ export const HomePage: React.FC = () => {
         </StartButton>
         <StartButton to="/walks/red">
           <ColouredPaw fill={red}/>
-          20 minutes
+          15 minutes
         </StartButton>
         <Notification history={history} />
       </Page>

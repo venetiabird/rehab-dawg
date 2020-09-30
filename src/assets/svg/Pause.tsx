@@ -13,7 +13,7 @@ interface Props {
 }
 
 export const PauseWalk: React.FC<Props> = ({ fill = 'black',   handleClick }) => (
-  <a href='#'>
+  <a href='#'> 
     <PauseDawg color={fill} onClick={handleClick} />
   </a> 
 );

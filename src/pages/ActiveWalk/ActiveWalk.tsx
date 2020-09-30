@@ -44,7 +44,7 @@ export const ActiveWalk: React.FC = () => {
     <>
       <Page heading={'Walk Session'}>
         <RehabDawg fill={walkGrade}/>
-        <Timer walkTimer={walkTime} />
+        <Timer walkTime={walkTime} />
         <PauseResumeContainer>
           <PauseWalk fill={orange} handleClick={() => alert('Pausing!')}/>
           <ResumeWalk fill={darkgreen} handleClick={() => alert('Resuming')}/>
