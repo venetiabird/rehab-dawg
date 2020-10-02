@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
+import useLocalStorage from '../hooks/useLocalStorage';
+
 import {ResumeWalk} from '../assets/svg/Resume';
 import {PauseWalk} from '../assets/svg/Pause';
 import {timeLeftInMilliseconds, formatTimeLeft} from '../utils/timeFormatter';
@@ -23,7 +25,7 @@ interface Props {
 
 export const Timer: React.FC<Props> = ({ walkTime = 0 }) => {
   const walkTimeMilli = walkTime * 60 * 1000;
-  const [timeLeft, setTimeLeft] = useState(timeLeftInMilliseconds(walkTimeMilli));
+  const [timeLeft, setTimeLeft] = useLocalStorage('timeLeft', timeLeftInMilliseconds(walkTimeMilli));
   
   useEffect(() => {
     const timer = setTimeout(() => {
