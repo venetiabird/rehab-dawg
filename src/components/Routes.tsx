@@ -5,6 +5,9 @@ import {useLocation, Route, Switch } from 'react-router-dom'; // read up on this
 import { appMaxWidth } from '../utils/constants';
 import { HomePage } from '../pages/HomePage';
 import { ActiveWalk } from '../pages/ActiveWalk';
+import { IWalk } from '../utils/types';
+import { IActiveWalk } from '../utils/types';
+import useLocalStorage from '../hooks/useLocalStorage';
 
 const MaxWidthContainer = styled.div`
   max-width: ${appMaxWidth}px;
@@ -13,11 +16,16 @@ const MaxWidthContainer = styled.div`
 
 const Routes: React.FC = () => {
   const location = useLocation();
+  const [ history, setHistory ] = useLocalStorage<IWalk[]>('history', []); 
+  const [ activeWalk, setaActiveWalk ] = useLocalStorage<IActiveWalk | undefined>('activeWalk', undefined); 
+  console.log('==> AW:', activeWalk);
   return (
     <MaxWidthContainer>
       <Switch location={location}>
-        <Route path="/" exact component={HomePage} />
-        <Route path="/home" exact component={HomePage} />
+        <Route path="/" exact>
+          <HomePage setActiveWalk={setaActiveWalk} />
+        </Route>
+        <Route path="/home" exact render={() => <HomePage setActiveWalk={setaActiveWalk} />} />
         <Route path="/walks/:walkGrade/" exact component={ActiveWalk} />
       </Switch>
     </MaxWidthContainer>

@@ -8,16 +8,20 @@ import { green, red, blue } from '../utils/constants';
 import {RehabDawg} from '../assets/svg/Dawg';
 import Navigation from '../components/Navigation';
 import Notification from '../components/Notification';
-import { Walk } from '../utils/types';
-import useLocalStorage from '../hooks/useLocalStorage';
+import { IActiveWalk } from '../utils/types';
+// import useLocalStorage from '../hooks/useLocalStorage';
 
 
 const StartButton = styled(ButtonBaseWithLink)`
   background: black;
 `;
 
-export const HomePage: React.FC = () => {
-  const [ history, setHistory ] = useLocalStorage<Walk[]>('history', []); 
+interface Props {
+  setActiveWalk: (aw: IActiveWalk) => void
+}
+
+export const HomePage: React.FC<Props> = ({ setActiveWalk }) => {
+  const handleClick = () => setActiveWalk({ walkName: 'green', startDateTime: Date.now()});
   return (
     <>
       <Page heading={''}>
@@ -29,10 +33,7 @@ export const HomePage: React.FC = () => {
             <RehabDawg fill={red}/>
           </Logo>
         </LogoWrapper>
-        <StartButton to="/walks/green" onClick={() => {
-          history.push({ walkName: 'green', startDateTime: Date.now()});
-          setHistory(history);
-        }}>
+        <StartButton to="/walks/green" onClick={handleClick}>
           <ColouredPaw fill={green} />
           5 minutes
         </StartButton>
@@ -44,7 +45,7 @@ export const HomePage: React.FC = () => {
           <ColouredPaw fill={red}/>
           15 minutes
         </StartButton>
-        <Notification history={history} />
+        {/* <Notification history={history} /> */}
       </Page>
       <Navigation />
     </>
