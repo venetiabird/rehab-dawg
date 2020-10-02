@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/rehab-dawg/static/css/main.5f361e03.chunk.css",
+    "main.js": "/rehab-dawg/static/js/main.63fa3095.chunk.js",
+    "main.js.map": "/rehab-dawg/static/js/main.63fa3095.chunk.js.map",
+    "runtime-main.js": "/rehab-dawg/static/js/runtime-main.3da0eb80.js",
+    "runtime-main.js.map": "/rehab-dawg/static/js/runtime-main.3da0eb80.js.map",
+    "static/js/2.51902ebf.chunk.js": "/rehab-dawg/static/js/2.51902ebf.chunk.js",
+    "static/js/2.51902ebf.chunk.js.map": "/rehab-dawg/static/js/2.51902ebf.chunk.js.map",
+    "index.html": "/rehab-dawg/index.html",
+    "precache-manifest.1551af53762255443bd4e84f09199f67.js": "/rehab-dawg/precache-manifest.1551af53762255443bd4e84f09199f67.js",
+    "service-worker.js": "/rehab-dawg/service-worker.js",
+    "static/css/main.5f361e03.chunk.css.map": "/rehab-dawg/static/css/main.5f361e03.chunk.css.map",
+    "static/js/2.51902ebf.chunk.js.LICENSE.txt": "/rehab-dawg/static/js/2.51902ebf.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.3da0eb80.js",
+    "static/js/2.51902ebf.chunk.js",
+    "static/css/main.5f361e03.chunk.css",
+    "static/js/main.63fa3095.chunk.js"
+  ]
+}
