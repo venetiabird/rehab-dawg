@@ -8,15 +8,13 @@ import {DoneWalk} from '../../assets/svg/Done';
 import {RehabDawg} from '../../assets/svg/Dawg';
 import {ButtonBaseWithLink, Logo, LogoWrapper} from '../../components/SharedStyles';
 import { white } from '../../utils/constants';
-import { Walk } from '../../utils/types';
-import useLocalStorage from '../../hooks/useLocalStorage';
 
 const DoneButton = styled(ButtonBaseWithLink)`
   background: black;
   width: 25%;
 `;
 
-type WalkName = 'green' | 'blue' | 'red'
+type Walk = 'green' | 'blue' | 'red'
 
 const walkMap = {
   'green': 5,
@@ -24,18 +22,14 @@ const walkMap = {
   'red': 15
 };
 
-const sessionTime = (walkName: WalkName): number => {
+const sessionTime = (walkName: Walk): number => {
   return walkMap[walkName];
 };
 
 export const ActiveWalk: React.FC = () => {
-  const [ history, setHistory ] = useLocalStorage<Walk[]>('history', []); 
-  const [ timeLeft, setTimeLeft ] = useLocalStorage<Walk[]>('history', []); 
-  const currentWalk = history.pop();
-  console.log('===>', history)
+  const [ history, setHistory ] = useState({}); 
   const { walkGrade } = useParams();
   const walkTime = sessionTime(walkGrade);
-  const MINUTES_TO_MILLISECONDS = 60 * 1000;
   return (
     <>
       <Page heading={''}>
@@ -47,15 +41,7 @@ export const ActiveWalk: React.FC = () => {
         </LogoWrapper>
         <Timer walkTime={walkTime} />
         {/* <DoneWalk fill={'lightblue'}>Done</DoneWalk> */}
-        <DoneButton to="/home" onClick={() => {
-          if(timeLeft > 0) {
-            currentWalk.walkTime = walkTime * MINUTES_TO_MILLISECONDS - timeLeft;
-          } else {
-            currentWalk.walkTime = walkTime * MINUTES_TO_MILLISECONDS;
-          }
-          currentWalk.finishTime = Date.now();
-          setHistory(currentWalk);
-        }}>
+        <DoneButton to="/home">
           <DoneWalk fill={white} />
           Done
           <DoneWalk fill={white} />

@@ -1,8 +1,8 @@
 export interface Walk {
-  startDateTime: number;
-  walkTime: number;
-  finishDateTime?: number;
-  walkName: string;
+  date: number;
+  startTime?: number;
+  finishTime?: number;
+  name: string;
 }
 export interface State {
   history: Walk[];
