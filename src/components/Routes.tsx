@@ -5,6 +5,7 @@ import {useLocation, Route, Switch } from 'react-router-dom'; // read up on this
 import { appMaxWidth } from '../utils/constants';
 import { HomePage } from '../pages/HomePage';
 import { ActiveWalk } from '../pages/ActiveWalk';
+import { ProgressReport } from '../pages/ProgressReport';
 import { IWalk } from '../utils/types';
 import { IActiveWalk } from '../utils/types';
 import useLocalStorage from '../hooks/useLocalStorage';
@@ -27,6 +28,9 @@ const Routes: React.FC = () => {
         </Route>
         <Route path="/home" exact render={() => <HomePage setActiveWalk={setaActiveWalk} />} />
         <Route path="/walks/:walkGrade/" exact component={ActiveWalk} />
+        <Route path="/progress" exact>
+          <ProgressReport />
+        </Route>
       </Switch>
     </MaxWidthContainer>
   );

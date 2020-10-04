@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { useParams } from 'react-router-dom';
 
@@ -8,7 +8,7 @@ import {DoneWalk} from '../../assets/svg/Done';
 import {RehabDawg} from '../../assets/svg/Dawg';
 import {ButtonBaseWithLink, Logo, LogoWrapper} from '../../components/SharedStyles';
 import { white } from '../../utils/constants';
-import { IWalk } from '../../utils/types';
+import { IWalk, IActiveWalk } from '../../utils/types';
 import useLocalStorage from '../../hooks/useLocalStorage';
 
 const DoneButton = styled(ButtonBaseWithLink)`
@@ -31,14 +31,18 @@ const sessionTime = (walkName: WalkName): number => {
 export const ActiveWalk: React.FC = () => {
   const [ history, setHistory ] = useLocalStorage<IWalk[]>('history', []); 
   const [ timeLeft, setTimeLeft ] = useLocalStorage<number>('timeLeft', 0); 
-  const currentWalk = history.pop();
-  console.log('===>', history);
+  const [ activeWalk, setActiveWalk ] = useLocalStorage<IActiveWalk | undefined>('activeWalk', undefined); 
+  const handleClick = () => {
+    activeWalk.finishTime = Date.now()
+    activeWalk.walkTime = 5 * 60 * 1000; // fix this with timeleft
+    return setHistory(activeWalk);
+  };
+  
   const { walkGrade } = useParams();
   const walkTime = sessionTime(walkGrade);
-  const MINUTES_TO_MILLISECONDS = 60 * 1000;
   return (
     <>
-      <Page heading={''}>
+      <Page>
         <LogoWrapper>
           <Logo>
             Walk Session <br />
@@ -46,16 +50,11 @@ export const ActiveWalk: React.FC = () => {
           </Logo>
         </LogoWrapper>
         <Timer walkTime={walkTime} />
-        {/* <DoneWalk fill={'lightblue'}>Done</DoneWalk> */}
-        <DoneButton to="/home">
+        <DoneButton to="/home" onClick={handleClick}>
           <DoneWalk fill={white} />
           Done
           <DoneWalk fill={white} />
         </DoneButton>
-        {/* <button onClick={() => setCount(count + 1)}>
-          Count
-        </button>
-        {count} */}
       </Page>
     </>
   );

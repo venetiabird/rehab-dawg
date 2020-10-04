@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 import {Page} from '../components/Page';
@@ -6,7 +6,7 @@ import {ButtonBaseWithLink, LogoWrapper, Logo} from '../components/SharedStyles'
 import {ColouredPaw} from '../assets/svg/ColouredShapes';
 import { green, red, blue } from '../utils/constants';
 import {RehabDawg} from '../assets/svg/Dawg';
-import Notification from '../components/Notification';
+// import Notification from '../components/Notification';
 import { IActiveWalk } from '../utils/types';
 // import useLocalStorage from '../hooks/useLocalStorage';
 
@@ -23,7 +23,7 @@ export const HomePage: React.FC<Props> = ({ setActiveWalk }) => {
   const handleClick = () => setActiveWalk({ walkName: 'green', startDateTime: Date.now()});
   return (
     <>
-      <Page heading={''}>
+      <Page>
         <LogoWrapper>
           <Logo>
             Rehab Dawg <br />

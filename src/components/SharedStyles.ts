@@ -24,14 +24,14 @@ const buttonStyle = `
 export const LogoWrapper = styled.div`
   display: flex;
   align-items: baseline;
-  justify-content: space-between;
+  justify-content: space-around;
 `;
 
 export const Logo = styled.h2`
   font-family: 'Muli', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 900;
   font-size: 2em;
-  border-radius: 0;
+  border-radius: 1;
   padding: 0;
   color: black;
   align-items: center;

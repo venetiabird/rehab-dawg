@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-// import { useLocation } from 'react-router-dom';
 
 import { 
   gutterWidth,
@@ -28,21 +27,13 @@ const Heading = styled.h2`
   font-size: 2em;
 `;
 
-interface Props {
-  heading: string;
-}
-
-export const Page: React.FC<Props> = ({
-  heading,
+export const Page: React.FC = ({
   children,
-}) => {
-  // const location = useLocation();
-  return (
-    <>
-      <PageContainer>
-        <Heading>{heading}</Heading>
-        {children}
-      </PageContainer>
-    </>
-  );
-};
+}) => (
+  <>
+    <PageContainer>
+      <Heading />
+      {children}
+    </PageContainer>
+  </>
+);
