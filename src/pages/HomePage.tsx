@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useParams } from 'react-router-dom';
 
 import {Page} from '../components/Page';
 import {ButtonBaseWithLink, LogoWrapper, Logo} from '../components/SharedStyles';
@@ -16,11 +17,12 @@ const StartButton = styled(ButtonBaseWithLink)`
 `;
 
 interface Props {
-  setActiveWalk: (aw: IActiveWalk) => void
+  setStartDateTime: (aw: number) => void
 }
 
-export const HomePage: React.FC<Props> = ({ setActiveWalk }) => {
-  const handleClick = () => setActiveWalk({ walkName: 'green', startDateTime: Date.now()});
+export const HomePage: React.FC<Props> = ({ setStartDateTime }) => {
+  // const [ startDateTime, setStartDateTime ] = useLocalStorage<number>('startDateTime', 0); 
+  const handleClick = () => setStartDateTime(Date.now());
   return (
     <>
       <Page>

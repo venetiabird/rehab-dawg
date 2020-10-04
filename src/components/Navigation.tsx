@@ -38,10 +38,6 @@ const NavLink = styled(Link)`
   padding: 14px;
 `;
 
-// const NavigationIcon = styled.img`
-//     max-width: 36px;
-// `;
-
 
 export const Navigation: React.FC = () => {
   return (

@@ -31,14 +31,22 @@ const sessionTime = (walkName: WalkName): number => {
 export const ActiveWalk: React.FC = () => {
   const [ history, setHistory ] = useLocalStorage<IWalk[]>('history', []); 
   const [ timeLeft, setTimeLeft ] = useLocalStorage<number>('timeLeft', 0); 
-  const [ activeWalk, setActiveWalk ] = useLocalStorage<IActiveWalk | undefined>('activeWalk', undefined); 
+  const [ startDateTime, setStartDateTime ] = useLocalStorage<number>('startDateTime', Date.now()); 
+  // const [ activeWalk, setActiveWalk ] = useLocalStorage<IActiveWalk | undefined>('activeWalk', undefined); 
+  const { walkGrade } = useParams();
+  console.log('==> walkgrade', walkGrade)
+  // console.log('==> activeWalk', activeWalk);
+  console.log('==> timeLeft', timeLeft);
   const handleClick = () => {
-    activeWalk.finishTime = Date.now()
-    activeWalk.walkTime = 5 * 60 * 1000; // fix this with timeleft
-    return setHistory(activeWalk);
+    let currentWalk: IWalk = {
+      walkName: walkGrade,
+      startDateTime: startDateTime,
+      walkTime: startDateTime - timeLeft,
+      finishDateTime: Date.now(),
+    }
+    return setHistory(currentWalk);
   };
   
-  const { walkGrade } = useParams();
   const walkTime = sessionTime(walkGrade);
   return (
     <>

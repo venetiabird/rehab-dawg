@@ -9,7 +9,7 @@ export interface IActiveWalk {
   startDateTime: number;
   walkTime?: number;
   finishDateTime?: number;
-  walkName: string;
+  walkName?: string;
 }
 export interface State {
   history: IWalk[];
