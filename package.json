@@ -2,7 +2,7 @@
   "name": "billie-rehab",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://venetiabird.github.io/rehab-dawg/",
+  "homepage": "http://rehabdawg.com",
   "dependencies": {
     "@styled-icons/boxicons-regular": "^10.18.0",
     "@styled-icons/fa-solid": "^10.18.0",
