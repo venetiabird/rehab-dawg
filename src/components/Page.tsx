@@ -2,8 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 // import { useLocation } from 'react-router-dom';
 
-import Navigation from './Navigation';
-
 import { 
   gutterWidth,
 } from '../utils/constants';
@@ -45,7 +43,6 @@ export const Page: React.FC<Props> = ({
         <Heading>{heading}</Heading>
         {children}
       </PageContainer>
-      {/* <Navigation /> */}
     </>
   );
 };

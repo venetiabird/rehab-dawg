@@ -6,7 +6,6 @@ import {ButtonBaseWithLink, LogoWrapper, Logo} from '../components/SharedStyles'
 import {ColouredPaw} from '../assets/svg/ColouredShapes';
 import { green, red, blue } from '../utils/constants';
 import {RehabDawg} from '../assets/svg/Dawg';
-import Navigation from '../components/Navigation';
 import Notification from '../components/Notification';
 import { IActiveWalk } from '../utils/types';
 // import useLocalStorage from '../hooks/useLocalStorage';
@@ -47,7 +46,6 @@ export const HomePage: React.FC<Props> = ({ setActiveWalk }) => {
         </StartButton>
         {/* <Notification history={history} /> */}
       </Page>
-      <Navigation />
     </>
   );
 };

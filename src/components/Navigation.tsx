@@ -1,18 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { HomeSmile } from '@styled-icons/boxicons-regular/HomeSmile';
 
-// import { RehabHome } from '../assets/svg/Home';
-// import { RehabProgress } from '../assets/svg/Progress';
-import { LineChart } from '@styled-icons/boxicons-regular/LineChart';
+import { RehabHome } from '../assets/svg/Home';
+import { RehabProgress } from '../assets/svg/Progress';
 
-import { white, appMaxWidth,  navBarHeight} from '../utils/constants';
-
-
-// const NavigationIcon = styled(HomeSmile)`
-//   max-width: 36px
-// `;
+import { white, blue, appMaxWidth,  navBarHeight} from '../utils/constants';
 
 const NavIconContainer = styled.div`
   display: flex;
@@ -28,7 +21,7 @@ const NavIconContainer = styled.div`
   justify-content: space-around;
   // add an extra 0.5 to the height to account for the 0.5px border
   min-height: ${navBarHeight}.5px;
-  background-color: white;
+  background-color: ${white};
   color: black;
   box-sizing: border-box;
   align-items: center;
@@ -55,10 +48,10 @@ export const Navigation: React.FC = () => {
     <>
       <NavIconContainer>
         <NavLink to='/'>
-          <HomeSmile />
+          <RehabHome fill={blue}/>
         </NavLink>
         <NavLink to='/progress'>
-          <LineChart />
+          <RehabProgress fill={blue}/>
         </NavLink>
       </NavIconContainer>
     </>
