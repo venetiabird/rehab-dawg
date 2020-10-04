@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "79cdc46edc80f2561ad2fe5dd75c2f6b",
+    "revision": "a0764437d5fa6437920a46a790b1e76d",
     "url": "/rehab-dawg/index.html"
   },
   {

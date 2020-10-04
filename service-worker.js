@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/rehab-dawg/precache-manifest.567aa65cc045ec6637e31f00cf8a28a3.js"
+  "/rehab-dawg/precache-manifest.273b7b59b12be3524558bf5fe0eaec1e.js"
 );
 
 self.addEventListener('message', (event) => {
