@@ -1,25 +1,37 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Rehab Dawg",
+  "name": "Simnple Dawg Rehab Timer",
   "icons": [
     {
-      "src": "favicon.ico",
+      "src": "dog-icon.ico",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     },
     {
-      "src": "logo192.png",
+      "src": "dog128.png",
       "type": "image/png",
-      "sizes": "192x192"
+      "sizes": "128x128"
     },
     {
-      "src": "logo512.png",
+      "src": "dog256.png",
+      "type": "image/png",
+      "sizes": "256x256"
+    },
+    {
+      "src": "dog512.png",
       "type": "image/png",
       "sizes": "512x512"
     }
   ],
-  "start_url": ".",
+  "intent_filters": {
+    "scope_url_scheme": "https",
+    "scope_url_host": "rehabdawg.com",
+    "scope_url_path": "/"
+  },
+  "scope_url": "/",
+  "start_url": "/",
+  "scope": "/",
   "display": "standalone",
-  "theme_color": "#000000",
+  "theme_color": "#ffffff",
   "background_color": "#ffffff"
 }
