@@ -6,7 +6,7 @@ import './App.css';
 
 const App = () => {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/rehab-dawg">
       <Routes />
       <Navigation />
     </BrowserRouter>
