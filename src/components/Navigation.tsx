@@ -17,7 +17,6 @@ const NavIconContainer = styled.div`
   position: fixed;
   bottom: 0;
   width: 100%;
-  max-width: ${appMaxWidth}px;
   justify-content: space-around;
   // add an extra 0.5 to the height to account for the 0.5px border
   min-height: ${navBarHeight}.5px;

@@ -19,7 +19,7 @@ const Routes: React.FC = () => {
   const location = useLocation();
   const [ history, setHistory ] = useLocalStorage<IWalk[]>('history', []); 
   const [ startDateTime, setStartDateTime ] = useLocalStorage('startDateTime', 0); 
-  console.log('==> AW:', startDateTime);
+  // console.log('==> AW:', startDateTime);
   return (
     <MaxWidthContainer>
       <Switch location={location}>
@@ -29,7 +29,7 @@ const Routes: React.FC = () => {
         <Route path="/home" exact render={() => <HomePage setStartDateTime={setStartDateTime} />} />
         <Route path="/walks/:walkGrade/" exact component={ActiveWalk} setHistory={setHistory}/>
         <Route path="/progress" exact>
-          <ProgressReport history={history}/>
+          <ProgressReport />
         </Route>
       </Switch>
     </MaxWidthContainer>

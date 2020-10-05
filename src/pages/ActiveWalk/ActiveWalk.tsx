@@ -34,9 +34,6 @@ export const ActiveWalk: React.FC = () => {
   const [ startDateTime, setStartDateTime ] = useLocalStorage<number>('startDateTime', Date.now()); 
   // const [ activeWalk, setActiveWalk ] = useLocalStorage<IActiveWalk | undefined>('activeWalk', undefined); 
   const { walkGrade } = useParams();
-  // console.log('==> history', history)
-  // console.log('==> activeWalk', activeWalk);
-  // console.log('==> timeLeft', timeLeft);
   const handleClick = () => {
     let currentWalk: IWalk = {
       walkName: walkGrade,
@@ -44,12 +41,15 @@ export const ActiveWalk: React.FC = () => {
       walkTime: startDateTime - timeLeft,
       finishDateTime: Date.now(),
     }
-    console.log('==> currentWalk', currentWalk)
     history.push(currentWalk)
+    // setTimeLeft(0);
     return setHistory(history);
   };
   
   const walkTime = sessionTime(walkGrade);
+  // setTimeLeft(walkTime);
+  console.log(' ===> walkGrade', walkGrade)
+  console.log(' ===> walkTime', walkTime)
   return (
     <>
       <Page>

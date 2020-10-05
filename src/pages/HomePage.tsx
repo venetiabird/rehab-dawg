@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom';
 import {Page} from '../components/Page';
 import {ButtonBaseWithLink, LogoWrapper, Logo} from '../components/SharedStyles';
 import {ColouredPaw} from '../assets/svg/ColouredShapes';
-import { green, red, blue } from '../utils/constants';
+import { green, red, blue, gutterWidth } from '../utils/constants';
 import {RehabDawg} from '../assets/svg/Dawg';
 import Notification from '../components/Notification';
 import { IWalk } from '../utils/types';
@@ -14,10 +14,19 @@ import { IWalk } from '../utils/types';
 
 const StartButton = styled(ButtonBaseWithLink)`
   background: black;
+  margin: 5px
+`;
+
+const RehabActivityContainer = styled.div`
+display: flex;
+align-items: center;
+justify-content: space-around;
+padding: 0 ${gutterWidth}px;
 `;
 
 interface IProps {
-  setStartDateTime: (aw: number) => void
+  // setStartDateTime: (aw: number) => void
+  setStartDateTime: (start: number) => void
 };
 
 export const HomePage: React.FC<IProps> = ({ setStartDateTime }) => {
@@ -34,18 +43,20 @@ export const HomePage: React.FC<IProps> = ({ setStartDateTime }) => {
             <RehabDawg fill={red}/>
           </Logo>
         </LogoWrapper>
-        <StartButton to="/walks/green" onClick={handleClick}>
-          <ColouredPaw fill={green} />
-          5 minutes
-        </StartButton>
-        <StartButton to="/walks/blue">
-          <ColouredPaw fill={blue} />
-          10 minutes
-        </StartButton>
-        <StartButton to="/walks/red">
-          <ColouredPaw fill={red}/>
-          15 minutes
-        </StartButton>
+        <RehabActivityContainer>
+          <StartButton to="/walks/green" onClick={handleClick}>
+            <ColouredPaw fill={green} />
+            5 minutes
+          </StartButton>
+          <StartButton to="/walks/blue" onClick={handleClick}>
+            <ColouredPaw fill={blue} />
+            10 minutes
+          </StartButton>
+          <StartButton to="/walks/red" onClick={handleClick}>
+            <ColouredPaw fill={red}/>
+            15 minutes
+          </StartButton>
+        </RehabActivityContainer>
         <Notification />
       </Page>
     </>
