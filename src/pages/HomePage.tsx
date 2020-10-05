@@ -7,7 +7,7 @@ import {ButtonBaseWithLink, LogoWrapper, Logo} from '../components/SharedStyles'
 import {ColouredPaw} from '../assets/svg/ColouredShapes';
 import { green, red, blue } from '../utils/constants';
 import {RehabDawg} from '../assets/svg/Dawg';
-// import Notification from '../components/Notification';
+import Notification from '../components/Notification';
 import { IActiveWalk } from '../utils/types';
 // import useLocalStorage from '../hooks/useLocalStorage';
 
@@ -16,11 +16,11 @@ const StartButton = styled(ButtonBaseWithLink)`
   background: black;
 `;
 
-interface Props {
+interface IProps {
   setStartDateTime: (aw: number) => void
 }
 
-export const HomePage: React.FC<Props> = ({ setStartDateTime }) => {
+export const HomePage: React.FC<IProps> = ({ setStartDateTime }) => {
   // const [ startDateTime, setStartDateTime ] = useLocalStorage<number>('startDateTime', 0); 
   const handleClick = () => setStartDateTime(Date.now());
   return (
@@ -46,7 +46,7 @@ export const HomePage: React.FC<Props> = ({ setStartDateTime }) => {
           <ColouredPaw fill={red}/>
           15 minutes
         </StartButton>
-        {/* <Notification history={history} /> */}
+        <Notification />
       </Page>
     </>
   );

@@ -44,7 +44,7 @@ export const ActiveWalk: React.FC = () => {
       walkTime: startDateTime - timeLeft,
       finishDateTime: Date.now(),
     }
-    return setHistory(currentWalk);
+    return setHistory(history.push(currentWalk));
   };
   
   const walkTime = sessionTime(walkGrade);

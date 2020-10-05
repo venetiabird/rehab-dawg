@@ -8,12 +8,12 @@ const ResumeDawg = styled(Play)`
   margin-left: 30px;
 `;
 
-interface Props {
+interface IProps {
   fill?: string;
   handleClick: () => void;
 }
 
-export const ResumeWalk: React.FC<Props> = ({ fill = 'black', handleClick}) => (
+export const ResumeWalk: React.FC<IProps> = ({ fill = 'black', handleClick}) => (
   <a href='#'>
     <ResumeDawg color={fill} onClick={handleClick}/>
   </a>

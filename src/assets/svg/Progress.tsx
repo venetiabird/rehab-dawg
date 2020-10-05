@@ -8,10 +8,10 @@ const DawgProgress = styled(LineChart)`
   width: 45px;
 `;
 
-interface Props {
+interface IProps {
   fill?: string;
 }
 
-export const RehabProgress: React.FC<Props> = ({ fill = 'black' }) => (
+export const RehabProgress: React.FC<IProps> = ({ fill = 'black' }) => (
   <DawgProgress color={fill} />
 );

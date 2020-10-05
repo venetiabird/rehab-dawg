@@ -7,12 +7,12 @@ const PauseDawg = styled(Pause)`
   width: 30px;
 `;
 
-interface Props {
+interface IProps {
   fill?: string;
   handleClick: () => void;
 }
 
-export const PauseWalk: React.FC<Props> = ({ fill = 'black',   handleClick }) => (
+export const PauseWalk: React.FC<IProps> = ({ fill = 'black',   handleClick }) => (
   <a href='#'> 
     <PauseDawg color={fill} onClick={handleClick} />
   </a> 

@@ -7,10 +7,10 @@ const DawgHouse = styled(HomeSmile)`
   height: 45px;
   width: 45px;
 `;
-interface Props {
+interface IProps {
   fill?: string;
 }
 
-export const RehabHome: React.FC<Props> = ({ fill = 'black' }) => (
+export const RehabHome: React.FC<IProps> = ({ fill = 'black' }) => (
   <DawgHouse color={fill}/>
 );

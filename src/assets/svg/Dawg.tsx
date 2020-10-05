@@ -8,10 +8,10 @@ const Dawg = styled(GuideDog)`
   margin-left: 0px;
 `;
 
-interface Props {
+interface IProps {
   fill?: string;
 }
 
-export const RehabDawg: React.FC<Props> = ({ fill = 'black'}) => (
+export const RehabDawg: React.FC<IProps> = ({ fill = 'black'}) => (
   <Dawg color={fill}/>
 );

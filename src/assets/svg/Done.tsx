@@ -8,11 +8,11 @@ const DoneDawg = styled(Bone)`
   padding: 5px;
 `;
 
-interface Props {
+interface IProps {
   fill?: string;
 }
 
-export const DoneWalk: React.FC<Props> = ({ fill = 'black'}) => (
+export const DoneWalk: React.FC<IProps> = ({ fill = 'black'}) => (
   <DoneDawg color={fill}>
     Done!
   </DoneDawg>

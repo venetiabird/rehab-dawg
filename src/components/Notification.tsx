@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import moment from 'moment';
 
 import {blue, silver } from '../utils/constants';
+import { IWalk } from '../utils/types';
+import useLocalStorage from '../hooks/useLocalStorage';
 
 const NotificationContainer = styled.div`
     border: 1px solid ${silver};
@@ -23,15 +25,16 @@ const StrongSpan = styled.span`
   color: ${blue};
 `;
 
-const Notification = (history: any) => { // how to make this type safe?!!
-  // should I have used a useEffect hook here?
-  if (history.date) {
-    const lastWalkTime = moment(history.date).format('MMMM Do YYYY, h:mm:ss a');
+export const Notification: React.FC = () => {
+  const [ history, setHistory ] = useLocalStorage<IWalk[]>('history', []); 
+  const lastWalk = history[history.length - 1];
+  if (lastWalk?.finishDateTime) {
+    const formatLastWalkTime = moment(history.finishDateTime).format('MMMM Do YYYY, h:mm:ss a');
 
     return (
       <NotificationContainer>
         <NotificationText>Last Rehab Walk was on 
-          <StrongSpan> {lastWalkTime}.</StrongSpan>
+          <StrongSpan> {formatLastWalkTime}.</StrongSpan>
         </NotificationText>
       </NotificationContainer>
     );

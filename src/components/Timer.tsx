@@ -19,11 +19,11 @@ const CountDownDawg = styled.div`
 const PauseResumeContainer = styled.div`
   display: flex;
 `;
-interface Props {
+interface IProps {
   walkTime: number;
 }
 
-export const Timer: React.FC<Props> = ({ walkTime = 0 }) => {
+export const Timer: React.FC<IProps> = ({ walkTime = 0 }) => {
   const walkTimeMilli = walkTime * 60 * 1000;
   const [timeLeft, setTimeLeft] = useLocalStorage('timeLeft', timeLeftInMilliseconds(walkTimeMilli));
   
