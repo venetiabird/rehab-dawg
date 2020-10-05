@@ -8,7 +8,7 @@ import {ColouredPaw} from '../assets/svg/ColouredShapes';
 import { green, red, blue } from '../utils/constants';
 import {RehabDawg} from '../assets/svg/Dawg';
 import Notification from '../components/Notification';
-import { IActiveWalk } from '../utils/types';
+import { IWalk } from '../utils/types';
 // import useLocalStorage from '../hooks/useLocalStorage';
 
 
@@ -18,7 +18,7 @@ const StartButton = styled(ButtonBaseWithLink)`
 
 interface IProps {
   setStartDateTime: (aw: number) => void
-}
+};
 
 export const HomePage: React.FC<IProps> = ({ setStartDateTime }) => {
   // const [ startDateTime, setStartDateTime ] = useLocalStorage<number>('startDateTime', 0); 

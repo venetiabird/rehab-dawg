@@ -27,9 +27,9 @@ const Routes: React.FC = () => {
           <HomePage setStartDateTime={setStartDateTime} />
         </Route>
         <Route path="/home" exact render={() => <HomePage setStartDateTime={setStartDateTime} />} />
-        <Route path="/walks/:walkGrade/" exact component={ActiveWalk} />
+        <Route path="/walks/:walkGrade/" exact component={ActiveWalk} setHistory={setHistory}/>
         <Route path="/progress" exact>
-          <ProgressReport />
+          <ProgressReport history={history}/>
         </Route>
       </Switch>
     </MaxWidthContainer>
