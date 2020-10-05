@@ -13,21 +13,19 @@ import { blue } from '../../utils/constants';
 // }
 
 const ReportContainer = styled.div`
-  min-height: 100vh;
-  padding: 0 12px 62px 12px
+
 `;
 
 const WalkContainer = styled.div`
-    border: 2px solid ${blue};
+    border: 1px solid ${blue};
     border-radius: 5px;
-    padding: 6px;
-    margin: 0 12px;
+    padding: 25px;
+    margin: 10 10px;
     background-color: rgba( 256, 256, 256, 0.1 );
-    margin-bottom 62px; 
 `;
 
 const ReportItemText = styled.div`
-color: ${blue};
+    color: ${blue};
 `;
 
 const StrongSpan = styled.span`
@@ -45,7 +43,7 @@ export const ProgressReport: React.FC = () => {
       <WalkContainer key={walk.startDateTime}>
         <ReportItemText><StrongSpan>{dateTime}</StrongSpan></ReportItemText>
         <ReportItemText><StrongSpan>Total time: </StrongSpan>{walkTime}</ReportItemText>
-        <ReportItemText><StrongSpan>wWalk drade: </StrongSpan>{walkName}</ReportItemText>
+        <ReportItemText><StrongSpan>Walk grade: </StrongSpan>{walkName}</ReportItemText>
       </WalkContainer>
 
     )
@@ -58,13 +56,13 @@ export const ProgressReport: React.FC = () => {
         <LogoWrapper>
           <Logo>
             Progress Report <br />
-            <ReportContainer>
-              <WalkContainer>
-                {history.length ? walkItems : noWalks}
-              </WalkContainer>
-            </ReportContainer>
           </Logo>
         </LogoWrapper>
+        <ReportContainer>
+          <WalkContainer>
+            {history.length ? walkItems : noWalks}
+          </WalkContainer>
+        </ReportContainer>
       </Page>
     </>
   );
