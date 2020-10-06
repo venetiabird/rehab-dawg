@@ -5,6 +5,7 @@ import {useLocation, Route, Switch } from 'react-router-dom'; // read up on this
 // import { appMaxWidth } from '../utils/constants';
 import { HomePage } from '../pages/HomePage';
 import { ActiveWalk } from '../pages/ActiveWalk';
+import { Caveletti } from '../pages/Caveletti';
 import { ProgressReport } from '../pages/ProgressReport';
 import { IWalk } from '../utils/types';
 import { IActiveWalk } from '../utils/types';
@@ -27,7 +28,7 @@ const Routes: React.FC = () => {
         </Route>
         <Route path="/home" exact render={() => <HomePage setStartDateTime={setStartDateTime} />} />
         <Route path="/walks/:walkGrade/" exact component={ActiveWalk} setHistory={setHistory}/>
-        <Route path="/cavaletti/:walkGrade/" exact component={ActiveWalk} setHistory={setHistory}/>
+        <Route path="/cavaletti/:walkGrade/" exact component={Caveletti} setHistory={setHistory}/>
         <Route path="/progress" exact>
           <ProgressReport />
         </Route>
