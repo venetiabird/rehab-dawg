@@ -1,6 +1,6 @@
 // gutterWidth, green, bannerHeight, blue
 
-export const appMaxWidth = 812;
+// export const appMaxWidth = 960;
 export const navBarHeight = 48;
 export const gutterWidth = 16;
 export const bannerHeight = 48;

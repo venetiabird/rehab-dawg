@@ -11,7 +11,7 @@ const buttonStyle = `
   font-size: 12px;
   border-radius: 10px;
   text-transform: uppercase;
-  font-weight: 800;
+  font-weight: 400;
   z-index: 1;
   text-decoration: none;
   padding: 0 15px;

@@ -8,15 +8,14 @@ import {DoneWalk} from '../../assets/svg/Done';
 import {RehabDawg} from '../../assets/svg/Dawg';
 import {ButtonBaseWithLink, Logo, LogoWrapper} from '../../components/SharedStyles';
 import { white } from '../../utils/constants';
-import { IWalk } from '../../utils/types';
+import { IWalk, WalkName } from '../../utils/types';
+import { formatTimeLeft } from '../../utils/timeFormatter';
 import useLocalStorage from '../../hooks/useLocalStorage';
 
 const DoneButton = styled(ButtonBaseWithLink)`
   background: black;
   width: 25%;
 `;
-
-type WalkName = 'green' | 'blue' | 'red'
 
 const walkMap = {
   'green': 5,
@@ -34,25 +33,27 @@ export const ActiveWalk: React.FC = () => {
   const [ startDateTime, setStartDateTime ] = useLocalStorage<number>('startDateTime', Date.now()); 
   // const [ activeWalk, setActiveWalk ] = useLocalStorage<IActiveWalk | undefined>('activeWalk', undefined); 
   const { walkGrade } = useParams();
+  const walkTime = sessionTime(walkGrade);
+  // setTimeLeft(walkTime); ==> HERE!!
   const handleClick = () => {
+    const finishDateTime = Date.now();
+    const walkingRehabTime = (timeLeft === 0)? walkTime : finishDateTime - startDateTime
     let currentWalk: IWalk = {
       walkName: walkGrade,
       startDateTime: startDateTime,
-      walkTime: startDateTime - timeLeft,
-      finishDateTime: Date.now(),
+      walkTime: walkingRehabTime,
+      finishDateTime: finishDateTime
     }
     history.push(currentWalk)
-    // setTimeLeft(0);
+    // setTimeLeft(0); ==> HERE!!
     return setHistory(history);
   };
   
-  const walkTime = sessionTime(walkGrade);
-  // setTimeLeft(walkTime);
   console.log(' ===> walkGrade', walkGrade)
   console.log(' ===> walkTime', walkTime)
   return (
     <>
-      <Page>
+      <Page heading={''}>
         <LogoWrapper>
           <Logo>
             Walk Session <br />

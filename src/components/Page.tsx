@@ -27,12 +27,17 @@ const Heading = styled.h2`
   font-size: 2em;
 `;
 
-export const Page: React.FC = ({
+interface IProps {
+  heading: string
+}
+
+export const Page: React.FC<IProps> = ({ heading = '',
   children,
 }) => (
   <>
     <PageContainer>
       <Heading />
+      {heading}
       {children}
     </PageContainer>
   </>

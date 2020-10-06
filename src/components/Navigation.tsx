@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { RehabHome } from '../assets/svg/Home';
 import { RehabProgress } from '../assets/svg/Progress';
 
-import { white, blue, appMaxWidth,  navBarHeight} from '../utils/constants';
+import { white, blue, navBarHeight} from '../utils/constants';
 
 const NavIconContainer = styled.div`
   display: flex;

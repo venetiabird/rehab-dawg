@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import {useLocation, Route, Switch } from 'react-router-dom'; // read up on this
 
-import { appMaxWidth } from '../utils/constants';
+// import { appMaxWidth } from '../utils/constants';
 import { HomePage } from '../pages/HomePage';
 import { ActiveWalk } from '../pages/ActiveWalk';
 import { ProgressReport } from '../pages/ProgressReport';
@@ -11,7 +11,6 @@ import { IActiveWalk } from '../utils/types';
 import useLocalStorage from '../hooks/useLocalStorage';
 
 const MaxWidthContainer = styled.div`
-  max-width: ${appMaxWidth}px;
   margin: 0 auto;
 `;
 
@@ -28,6 +27,7 @@ const Routes: React.FC = () => {
         </Route>
         <Route path="/home" exact render={() => <HomePage setStartDateTime={setStartDateTime} />} />
         <Route path="/walks/:walkGrade/" exact component={ActiveWalk} setHistory={setHistory}/>
+        <Route path="/cavaletti/:walkGrade/" exact component={ActiveWalk} setHistory={setHistory}/>
         <Route path="/progress" exact>
           <ProgressReport />
         </Route>
