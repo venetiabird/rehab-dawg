@@ -17,8 +17,9 @@ const MaxWidthContainer = styled.div`
 
 const Routes: React.FC = () => {
   const location = useLocation();
-  const [ history, setHistory ] = useLocalStorage<IWalk[]>('history', []); 
+  const [ walkHistory, setWalkHistory ] = useLocalStorage<IWalk[]>('walkHistory', []); 
   const [ startDateTime, setStartDateTime ] = useLocalStorage('startDateTime', 0); 
+  // const [ walkTimeStamps, setWalkTimeStamps ] = useLocalStorage('walkTimeStamps', []); 
   // console.log('==> AW:', startDateTime);
   return (
     <MaxWidthContainer>
@@ -27,10 +28,13 @@ const Routes: React.FC = () => {
           <HomePage setStartDateTime={setStartDateTime} />
         </Route>
         <Route path="/home" exact render={() => <HomePage setStartDateTime={setStartDateTime} />} />
-        <Route path="/walks/:walkGrade/" exact component={ActiveWalk} setHistory={setHistory}/>
-        <Route path="/cavaletti/:walkGrade/" exact component={Caveletti} setHistory={setHistory}/>
+        <Route path="/walks/:walkGrade/" exact>
+          <ActiveWalk setWalkHistory={setWalkHistory} />
+
+        </Route>
+        <Route path="/cavaletti/:walkGrade/" exact component={Caveletti} setWalkHistory={setWalkHistory}/>
         <Route path="/progress" exact>
-          <ProgressReport />
+          <ProgressReport walkHistory={walkHistory}/>
         </Route>
       </Switch>
     </MaxWidthContainer>

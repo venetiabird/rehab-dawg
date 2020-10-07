@@ -6,7 +6,6 @@ import moment from 'moment';
 import { Page } from '../../components/Page';
 import { IWalk, WalkName } from '../../utils/types';
 import { LogoWrapper, Logo } from '../../components/SharedStyles';
-import useLocalStorage from '../../hooks/useLocalStorage';
 import { blue, lightblue } from '../../utils/constants';
 
 
@@ -43,10 +42,12 @@ const walkGrade = (walkName: WalkName): string => {
   return grade[walkName];
 }
 
-export const ProgressReport: React.FC = () => {
-  const [ history, setHistory] = useLocalStorage<IWalk[]>('history', []); 
-  console.log('===> history', history);
-  const walkItems = history.map((walk: IWalk) => {
+interface IProps {
+  walkHistory: IWalk[]
+}
+export const ProgressReport: React.FC<IProps> = ({ walkHistory }) => {
+  console.log('===> history', walkHistory);
+  const walkItems = walkHistory.map((walk: IWalk) => {
     const dateTime = moment(walk.startDateTime).format('MMM Do YYYY, h:mm a')
     const walkTime = moment(walk.walkTime).format('mm:ss')
     const walkName = walkGrade(walk.walkName as WalkName);
@@ -85,7 +86,7 @@ export const ProgressReport: React.FC = () => {
               loader={<div className="loader" key={0}>Loading ...</div>}> 
               {history.length ? walkItems : noWalks}
             </InfiniteScroll>                                  */}
-            {history.length ? walkItems : noWalks}
+            {walkHistory.length ? walkItems : noWalks}
           </WalkContainer>
         </ReportContainer>
       </Page>

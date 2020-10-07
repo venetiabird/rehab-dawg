@@ -27,8 +27,12 @@ const sessionTime = (walkName: WalkName): number => {
   return walkMap[walkName];
 };
 
-export const ActiveWalk: React.FC = () => {
-  const [ history, setHistory ] = useLocalStorage<IWalk[]>('history', []); 
+interface IProps {
+  setWalkHistory: (walk: React.Dispatch<IWalk[]>) => void
+}
+
+export const ActiveWalk: React.FC<IProps> = ({ setWalkHistory }) => {
+  // const [ history, setHistory ] = useLocalStorage<IWalk[]>('history', []); 
   const [ timeLeft, setTimeLeft ] = useLocalStorage<number>('timeLeft', 0); 
   const [ startDateTime, setStartDateTime ] = useLocalStorage<number>('startDateTime', Date.now()); 
   // const [ activeWalk, setActiveWalk ] = useLocalStorage<IActiveWalk | undefined>('activeWalk', undefined); 
@@ -44,13 +48,12 @@ export const ActiveWalk: React.FC = () => {
       walkTime: walkingRehabTime,
       finishDateTime: finishDateTime
     }
-    history.push(currentWalk)
-    // setTimeLeft(0); ==> HERE!!
-    return setHistory(history);
+    return setWalkHistory((history: IWalk[]): IWalk[] => [...history, currentWalk]);
   };
   
   console.log(' ===> walkGrade', walkGrade)
   console.log(' ===> walkTime', walkTime)
+  
   return (
     <>
       <Page heading={''}>
@@ -60,7 +63,7 @@ export const ActiveWalk: React.FC = () => {
             <RehabDawg fill={walkGrade}/>
           </Logo>
         </LogoWrapper>
-        <Timer walkTime={walkTime} />
+        <Timer walkTime={walkTime} startTime={startDateTime} />
         <DoneButton to="/home" onClick={handleClick}>
           <DoneWalk fill={white} />
           Done

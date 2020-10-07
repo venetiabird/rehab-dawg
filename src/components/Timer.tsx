@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 import useLocalStorage from '../hooks/useLocalStorage';
@@ -20,24 +20,28 @@ const PauseResumeContainer = styled.div`
   display: flex;
 `;
 interface IProps {
+  startTime: number;
   walkTime: number;
 }
 
-export const Timer: React.FC<IProps> = ({ walkTime = 0 }) => {
-  const walkTimeMilli = walkTime * 60 * 1000;
-  const [timeLeft, setTimeLeft] = useLocalStorage('timeLeft', timeLeftInMilliseconds(walkTimeMilli));
+export const Timer: React.FC<IProps> = ({ walkTime, startTime }) => {
+  const walkTimeSeconds = walkTime * 60;
+  const [timeElapsed, setTimeElapsed] = useState(0);
   
   useEffect(() => {
     const timer = setTimeout(() => {
-      setTimeLeft(() => timeLeftInMilliseconds(timeLeft));
+      const now = Date.now();
+      setTimeElapsed(() => Math.round((now - startTime)/1000));
     }, 1000);
     return () => clearTimeout(timer);
   });
-
+  console.log(' ===> startTime', startTime)
+  console.log(' ===> timeElapsed', timeElapsed)
+  console.log(' ===> walkTimeSeconds', walkTimeSeconds)
   return (
     <>
       <CountDownDawg>
-        {formatTimeLeft(timeLeft)}
+        {formatTimeLeft(walkTimeSeconds - timeElapsed)}
       </CountDownDawg>
       <PauseResumeContainer>
         <PauseWalk fill={orange} handleClick={() => alert('Pausing!')}/>

@@ -11,8 +11,8 @@ export const timeLeftInMilliseconds = (walkTimeMilliSeconds: number): number => 
 };
 
 export const formatTime = (difference: number): Dictionary<number> => {
-  const minutes = Math.floor((difference / 1000 / 60) % 60);
-  const seconds = Math.floor((difference / 1000) % 60);
+  const minutes = Math.floor((difference  / 60) % 60);
+  const seconds = Math.floor((difference) % 60);
   return {
     "minutes": minutes,
     "seconds": seconds
@@ -20,13 +20,11 @@ export const formatTime = (difference: number): Dictionary<number> => {
 }
 
 export const formatTimeLeft = (difference: number): Dictionary<number> | string => {
+  console.log('---> difference', difference);
   if (difference > 0) {
     const timeLeftMap = formatTime(difference);
+    console.log('---> difference', difference);
     return `${pad(timeLeftMap['minutes'])}:${pad(timeLeftMap['seconds'])}`;
-    
-    // const minutes = Math.floor((difference / 1000 / 60) % 60);
-    // const seconds = Math.floor((difference / 1000) % 60);
-    // return `${pad(minutes)}:${pad(seconds)}`;
   } 
   return 'All done!';
 };
