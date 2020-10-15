@@ -20,13 +20,21 @@ export const formatTime = (difference: number): Dictionary<number> => {
 }
 
 export const formatTimeLeft = (difference: number): Dictionary<number> | string => {
-  console.log('---> difference', difference);
   if (difference > 0) {
     const timeLeftMap = formatTime(difference);
-    console.log('---> difference', difference);
     return `${pad(timeLeftMap['minutes'])}:${pad(timeLeftMap['seconds'])}`;
   } 
   return 'All done!';
 };
+
+export const calculateActivityTime = (walkTimeStamps: number[]): number => {
+  let result = 0;
+  for (let i = 0; i < walkTimeStamps.length - 1; i += 2) {
+    const timeDiff = (walkTimeStamps[i+1] - walkTimeStamps[i]);
+    result += timeDiff;
+  }
+
+  return Math.round(result / 1000);
+}
 
 const pad = (input: number): string => input.toString().padStart(2, '0');

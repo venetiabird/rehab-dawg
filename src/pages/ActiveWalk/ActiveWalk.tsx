@@ -31,43 +31,24 @@ interface IProps {
   walkTimeStamps: number[]
 }
 
-const calcluateAcualWalkTime = (walkTimeStamps: number[]): number => {
-  console.log('====> walkTimeStamps', walkTimeStamps);
-  let result = 0;
-  for (let i = 0; i < walkTimeStamps.length - 1; i += 2) {
-    const timeDiff = (walkTimeStamps[i+1] - walkTimeStamps[i]);
-    console.log('====> timeDiff', timeDiff);
-    result += timeDiff;
-  }
-
-  console.log('====> result', result /1000);
-  return Math.round(result / 1000);
-}
-
 const getStartTime = (walkTimeStamps: number[]): number => walkTimeStamps[walkTimeStamps.length - 1];
 
-export const ActiveWalk: React.FC<IProps> = ({ setWalkHistory, setWalkTimeStamps, walkTimeStamps }) => {
-  // const [ history, setHistory ] = useLocalStorage<IWalk[]>('history', []); 
-  // const [ timeLeft, setTimeLeft ] = useLocalStorage<number>('timeLeft', 0); 
-  // // const [ startDateTime, setStartDateTime ] = useLocalStorage<number>('startDateTime', Date.now()); 
-  // const [ activeWalk, setActiveWalk ] = useLocalStorage<IActiveWalk | undefined>('activeWalk', undefined); 
+export const ActiveWalk: React.FC<IProps> = ({ setWalkHistory, walkTimeStamps, setWalkTimeStamps }) => {
   const { grade } = useParams();
   const walkTime = sessionTime(grade);
   const startTime = getStartTime(walkTimeStamps);
   console.log('timestamps ==>', walkTimeStamps)
   const handleClickOnDone = (): void => {
+    setWalkTimeStamps((walkTimeStamps: number[]) => [...walkTimeStamps, Date.now()])
     // event.preventDefault(); //pattern to not post "ACTION" on hte button onvlick handler
-    const walkingRehabTime = calcluateAcualWalkTime([...walkTimeStamps, Date.now()]);
+    // const walkingRehabTime = calculateActivityTime([...walkTimeStamps, Date.now()]);
+
     let currentWalk: IWalk = {
       walkName: grade,
       walkTimeStamps: walkTimeStamps
     }
     setWalkHistory((history: IWalk[]): IWalk[] => [...history, currentWalk]);
-    // setWalkTimeStamps([]);
   };
-  
-  // console.log(' ===> walkGrade', grade)
-  // console.log(' ===> walkTime', walkTime)
   
   return (
     <>

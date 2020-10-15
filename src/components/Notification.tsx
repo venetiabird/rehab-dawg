@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import moment from 'moment';
 
 import {blue, silver } from '../utils/constants';
-import { IWalk } from '../utils/types';
 
 const NotificationContainer = styled.div`
     border: 1px solid ${silver};
@@ -25,15 +24,12 @@ const StrongSpan = styled.span`
 `;
 
 interface IProps {
-  lastWalk: IWalk
+  walkTimeStamps: number[] 
 }
 
-export const Notification: React.FC<IProps> = ({ lastWalk }) => {
-  if (lastWalk.walkTimeStamps.length) {
-    const { walkTimeStamps } = lastWalk;
+export const Notification: React.FC<IProps> = ({ walkTimeStamps }) => {
+  if (walkTimeStamps.length) {
     const lastWalkTimeStamp = walkTimeStamps.slice(walkTimeStamps.length - 1).shift();
-    console.log(" ==> date", moment(lastWalkTimeStamp))
-
     const formatLastWalkTime = moment(lastWalkTimeStamp).format('MMMM Do YYYY, h:mm:ss a');
 
     return (

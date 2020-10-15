@@ -22,11 +22,11 @@ const Routes: React.FC = () => {
     <MaxWidthContainer>
       <Switch location={location}>
         <Route path="/" exact>
-          <HomePage setWalkTimeStamps={setWalkTimeStamps} walkHistory={walkHistory}/>
+          <HomePage setWalkTimeStamps={setWalkTimeStamps} walkTimeStamps={walkTimeStamps}/>
         </Route>
-        <Route path="/home" exact render={() => <HomePage setWalkTimeStamps={setWalkTimeStamps} walkHistory={walkHistory}/>} />
+        <Route path="/home" exact render={() => <HomePage setWalkTimeStamps={setWalkTimeStamps} walkTimeStamps={walkTimeStamps}/>} />
         <Route path="/walks/:grade/" exact>
-          <ActiveWalk setWalkHistory={setWalkHistory} setWalkTimeStamps={setWalkTimeStamps} walkTimeStamps={walkTimeStamps}/>
+          <ActiveWalk setWalkHistory={setWalkHistory} walkTimeStamps={walkTimeStamps} setWalkTimeStamps={setWalkTimeStamps}/>
 
         </Route>
         <Route path="/cavaletti/:grade/" exact component={Caveletti} setWalkHistory={setWalkHistory} />

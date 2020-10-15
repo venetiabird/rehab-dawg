@@ -5,6 +5,7 @@ import moment from 'moment';
 
 import { Page } from '../../components/Page';
 import { IWalk, WalkName } from '../../utils/types';
+import { calculateActivityTime } from '../../utils/timeFormatter'
 import { LogoWrapper, Logo } from '../../components/SharedStyles';
 import { blue } from '../../utils/constants';
 
@@ -42,27 +43,33 @@ const walkGrade = (walkName: WalkName): string => {
   return grade[walkName];
 }
 
+const noWalkContainer = (): JSX.Element => <WalkContainer><ReportItemText>Welcome, record your Dawgs Rehab history!</ReportItemText></WalkContainer>
+
 interface IProps {
   walkHistory: IWalk[]
 }
 export const ProgressReport: React.FC<IProps> = ({ walkHistory }) => {
   console.log('===> history', walkHistory);
   const walkItems = walkHistory.map((walk: IWalk) => {
-    const dateTime = moment(walk.walkTimeStamps[0]).format('MMM Do YYYY, h:mm a')
-    // const walkTime = moment(walk.walkTime).format('mm:ss')
-    const walkName = walkGrade(walk.walkName as WalkName);
-    return (
-
-      <WalkContainer key={walk.walkTimeStamps[0]}>
-        <ReportItemText><StrongSpan>{dateTime}</StrongSpan></ReportItemText>
-        {/* <ReportItemText><StrongSpan>Total time: </StrongSpan>{walkTime}</ReportItemText> */}
-        <ReportItemText><StrongSpan>Walk grade: </StrongSpan>{walkName}</ReportItemText>
-      </WalkContainer>
-
-    )
+    const lastWalkTimeStamp = walk.walkTimeStamps.slice(walk.walkTimeStamps.length - 1).shift(); //.format('MMM Do YYYY, h:mm a')
+    if(lastWalkTimeStamp) {
+      const walkTime = moment(calculateActivityTime(walk.walkTimeStamps)).format('mm:ss');
+      const walkName = walkGrade(walk.walkName as WalkName);
+      const dateTime = moment(lastWalkTimeStamp).format('MMM Do YYYY, h:mm a');
+      return (
+  
+        <WalkContainer key={lastWalkTimeStamp}>
+          <ReportItemText><StrongSpan>{dateTime}</StrongSpan></ReportItemText>
+          <ReportItemText><StrongSpan>Total time: </StrongSpan>{walkTime}</ReportItemText>
+          <ReportItemText><StrongSpan>Walk grade: </StrongSpan>{walkName}</ReportItemText>
+        </WalkContainer>
+  
+      )
+    }
+    return noWalkContainer();
   });
 
-  const noWalks = <WalkContainer><ReportItemText>Welcome, record your Dawgs Rehab history!</ReportItemText></WalkContainer>
+  const noWalks = noWalkContainer();
   return (
     <>
       <Page heading={''}>

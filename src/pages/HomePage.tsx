@@ -49,12 +49,11 @@ justify-content: space-around;
 
 interface IProps {
   setWalkTimeStamps: (walkTimeStamp: React.Dispatch<number[]> | number[]) => void;
-  walkHistory: IWalk[];
+  walkTimeStamps: number[];
 };
 
-export const HomePage: React.FC<IProps> = ({ setWalkTimeStamps, walkHistory }) => {
+export const HomePage: React.FC<IProps> = ({ setWalkTimeStamps, walkTimeStamps }) => {
   const handleClick = () => setWalkTimeStamps([Date.now()]);
-  const lastWalk = walkHistory[walkHistory.length - 1]
   return (
     <>
       <Page heading={''}>
@@ -94,7 +93,7 @@ export const HomePage: React.FC<IProps> = ({ setWalkTimeStamps, walkHistory }) =
             </StartButton>
           </CavalettiContainer>
         </RehabActivityContainer>
-        <Notification lastWalk={lastWalk}/>
+        <Notification walkTimeStamps={walkTimeStamps}/>
       </Page>
     </>
   );
