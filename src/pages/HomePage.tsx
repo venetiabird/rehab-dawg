@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useParams } from 'react-router-dom';
 
 import { Page } from '../components/Page';
 import { ButtonBaseWithLink, LogoWrapper, Logo } from '../components/SharedStyles';
@@ -49,13 +48,13 @@ justify-content: space-around;
 `
 
 interface IProps {
-  // setStartDateTime: (aw: number) => void
-  setStartDateTime: (start: number) => void
+  setWalkTimeStamps: (walkTimeStamp: React.Dispatch<number[]> | number[]) => void;
+  walkHistory: IWalk[];
 };
 
-export const HomePage: React.FC<IProps> = ({ setStartDateTime }) => {
-  // const [ startDateTime, setStartDateTime ] = useLocalStorage<number>('startDateTime', 0); 
-  const handleClick = () => setStartDateTime(Date.now());
+export const HomePage: React.FC<IProps> = ({ setWalkTimeStamps, walkHistory }) => {
+  const handleClick = () => setWalkTimeStamps([Date.now()]);
+  const lastWalk = walkHistory[walkHistory.length - 1]
   return (
     <>
       <Page heading={''}>
@@ -74,7 +73,7 @@ export const HomePage: React.FC<IProps> = ({ setStartDateTime }) => {
           <WalkContainer>
             <StartButton to="/walks/green" onClick={handleClick}>
               <ColouredPaw fill={green} />
-              5 mins
+              1 mins
             </StartButton>
             <StartButton to="/walks/blue" onClick={handleClick}>
               <ColouredPaw fill={blue} />
@@ -95,7 +94,7 @@ export const HomePage: React.FC<IProps> = ({ setStartDateTime }) => {
             </StartButton>
           </CavalettiContainer>
         </RehabActivityContainer>
-        <Notification />
+        <Notification lastWalk={lastWalk}/>
       </Page>
     </>
   );

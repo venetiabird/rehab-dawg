@@ -4,7 +4,6 @@ import moment from 'moment';
 
 import {blue, silver } from '../utils/constants';
 import { IWalk } from '../utils/types';
-import useLocalStorage from '../hooks/useLocalStorage';
 
 const NotificationContainer = styled.div`
     border: 1px solid ${silver};
@@ -25,11 +24,17 @@ const StrongSpan = styled.span`
   color: ${blue};
 `;
 
-export const Notification: React.FC = () => {
-  const [ history, setHistory ] = useLocalStorage<IWalk[]>('history', []); 
-  const lastWalk = history[history.length - 1];
-  if (lastWalk?.finishDateTime) {
-    const formatLastWalkTime = moment(history.finishDateTime).format('MMMM Do YYYY, h:mm:ss a');
+interface IProps {
+  lastWalk: IWalk
+}
+
+export const Notification: React.FC<IProps> = ({ lastWalk }) => {
+  if (lastWalk.walkTimeStamps.length) {
+    const { walkTimeStamps } = lastWalk;
+    const lastWalkTimeStamp = walkTimeStamps.slice(walkTimeStamps.length - 1).shift();
+    console.log(" ==> date", moment(lastWalkTimeStamp))
+
+    const formatLastWalkTime = moment(lastWalkTimeStamp).format('MMMM Do YYYY, h:mm:ss a');
 
     return (
       <NotificationContainer>
@@ -39,7 +44,6 @@ export const Notification: React.FC = () => {
       </NotificationContainer>
     );
   }
-  // console.log('Walks', history);
   return (
     <NotificationContainer>
       <NotificationText>Start logging those Rehab Walks!</NotificationText>

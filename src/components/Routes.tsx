@@ -8,7 +8,6 @@ import { ActiveWalk } from '../pages/ActiveWalk';
 import { Caveletti } from '../pages/Caveletti';
 import { ProgressReport } from '../pages/ProgressReport';
 import { IWalk } from '../utils/types';
-import { IActiveWalk } from '../utils/types';
 import useLocalStorage from '../hooks/useLocalStorage';
 
 const MaxWidthContainer = styled.div`
@@ -18,21 +17,19 @@ const MaxWidthContainer = styled.div`
 const Routes: React.FC = () => {
   const location = useLocation();
   const [ walkHistory, setWalkHistory ] = useLocalStorage<IWalk[]>('walkHistory', []); 
-  const [ startDateTime, setStartDateTime ] = useLocalStorage('startDateTime', 0); 
-  // const [ walkTimeStamps, setWalkTimeStamps ] = useLocalStorage('walkTimeStamps', []); 
-  // console.log('==> AW:', startDateTime);
+  const [ walkTimeStamps, setWalkTimeStamps ] = useLocalStorage<number[]>('walkTimeStamps', []); 
   return (
     <MaxWidthContainer>
       <Switch location={location}>
         <Route path="/" exact>
-          <HomePage setStartDateTime={setStartDateTime} />
+          <HomePage setWalkTimeStamps={setWalkTimeStamps} walkHistory={walkHistory}/>
         </Route>
-        <Route path="/home" exact render={() => <HomePage setStartDateTime={setStartDateTime} />} />
-        <Route path="/walks/:walkGrade/" exact>
-          <ActiveWalk setWalkHistory={setWalkHistory} />
+        <Route path="/home" exact render={() => <HomePage setWalkTimeStamps={setWalkTimeStamps} walkHistory={walkHistory}/>} />
+        <Route path="/walks/:grade/" exact>
+          <ActiveWalk setWalkHistory={setWalkHistory} setWalkTimeStamps={setWalkTimeStamps} walkTimeStamps={walkTimeStamps}/>
 
         </Route>
-        <Route path="/cavaletti/:walkGrade/" exact component={Caveletti} setWalkHistory={setWalkHistory}/>
+        <Route path="/cavaletti/:grade/" exact component={Caveletti} setWalkHistory={setWalkHistory} />
         <Route path="/progress" exact>
           <ProgressReport walkHistory={walkHistory}/>
         </Route>

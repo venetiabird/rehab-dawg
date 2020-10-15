@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
-import useLocalStorage from '../hooks/useLocalStorage';
 
 import {ResumeWalk} from '../assets/svg/Resume';
 import {PauseWalk} from '../assets/svg/Pause';
-import {timeLeftInMilliseconds, formatTimeLeft} from '../utils/timeFormatter';
+import {formatTimeLeft} from '../utils/timeFormatter';
 import { darkgreen, orange } from '../utils/constants';
 
 const CountDownDawg = styled.div`
@@ -35,9 +34,9 @@ export const Timer: React.FC<IProps> = ({ walkTime, startTime }) => {
     }, 1000);
     return () => clearTimeout(timer);
   });
-  console.log(' ===> startTime', startTime)
-  console.log(' ===> timeElapsed', timeElapsed)
-  console.log(' ===> walkTimeSeconds', walkTimeSeconds)
+  // console.log(' ===> startTime', startTime)
+  // console.log(' ===> timeElapsed', timeElapsed)
+  // console.log(' ===> walkTimeSeconds', walkTimeSeconds)
   return (
     <>
       <CountDownDawg>

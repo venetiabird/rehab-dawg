@@ -45,9 +45,9 @@ export const Navigation: React.FC = () => {
         <NavLink to='/'>
           <RehabHome fill={blue}/>
         </NavLink>
-        <NavLink to='/progress'>
+        {/* <NavLink to='/progress'>
           <RehabProgress fill={blue}/>
-        </NavLink>
+        </NavLink> */}
       </NavIconContainer>
     </>
   );

@@ -6,7 +6,7 @@ import moment from 'moment';
 import { Page } from '../../components/Page';
 import { IWalk, WalkName } from '../../utils/types';
 import { LogoWrapper, Logo } from '../../components/SharedStyles';
-import { blue, lightblue } from '../../utils/constants';
+import { blue } from '../../utils/constants';
 
 
 const ReportContainer = styled.div`
@@ -48,25 +48,19 @@ interface IProps {
 export const ProgressReport: React.FC<IProps> = ({ walkHistory }) => {
   console.log('===> history', walkHistory);
   const walkItems = walkHistory.map((walk: IWalk) => {
-    const dateTime = moment(walk.startDateTime).format('MMM Do YYYY, h:mm a')
-    const walkTime = moment(walk.walkTime).format('mm:ss')
+    const dateTime = moment(walk.walkTimeStamps[0]).format('MMM Do YYYY, h:mm a')
+    // const walkTime = moment(walk.walkTime).format('mm:ss')
     const walkName = walkGrade(walk.walkName as WalkName);
     return (
 
-      <WalkContainer key={walk.startDateTime}>
+      <WalkContainer key={walk.walkTimeStamps[0]}>
         <ReportItemText><StrongSpan>{dateTime}</StrongSpan></ReportItemText>
-        <ReportItemText><StrongSpan>Total time: </StrongSpan>{walkTime}</ReportItemText>
+        {/* <ReportItemText><StrongSpan>Total time: </StrongSpan>{walkTime}</ReportItemText> */}
         <ReportItemText><StrongSpan>Walk grade: </StrongSpan>{walkName}</ReportItemText>
       </WalkContainer>
 
     )
-    // return (
-    //   <ListContainer scrollable={false}>
-    //     <InfiniteList scrollContainer={'window'} walks={history} />
-    //   </ListContainer>
-    // );
-
-  })
+  });
 
   const noWalks = <WalkContainer><ReportItemText>Welcome, record your Dawgs Rehab history!</ReportItemText></WalkContainer>
   return (
