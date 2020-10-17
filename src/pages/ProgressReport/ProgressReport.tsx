@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import moment from 'moment';
-// import InfiniteScroll from 'react-infinite-scroller';
+import Pagination from "react-js-pagination";
 
 import { Page } from '../../components/Page';
 import { IWalk, WalkName } from '../../utils/types';
@@ -14,7 +14,7 @@ const ReportContainer = styled.div`
   // background-image: linear-gradient(to bottom right, ${blue}, ${'lightblue'}); 
   padding: 0
   min-height: 100vh;
-  width: 100%;
+  width: 50%;
 `;
 
 const WalkContainer = styled.div`
@@ -46,10 +46,16 @@ const walkGrade = (walkName: WalkName): string => {
 
 const noWalkContainer = (): JSX.Element => <WalkContainer><ReportItemText>Welcome, record your Dawgs Rehab history!</ReportItemText></WalkContainer>
 
+
 interface IProps {
   walkHistory: IWalk[]
 }
 export const ProgressReport: React.FC<IProps> = ({ walkHistory }) => {
+  // const handlePaginationOnClick = (pageNumber: number): void => {
+  //   console.log(`active page is ${pageNumber}`);
+  //   // this.setState({activePage: pageNumber});
+  // };
+
   const walkItems = walkHistory.map((walk: IWalk) => {
     const lastWalkTimeStamp = walk.walkTimeStamps.slice(walk.walkTimeStamps.length - 1).shift(); //.format('MMM Do YYYY, h:mm a')
     if(lastWalkTimeStamp) {
@@ -58,7 +64,6 @@ export const ProgressReport: React.FC<IProps> = ({ walkHistory }) => {
       const walkName = walkGrade(walk.walkName as WalkName);
       const dateTime = moment(lastWalkTimeStamp).format('MMM Do YYYY, h:mm a');
       return (
-  
         <WalkContainer key={lastWalkTimeStamp}>
           <ReportItemText><StrongSpan>{dateTime}</StrongSpan></ReportItemText>
           <ReportItemText><StrongSpan>Total walk time: </StrongSpan>{walkTime}</ReportItemText>
@@ -81,15 +86,15 @@ export const ProgressReport: React.FC<IProps> = ({ walkHistory }) => {
         </LogoWrapper>
         <ReportContainer>
           <WalkContainer>
-            {/* <InfiniteScroll
-              pageStart={0}
-              loadMore={walkItems}
-              hasMore={true || false}
-              loader={<div className="loader" key={0}>Loading ...</div>}> 
-              {history.length ? walkItems : noWalks}
-            </InfiniteScroll>                                  */}
             {walkHistory.length ? walkItems : noWalks}
           </WalkContainer>
+          {/* <Pagination
+            activePage={1}
+            itemsCountPerPage={10}
+            totalItemsCount={450}
+            pageRangeDisplayed={5}
+            onChange={handlePaginationOnClick} /> */}
+            
         </ReportContainer>
       </Page>
     </>
