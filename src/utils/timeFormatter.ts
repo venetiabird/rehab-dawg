@@ -33,7 +33,7 @@ export const calculateActivityTime = (walkTimeStamps: number[]): number => {
     const timeDiff = (walkTimeStamps[i+1] - walkTimeStamps[i]);
     result += timeDiff;
   }
-
+  console.log('result timediff: ', result)
   return Math.round(result / 1000);
 }
 

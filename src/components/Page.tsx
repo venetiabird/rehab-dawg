@@ -14,12 +14,6 @@ const PageContainer = styled.div`
   padding: 0 ${gutterWidth}px;
 `;
 
-// background-image: linear-gradient(to bottom right, ${peach}, ${orange}); 
-// height: calc(100vh - 50px);
-// display: flex;
-// flex-direction: column;
-// justify-content: space-around;
-
 const Heading = styled.h2`
   margin: ${gutterWidth}px;
   font-family: 'Muli', 'Helvetica Neue', Helvetica, Arial, sans-serif;

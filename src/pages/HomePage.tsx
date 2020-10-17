@@ -53,7 +53,7 @@ interface IProps {
 };
 
 export const HomePage: React.FC<IProps> = ({ setWalkTimeStamps, walkTimeStamps }) => {
-  const handleClick = () => setWalkTimeStamps([Date.now()]);
+  const handleStartButtonClick = () => setWalkTimeStamps([Date.now()]);
   return (
     <>
       <Page heading={''}>
@@ -70,15 +70,15 @@ export const HomePage: React.FC<IProps> = ({ setWalkTimeStamps, walkTimeStamps }
             Walks
           </HeadingContainer>
           <WalkContainer>
-            <StartButton to="/walks/green" onClick={handleClick}>
+            <StartButton to="/walks/green" onClick={handleStartButtonClick}>
               <ColouredPaw fill={green} />
               1 mins
             </StartButton>
-            <StartButton to="/walks/blue" onClick={handleClick}>
+            <StartButton to="/walks/blue" onClick={handleStartButtonClick}>
               <ColouredPaw fill={blue} />
               10 mins
             </StartButton>
-            <StartButton to="/walks/red" onClick={handleClick}>
+            <StartButton to="/walks/red" onClick={handleStartButtonClick}>
               <ColouredPaw fill={red}/>
               15 mins
             </StartButton>
@@ -87,7 +87,7 @@ export const HomePage: React.FC<IProps> = ({ setWalkTimeStamps, walkTimeStamps }
             Cavaletti
           </HeadingContainer>
           <CavalettiContainer>
-          <StartButton to="/cavaletti/green" onClick={handleClick}>
+          <StartButton to="/cavaletti/green" onClick={handleStartButtonClick}>
               <ColouredSquare fill={red}/>
               15 mins
             </StartButton>

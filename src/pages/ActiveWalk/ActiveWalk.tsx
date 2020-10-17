@@ -33,21 +33,23 @@ interface IProps {
 
 const getStartTime = (walkTimeStamps: number[]): number => walkTimeStamps[walkTimeStamps.length - 1];
 
+
 export const ActiveWalk: React.FC<IProps> = ({ setWalkHistory, walkTimeStamps, setWalkTimeStamps }) => {
   const { grade } = useParams();
   const walkTime = sessionTime(grade);
   const startTime = getStartTime(walkTimeStamps);
-  console.log('timestamps ==>', walkTimeStamps)
+  console.log('walkTimeStamps timestamps ==>', walkTimeStamps)
   const handleClickOnDone = (): void => {
-    setWalkTimeStamps((walkTimeStamps: number[]) => [...walkTimeStamps, Date.now()])
-    // event.preventDefault(); //pattern to not post "ACTION" on hte button onvlick handler
-    // const walkingRehabTime = calculateActivityTime([...walkTimeStamps, Date.now()]);
-
-    let currentWalk: IWalk = {
-      walkName: grade,
-      walkTimeStamps: walkTimeStamps
-    }
-    setWalkHistory((history: IWalk[]): IWalk[] => [...history, currentWalk]);
+    setWalkTimeStamps((x: number[]) => {
+      const result: number[] = [...x, Date.now()];
+      
+      let currentWalk: IWalk = {
+        walkName: grade,
+        walkTimeStamps: result // this is not being updated with the value in setWwalkTimeStamps
+      }
+      setWalkHistory((history: IWalk[]): IWalk[] => [...history, currentWalk]);
+      return result;
+    })
   };
   
   return (
