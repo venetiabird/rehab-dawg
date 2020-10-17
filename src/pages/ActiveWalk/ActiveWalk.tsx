@@ -62,7 +62,7 @@ export const ActiveWalk: React.FC<IProps> = ({ setWalkHistory, walkTimeStamps, s
           </Logo>
         </LogoWrapper>
         <Timer walkTime={walkTime} startTime={startTime} />
-        <DoneButton to="/home" onClick={handleClickOnDone}>
+        <DoneButton to="/progress" onClick={handleClickOnDone}>
           <DoneWalk fill={white} />
           Done
           <DoneWalk fill={white} />

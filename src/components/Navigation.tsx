@@ -11,7 +11,7 @@ const NavIconContainer = styled.div`
   display: flex;
   justify-content: space-around;
   border-top: solid 2px ${white};
-  padding: 12px 0;
+  // padding: 5px 0;
   flex-grow: 0;
   flex-basis: 50px;
   position: fixed;
@@ -33,8 +33,8 @@ const NavLink = styled(Link)`
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-size: 12px;
-  padding: 14px;
+  // font-size: 12px;
+  padding: 5px;
 `;
 
 

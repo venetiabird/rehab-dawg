@@ -13,9 +13,9 @@ import { blue, red } from '../../utils/constants';
 const ReportContainer = styled.div`
   padding: 1
   border: 3px solid ${red};
-  height: 400px;
+  height: 350px;
   // min-height: 100vh;
-  width: 50%;
+  width: 75%;
 `;
 
 const WalkContainer = styled.div`
