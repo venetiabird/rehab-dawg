@@ -6,7 +6,7 @@ import {Page} from '../../components/Page';
 import {Timer} from '../../components/Timer';
 import {DoneWalk} from '../../assets/svg/Done';
 import {RehabDawg} from '../../assets/svg/Dawg';
-import {ButtonBaseWithLink, Logo, LogoWrapper} from '../../components/SharedStyles';
+import {ButtonBaseWithLink, Logo, LogoWrapper, DawgContainer } from '../../components/SharedStyles';
 import { white } from '../../utils/constants';
 import { IWalk, WalkName } from '../../utils/types';
 
@@ -57,8 +57,10 @@ export const ActiveWalk: React.FC<IProps> = ({ setWalkHistory, walkTimeStamps, s
       <Page heading={''}>
         <LogoWrapper>
           <Logo>
-            Walk Session <br />
-            <RehabDawg fill={grade}/>
+            Walk Session
+            <DawgContainer>
+              <RehabDawg fill={grade}/>
+            </DawgContainer>
           </Logo>
         </LogoWrapper>
         <Timer walkTime={walkTime} startTime={startTime} />

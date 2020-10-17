@@ -37,6 +37,13 @@ export const Logo = styled.h2`
   align-items: center;
 `;
 
+export const DawgContainer = styled.div`
+  padding: 0 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
+
 export const ButtonBaseWithLink = styled(Link)<ButtonStyleProps>`
 ${buttonStyle}
   color: ${props => props.color || 'white'};

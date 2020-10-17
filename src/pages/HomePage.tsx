@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { Page } from '../components/Page';
-import { ButtonBaseWithLink, LogoWrapper, Logo } from '../components/SharedStyles';
+import { ButtonBaseWithLink, LogoWrapper, Logo, DawgContainer } from '../components/SharedStyles';
 import { ColouredPaw, ColouredSquare } from '../assets/svg/ColouredShapes';
 import { green, red, blue, gutterWidth } from '../utils/constants';
 import { RehabDawg } from '../assets/svg/Dawg';
@@ -59,10 +59,12 @@ export const HomePage: React.FC<IProps> = ({ setWalkTimeStamps, walkTimeStamps }
       <Page heading={''}>
         <LogoWrapper>
           <Logo>
-            Rehab Dawg <br />
-            <RehabDawg fill={green}/>
-            <RehabDawg fill={blue}/>
-            <RehabDawg fill={red}/>
+            Rehab Dawg
+            <DawgContainer>
+              <RehabDawg fill={green}/>
+              <RehabDawg fill={blue}/>
+              <RehabDawg fill={red}/>
+            </DawgContainer>
           </Logo>
         </LogoWrapper>
         <RehabActivityContainer>
