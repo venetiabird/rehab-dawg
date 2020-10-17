@@ -83,9 +83,9 @@ export const HomePage: React.FC<IProps> = ({ setWalkTimeStamps, walkTimeStamps }
               15 mins
             </StartButton>
           </WalkContainer>
-          <HeadingContainer>
+          {/* <HeadingContainer>
             Cavaletti
-          </HeadingContainer>
+          </HeadingContainer> */}
           {/* <CavalettiContainer>
           <StartButton to="/cavaletti/green" onClick={handleStartButtonClick}>
               <ColouredSquare fill={red}/>
