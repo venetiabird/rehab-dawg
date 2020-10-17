@@ -11,9 +11,10 @@ import { blue, red } from '../../utils/constants';
 
 
 const ReportContainer = styled.div`
-  // background-image: linear-gradient(to bottom right, ${blue}, ${'lightblue'}); 
-  padding: 0
-  min-height: 100vh;
+  padding: 1
+  border: 3px solid ${red};
+  height: 400px;
+  // min-height: 100vh;
   width: 50%;
 `;
 
@@ -44,7 +45,7 @@ const walkGrade = (walkName: WalkName): string => {
   return grade[walkName];
 }
 
-const noWalkContainer = (): JSX.Element => <WalkContainer><ReportItemText>Welcome, record your Dawgs Rehab history!</ReportItemText></WalkContainer>
+const noWalkContainer = (): JSX.Element => <WalkContainer><ReportItemText>Welcome, this view your Dawg's Rehab history!</ReportItemText></WalkContainer>
 
 
 interface IProps {
