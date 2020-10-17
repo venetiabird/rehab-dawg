@@ -34,9 +34,6 @@ export const Timer: React.FC<IProps> = ({ walkTime, startTime }) => {
     }, 1000);
     return () => clearTimeout(timer);
   });
-  // console.log(' ===> startTime', startTime)
-  // console.log(' ===> timeElapsed', timeElapsed)
-  // console.log(' ===> walkTimeSeconds', walkTimeSeconds)
   return (
     <>
       <CountDownDawg>

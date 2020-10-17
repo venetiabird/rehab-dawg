@@ -21,6 +21,7 @@ const WalkContainer = styled.div`
   border: 0px solid ${blue};
   border-radius: 5px;
   padding: 10px;
+  margin: 0 12px;
   background-color: rgba( 100, 170, 200, 0.1 );
   margin-bottom 10px; 
 `;
@@ -49,11 +50,11 @@ interface IProps {
   walkHistory: IWalk[]
 }
 export const ProgressReport: React.FC<IProps> = ({ walkHistory }) => {
-  console.log('===> history', walkHistory);
   const walkItems = walkHistory.map((walk: IWalk) => {
     const lastWalkTimeStamp = walk.walkTimeStamps.slice(walk.walkTimeStamps.length - 1).shift(); //.format('MMM Do YYYY, h:mm a')
     if(lastWalkTimeStamp) {
-      const walkTime = moment(calculateActivityTime(walk.walkTimeStamps)).format('mm:ss');
+      const activityTime = calculateActivityTime(walk.walkTimeStamps) * 1000;
+      const walkTime = moment(activityTime).format('mm:ss');
       const walkName = walkGrade(walk.walkName as WalkName);
       const dateTime = moment(lastWalkTimeStamp).format('MMM Do YYYY, h:mm a');
       return (

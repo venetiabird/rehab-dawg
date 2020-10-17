@@ -27,13 +27,15 @@ export const formatTimeLeft = (difference: number): Dictionary<number> | string 
   return 'All done!';
 };
 
+/** 
+ * The return time is in seconds
+*/
 export const calculateActivityTime = (walkTimeStamps: number[]): number => {
   let result = 0;
   for (let i = 0; i < walkTimeStamps.length - 1; i += 2) {
     const timeDiff = (walkTimeStamps[i+1] - walkTimeStamps[i]);
     result += timeDiff;
   }
-  console.log('result timediff: ', result)
   return Math.round(result / 1000);
 }
 
