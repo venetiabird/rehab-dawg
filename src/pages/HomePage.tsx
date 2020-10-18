@@ -3,12 +3,10 @@ import styled from 'styled-components';
 
 import { Page } from '../components/Page';
 import { ButtonBaseWithLink, LogoWrapper, Logo, DawgContainer } from '../components/SharedStyles';
-import { ColouredPaw, ColouredSquare } from '../assets/svg/ColouredShapes';
+import { ColouredPaw } from '../assets/svg/ColouredShapes';
 import { green, red, blue, gutterWidth } from '../utils/constants';
 import { RehabDawg } from '../assets/svg/Dawg';
 import Notification from '../components/Notification';
-import { IWalk } from '../utils/types';
-// import useLocalStorage from '../hooks/useLocalStorage';
 
 
 const StartButton = styled(ButtonBaseWithLink)`
@@ -35,13 +33,7 @@ border: 0px solid ${blue};
 flex-direction: row
 `
 
-const WalkContainer = styled.div`
-display: flex;
-align-items: center;
-justify-content: space-around;
-`
-
-const CavalettiContainer = styled.div`
+const ActivityContainer = styled.div`
 display: flex;
 align-items: center;
 justify-content: space-around;
@@ -71,7 +63,7 @@ export const HomePage: React.FC<IProps> = ({ setWalkTimeStamps, walkTimeStamps }
           <HeadingContainer>
             Walks
           </HeadingContainer>
-          <WalkContainer>
+          <ActivityContainer>
             <StartButton to="/walks/green" onClick={handleStartButtonClick}>
               <ColouredPaw fill={green} />
               1 mins
@@ -84,16 +76,16 @@ export const HomePage: React.FC<IProps> = ({ setWalkTimeStamps, walkTimeStamps }
               <ColouredPaw fill={red}/>
               15 mins
             </StartButton>
-          </WalkContainer>
+          </ActivityContainer>
           {/* <HeadingContainer>
             Cavaletti
           </HeadingContainer> */}
-          {/* <CavalettiContainer>
+          {/* <ActivityContainer>
           <StartButton to="/cavaletti/green" onClick={handleStartButtonClick}>
               <ColouredSquare fill={red}/>
               15 mins
             </StartButton>
-          </CavalettiContainer> */}
+          </ActivityContainer> */}
         </RehabActivityContainer>
         <Notification walkTimeStamps={walkTimeStamps}/>
       </Page>
