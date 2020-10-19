@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import {Link} from 'react-router-dom';
 
 import {
-  purple,
+  blue,
 } from '../utils/constants';
 
 export interface ButtonStyleProps { background?: string; color?: string; }
@@ -47,5 +47,5 @@ export const DawgContainer = styled.div`
 export const ButtonBaseWithLink = styled(Link)<ButtonStyleProps>`
 ${buttonStyle}
   color: ${props => props.color || 'white'};
-  background-color: ${props => props.background || purple};
+  background-color: ${props => props.background || blue};
 `;

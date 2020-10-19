@@ -13,7 +13,6 @@ const ReportContainer = styled.div`
   padding: 1
   border: 3px solid ${red};
   height: 350px;
-  // min-height: 100vh;
   width: 75%;
 `;
 

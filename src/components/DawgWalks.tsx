@@ -1,4 +1,5 @@
 import React from 'react';
+import { Guid } from "guid-typescript";
 
 import { IWalk } from '../utils/types';
 import { DawgWalkItem } from '../components/DawgWalkItem'; 
@@ -15,7 +16,7 @@ export const DawgWalks: React.FC<IProps> = ({ walks, loading }) => {
   return (
     <>
       {walks.map(walk => (
-        <DawgWalkItem walk={walk} loading={loading}/>
+        <DawgWalkItem key={Guid.create().toString()} walk={walk} loading={loading}/>
       ))}
     </>
   )
