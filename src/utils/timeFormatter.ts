@@ -19,6 +19,7 @@ export const formatTime = (difference: number): Dictionary<number> => {
   }
 }
 
+
 export const formatTimeLeft = (difference: number): Dictionary<number> | string => {
   if (difference > 0) {
     const timeLeftMap = formatTime(difference);

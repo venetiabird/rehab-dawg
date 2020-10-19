@@ -7,6 +7,7 @@ import { ColouredPaw } from '../assets/svg/ColouredShapes';
 import { green, red, blue, gutterWidth } from '../utils/constants';
 import { RehabDawg } from '../assets/svg/Dawg';
 import Notification from '../components/Notification';
+import { gradeMap } from '../utils/constants';
 
 
 const StartButton = styled(ButtonBaseWithLink)`
@@ -66,15 +67,15 @@ export const HomePage: React.FC<IProps> = ({ setWalkTimeStamps, walkTimeStamps }
           <ActivityContainer>
             <StartButton to="/walks/green" onClick={handleStartButtonClick}>
               <ColouredPaw fill={green} />
-              1 mins
+                {gradeMap['green']} mins
             </StartButton>
             <StartButton to="/walks/blue" onClick={handleStartButtonClick}>
               <ColouredPaw fill={blue} />
-              10 mins
+              {gradeMap['blue']} mins
             </StartButton>
             <StartButton to="/walks/red" onClick={handleStartButtonClick}>
               <ColouredPaw fill={red}/>
-              15 mins
+              {gradeMap['red']} mins
             </StartButton>
           </ActivityContainer>
           {/* <HeadingContainer>

@@ -9,17 +9,12 @@ import {RehabDawg} from '../../assets/svg/Dawg';
 import {ButtonBaseWithLink, Logo, LogoWrapper, DawgContainer } from '../../components/SharedStyles';
 import { white } from '../../utils/constants';
 import { IWalk, WalkName } from '../../utils/types';
+import { gradeMap } from '../../utils/constants';
 
 const DoneButton = styled(ButtonBaseWithLink)`
   background: black;
   width: 25%;
 `;
-
-const gradeMap = {
-  'green': 1,
-  'blue': 10,
-  'red': 15
-};
 
 const sessionTime = (walkName: WalkName): number => {
   return gradeMap[walkName];
@@ -66,7 +61,7 @@ export const ActiveWalk: React.FC<IProps> = ({ setWalkHistory, walkTimeStamps, s
         <Timer walkTime={walkTime} startTime={startTime} />
         <DoneButton to="/progress" onClick={handleClickOnDone}>
           <DoneWalk fill={white} />
-          Done
+            Done
           <DoneWalk fill={white} />
         </DoneButton>
       </Page>

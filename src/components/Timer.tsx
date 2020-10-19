@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 
+import useSound from 'use-sound';
+// import woofSfx from '../assets/sounds/woof.mp3';
 import {ResumeWalk} from '../assets/svg/Resume';
 import {PauseWalk} from '../assets/svg/Pause';
 import {formatTimeLeft} from '../utils/timeFormatter';
@@ -23,9 +25,19 @@ interface IProps {
   walkTime: number;
 }
 
+
+
 export const Timer: React.FC<IProps> = ({ walkTime, startTime }) => {
   const walkTimeSeconds = walkTime * 60;
   const [timeElapsed, setTimeElapsed] = useState(0);
+  const [isOn, setIsOn] = useState(true);
+
+  const pauseComponent = () => {
+    return <PauseWalk fill={orange} handleClick={() => setIsOn(false)}/>
+  }
+  const playComponent = () => {
+    return <ResumeWalk fill={darkgreen} handleClick={() => setIsOn(true)}/>
+  }
   
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -34,14 +46,19 @@ export const Timer: React.FC<IProps> = ({ walkTime, startTime }) => {
     }, 1000);
     return () => clearTimeout(timer);
   });
+  // const woof = new Audio('../assets/sounds/woof.mp3')
+  // woof.load()
+  // woof.play()
+  // const [play] = useSound('../assets/sounds/woof.mp3', { volume: 0.99 });
   return (
     <>
       <CountDownDawg>
+        {/* {play()} */}
         {formatTimeLeft(walkTimeSeconds - timeElapsed)}
+        {/* {walkTimeSeconds - timeElapsed === 0? play() : formatTimeLeft(walkTimeSeconds - timeElapsed) } */}
       </CountDownDawg>
       <PauseResumeContainer>
-        <PauseWalk fill={orange} handleClick={() => alert('Pausing!')}/>
-        <ResumeWalk fill={darkgreen} handleClick={() => alert('Resuming')}/>
+      {isOn ? pauseComponent() : playComponent()}
       </PauseResumeContainer>
     </>
   );

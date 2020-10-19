@@ -22,7 +22,7 @@ interface IProps {
 export const ProgressReport: React.FC<IProps> = ({ walkHistory }) => {
   const [loading, setLoading] = useState(false)
   const [currentPage, setCurrentPage] = useState(1);
-  const [walksPerPage, setWalksPerPage] = useState(8);
+  const [walksPerPage, setWalksPerPage] = useState(5);
 
   // Get current walks
   const indexOfLastWalk = currentPage * walksPerPage;
