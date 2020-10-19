@@ -22,28 +22,59 @@ const PauseResumeContainer = styled.div`
 `;
 interface IProps {
   startTime: number;
+  walkTimeStamps: number[];
   walkTime: number;
+  setWalkTimeStamps: (walkTimeStamp: React.Dispatch<number[]> | number[]) => void;
 }
 
 
+const getStartTime = (times: number[]): number => times[times.length - 1];
 
-export const Timer: React.FC<IProps> = ({ walkTime, startTime }) => {
-  const walkTimeSeconds = walkTime * 60;
+export const Timer: React.FC<IProps> = ({ walkTime, startTime, walkTimeStamps, setWalkTimeStamps }) => {
   const [timeElapsed, setTimeElapsed] = useState(0);
-  const [isOn, setIsOn] = useState(true);
+  console.log('elapsed ==>', timeElapsed)
+  console.log('walkTime ==>', walkTime)
+  let walkTimeSeconds = walkTime * 60 - timeElapsed;
+  const [isActive, setIsActive] = useState(true);
+  let start = walkTimeStamps[0];// getStartTime(walkTimeStamps);
+  
+  
+  const toggle = (): void => {
+    // const x = timeElapsed;
+    // I think the start time can be replaced with the first item in walkTimeStamps array, and the its the even index
+    console.log('isActive1 ==>', isActive)
+    setIsActive(!isActive);
+    console.log('isActive2 ==>', isActive)
+    // walkTimeSeconds = walkTimeSeconds;
+    setWalkTimeStamps((x: number[]) => {
+      const result: number[] = [...x, Date.now()];
+      // start = getStartTime(walkTimeStamps);
+      return result;
+      })
+  }
 
   const pauseComponent = () => {
-    return <PauseWalk fill={orange} handleClick={() => setIsOn(false)}/>
+    return <PauseWalk fill={orange} handleClick={toggle} />;
   }
+  
   const playComponent = () => {
-    return <ResumeWalk fill={darkgreen} handleClick={() => setIsOn(true)}/>
+    return <ResumeWalk fill={darkgreen} handleClick={toggle} />;
   }
   
   useEffect(() => {
-    const timer = setTimeout(() => {
-      const now = Date.now();
-      setTimeElapsed(() => Math.round((now - startTime)/1000));
-    }, 1000);
+    let timer = 0;
+    let pausedTime: number | null = null;
+    if(isActive) {
+      console.log('isActive3 ==>', isActive)
+      timer = setTimeout(() => {
+        const now = pausedTime || Date.now();
+        setTimeElapsed(() => Math.round((now - start)/1000));
+      }, 1000);
+    } else if (!isActive && timeElapsed !== 0){
+      pausedTime = Date.now();
+      console.log('isActive4 ==>', isActive)
+      clearTimeout(timer);
+    }
     return () => clearTimeout(timer);
   });
   // const woof = new Audio('../assets/sounds/woof.mp3')
@@ -58,7 +89,7 @@ export const Timer: React.FC<IProps> = ({ walkTime, startTime }) => {
         {/* {walkTimeSeconds - timeElapsed === 0? play() : formatTimeLeft(walkTimeSeconds - timeElapsed) } */}
       </CountDownDawg>
       <PauseResumeContainer>
-      {isOn ? pauseComponent() : playComponent()}
+        {isActive ? pauseComponent() : playComponent()}
       </PauseResumeContainer>
     </>
   );
