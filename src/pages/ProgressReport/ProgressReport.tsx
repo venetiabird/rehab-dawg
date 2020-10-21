@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-// import Pagination from "react-js-pagination";
 
 import { Page } from '../../components/Page';
 import { DawgWalks } from '../../components/DawgWalks';

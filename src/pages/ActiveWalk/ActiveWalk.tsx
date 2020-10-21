@@ -26,25 +26,15 @@ interface IProps {
   walkTimeStamps: number[]
 }
 
-const getStartTime = (walkTimeStamps: number[]): number => walkTimeStamps[walkTimeStamps.length - 1];
-
-
 export const ActiveWalk: React.FC<IProps> = ({ setWalkHistory, walkTimeStamps, setWalkTimeStamps }) => {
   const { grade } = useParams();
   const walkTime = sessionTime(grade);
-  const startTime = getStartTime(walkTimeStamps);
-  console.log('walkTimeStamps timestamps ==>', walkTimeStamps)
   const handleClickOnDone = (): void => {
-    setWalkTimeStamps((x: number[]) => {
-      const result: number[] = [...x, Date.now()];
-      
-      let currentWalk: IWalk = {
-        walkName: grade,
-        walkTimeStamps: result // this is not being updated with the value in setWwalkTimeStamps
-      }
-      setWalkHistory((history: IWalk[]): IWalk[] => [...history, currentWalk]);
-      return result;
-    })
+    let currentWalk: IWalk = {
+      walkName: grade,
+      walkTimeStamps: [...walkTimeStamps, Date.now()]
+    }
+    setWalkHistory((history: IWalk[]): IWalk[] => [...history, currentWalk]);
   };
   
   return (
@@ -58,7 +48,7 @@ export const ActiveWalk: React.FC<IProps> = ({ setWalkHistory, walkTimeStamps, s
             </DawgContainer>
           </Logo>
         </LogoWrapper>
-        <Timer walkTime={walkTime} startTime={startTime} walkTimeStamps={walkTimeStamps} setWalkTimeStamps={setWalkTimeStamps} />
+        <Timer walkTime={walkTime} walkTimeStamps={walkTimeStamps} setWalkTimeStamps={setWalkTimeStamps} />
         <DoneButton to="/progress" onClick={handleClickOnDone}>
           <DoneWalk fill={white} />
             Done

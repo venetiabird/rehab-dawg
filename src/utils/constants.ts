@@ -16,7 +16,7 @@ export const lightblue = '#0277bd';
 export const darkgreen = '#006400';
 
 export const gradeMap = {
-  'green': 5,
+  'green': 1,
   'blue': 10,
   'red': 15
 };
