@@ -4,7 +4,8 @@ import styled from 'styled-components';
 import { useInterval } from '../hooks/useInterval';
 import {ResumeWalk} from '../assets/svg/Resume';
 import {PauseWalk} from '../assets/svg/Pause';
-import {formatTimeLeft, calculateActivityTime } from '../utils/timeFormatter';
+import {formatTimeLeft } from '../utils/timeFormatter';
+import {calculateActivityTime } from '../utils/timeCalculation';
 import { darkgreen, orange } from '../utils/constants';
 
 const CountDownDawg = styled.div`

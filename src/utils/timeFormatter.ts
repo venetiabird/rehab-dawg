@@ -36,16 +36,4 @@ export const formatTimeLeftCountUp = (difference: number, walkTime: number): Dic
   return 'All done!';
 };
 
-/** 
- * The return time is in seconds
-*/
-export const calculateActivityTime = (walkTimeStamps: number[]): number => {
-  let result = 0;
-  for (let i = 0; i < walkTimeStamps.length - 1; i += 2) {
-    const timeDiff = (walkTimeStamps[i+1] - walkTimeStamps[i]);
-    result += timeDiff;
-  }
-  return Math.round(result / 1000);
-}
-
 const pad = (input: number): string => input.toString().padStart(2, '0');

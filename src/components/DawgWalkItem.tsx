@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import moment from 'moment';
 import { IWalk, WalkName } from '../utils/types';
 import { blue } from '../utils/constants';
-import { calculateActivityTime } from '../utils/timeFormatter'
+import { calculateActivityTime } from '../utils/timeCalculation'
 
 const WalkContainer = styled.div`
   border: 0px solid ${blue};

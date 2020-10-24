@@ -1,18 +1,22 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import moment from 'moment';
 
 import { Page } from '../../components/Page';
 import { DawgWalks } from '../../components/DawgWalks';
 import { Pagination } from '../../components/Pagination';
+import { ProgressNotification } from '../../components/ProgressNotification';
 import { IWalk } from '../../utils/types';
 import { LogoWrapper, Logo } from '../../components/SharedStyles';
 import { red } from '../../utils/constants';
+import { calculateWeeklyActivityTime } from '../../utils/timeCalculation';
 
 const ReportContainer = styled.div`
   padding: 1
   border: 3px solid ${red};
   height: 350px;
   width: 75%;
+  alignment-baseline: baseline
 `;
 
 interface IProps {
@@ -28,6 +32,7 @@ export const ProgressReport: React.FC<IProps> = ({ walkHistory }) => {
   const indexOfFirstWalk = indexOfLastWalk - walksPerPage;
   const currentWalks = walkHistory.slice(indexOfFirstWalk, indexOfLastWalk);
   const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
+  const totalActivityTime = calculateWeeklyActivityTime(walkHistory) * 1000;
   return (
     <>
       <Page heading={''}>
@@ -37,6 +42,7 @@ export const ProgressReport: React.FC<IProps> = ({ walkHistory }) => {
           </Logo>
         </LogoWrapper>
         <ReportContainer>
+          <ProgressNotification totalActivityTime={totalActivityTime}/>
           <DawgWalks walks={currentWalks} loading={loading}/>
           <Pagination
             walksPerPage={walksPerPage}
