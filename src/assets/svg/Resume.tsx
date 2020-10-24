@@ -5,7 +5,6 @@ import { Play } from '@styled-icons/fa-solid/Play';
 const ResumeDawg = styled(Play)`
   height: 30px;
   width: 30px;
-  margin-left: 30px;
 `;
 
 interface IProps {
