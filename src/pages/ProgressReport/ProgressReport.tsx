@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import moment from 'moment';
 
 import { Page } from '../../components/Page';
+import { DawgResponsiveBar } from '../../components/DawgResponsiveBar';
 import { DawgWalks } from '../../components/DawgWalks';
 import { Pagination } from '../../components/Pagination';
 import { ProgressNotification } from '../../components/ProgressNotification';
@@ -33,6 +33,7 @@ export const ProgressReport: React.FC<IProps> = ({ walkHistory }) => {
   const currentWalks = walkHistory.slice(indexOfFirstWalk, indexOfLastWalk);
   const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
   const totalActivityTime = calculateWeeklyActivityTime(walkHistory) * 1000;
+
   return (
     <>
       <Page heading={''}>
@@ -43,11 +44,13 @@ export const ProgressReport: React.FC<IProps> = ({ walkHistory }) => {
         </LogoWrapper>
         <ReportContainer>
           <ProgressNotification totalActivityTime={totalActivityTime}/>
-          <DawgWalks walks={currentWalks} loading={loading}/>
+          {/* <DawgWalks walks={currentWalks} loading={loading}/>
           <Pagination
             walksPerPage={walksPerPage}
             totalWalks={walkHistory.length}
-            paginate={paginate} />
+            paginate={paginate} /> */}
+
+        <DawgResponsiveBar walkHistory={walkHistory}/>   
         </ReportContainer>
       </Page>
     </>

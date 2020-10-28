@@ -1,6 +1,4 @@
-interface Dictionary<T> {
-  [key: string]: T;
-}
+import { Dictionary } from './types';
 
 export const timeLeftInMilliseconds = (walkTimeMilliSeconds: number): number => {
   const difference = walkTimeMilliSeconds  - 1000;

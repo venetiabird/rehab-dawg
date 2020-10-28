@@ -1,8 +1,12 @@
+export interface Dictionary<T> {
+  [key: string]: T;
+}
 export interface IWalk {
   walkTimeStamps: number[];
-  walkName: string;
+  walk: WalkName;
 }
 export type WalkName = 'green' | 'blue' | 'red'
 export interface State {
   walkHistory: IWalk[];
 }
+
