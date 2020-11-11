@@ -8,11 +8,12 @@ import { ActiveWalk } from '../pages/ActiveWalk';
 import { Caveletti } from '../pages/Caveletti';
 import { ProgressReport } from '../pages/ProgressReport';
 import { IWalk } from '../utils/types';
-import useLocalStorage from '../hooks/useLocalStorage';
+import { useLocalStorage } from '../hooks/useLocalStorage';
 
 const MaxWidthContainer = styled.div`
   margin: 0 auto;
 `;
+
 
 const Routes: React.FC = () => {
   const location = useLocation();
