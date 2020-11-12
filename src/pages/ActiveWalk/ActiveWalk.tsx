@@ -9,6 +9,7 @@ import {RehabDawg} from '../../assets/svg/Dawg';
 import {ButtonBaseWithLink, Logo, LogoWrapper, DawgContainer } from '../../components/SharedStyles';
 import { white } from '../../utils/constants';
 import { IWalk, WalkName } from '../../utils/types';
+import { calculateActivityTime } from '../../utils/timeCalculation';
 import { GradeMap } from '../../utils/constants';
 
 const DoneButton = styled(ButtonBaseWithLink)`
@@ -30,9 +31,19 @@ export const ActiveWalk: React.FC<IProps> = ({ setWalkHistory, walkTimeStamps, s
   const { grade } = useParams();
   const walkTime = sessionTime(grade);
   const handleClickOnDone = (): void => {
+    let doneTime = Date.now()
+    const activeWalkTime = calculateActivityTime([...walkTimeStamps, doneTime])
+    const setWalkTime = walkTime * 60;
+    let tempTimeStamps = walkTimeStamps.slice();
+    // this is not ideal because we are overriting the history. But maybe thats ok?
+    if(activeWalkTime > setWalkTime) {
+      tempTimeStamps = [tempTimeStamps[0], new Date(tempTimeStamps[0]).setSeconds(setWalkTime)]
+    } else {
+      tempTimeStamps = [...tempTimeStamps, doneTime]
+    }
     let currentWalk: IWalk = {
       walk: grade,
-      walkTimeStamps: [...walkTimeStamps, Date.now()]
+      walkTimeStamps: tempTimeStamps
     }
     setWalkHistory((history: IWalk[]): IWalk[] => [...history, currentWalk]);
   };
