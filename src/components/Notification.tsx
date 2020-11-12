@@ -42,7 +42,7 @@ export const Notification: React.FC<IProps> = ({ walkTimeStamps }) => {
   }
   return (
     <NotificationContainer>
-      <NotificationText>Get Rehab Walking to see progress!</NotificationText>
+      <NotificationText>Start the pooch on their Rehab Journey to see progress!</NotificationText>
     </NotificationContainer>
   );
 };

@@ -41,7 +41,7 @@ export const getColor = ( fill: string): string => {
 }
 
 export const GradeMap = {
-  green: 1,
+  green: 5,
   blue: 10,
   red: 15,
   bronze: 5,
