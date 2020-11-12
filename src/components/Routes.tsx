@@ -18,22 +18,22 @@ const MaxWidthContainer = styled.div`
 const Routes: React.FC = () => {
   const location = useLocation();
   const [ walkHistory, setWalkHistory ] = useLocalStorage<IWalk[]>('walkHistory', []); 
-  const [ cavalettiHistory, setCavalettiHistory ] = useLocalStorage<ICavaletti[]>('cavalettiHistory', []); 
-  const [ cavalettiTimeStamps, setCavalettiStamps ] = useLocalStorage<[number, number]>('cavalettiTimeStamps', [0, 0]); 
-  const [ walkTimeStamps, setWalkTimeStamps ] = useLocalStorage<number[]>('walkTimeStamps', []); 
+  // const [ cavalettiHistory, setCavalettiHistory ] = useLocalStorage<ICavaletti[]>('cavalettiHistory', []); 
+  // const [ cavalettiTimeStamps, setCavalettiStamps ] = useLocalStorage<number[]>('cavalettiTimeStamps', []); 
+  const [ activityTimeStamps, setActivityTimeStamps ] = useLocalStorage<number[]>('activityTimeStamps', []); 
   return (
     <MaxWidthContainer>
       <Switch location={location}>
         <Route path="/" exact>
-          <HomePage setWalkTimeStamps={setWalkTimeStamps} walkTimeStamps={walkTimeStamps} cavalettiTimeStamps={cavalettiTimeStamps} />
+          <HomePage setActivityTimeStamps={setActivityTimeStamps} activityTimeStamps={activityTimeStamps} />
         </Route>
-        <Route path="/home" exact render={() => <HomePage setWalkTimeStamps={setWalkTimeStamps} walkTimeStamps={walkTimeStamps} cavalettiTimeStamps={cavalettiTimeStamps}/>} />
+        <Route path="/home" exact render={() => <HomePage setActivityTimeStamps={setActivityTimeStamps} activityTimeStamps={activityTimeStamps} />} />
         <Route path="/walks/:grade/" exact>
-          <ActiveWalk setWalkHistory={setWalkHistory} walkTimeStamps={walkTimeStamps} setWalkTimeStamps={setWalkTimeStamps}/>
+          <ActiveWalk setWalkHistory={setWalkHistory} activityTimeStamps={activityTimeStamps} setActivityTimeStamps={setActivityTimeStamps}/>
 
         </Route>
         {/* Below is a different style of adding a route */}
-        <Route path="/cavaletti/:grade/" exact component={Caveletti} setCavalettiStamps={setCavalettiStamps} /> 
+        <Route path="/cavaletti/:grade/" exact component={Caveletti} setActivityTimeStamps={setActivityTimeStamps} /> 
         <Route path="/progress" exact>
           <ProgressReport walkHistory={walkHistory} />
         </Route>

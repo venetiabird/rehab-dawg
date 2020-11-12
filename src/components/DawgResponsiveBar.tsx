@@ -23,9 +23,9 @@ const getDay = (datetime: number): string => {
 
 const groupByDate = (walks: IWalk[]): { [key: string]: IGraphDataPoint }  => {
     const data =  walks.reduce((accum: { [key: string]: IGraphDataPoint }, walk: IWalk): { [key: string]: IGraphDataPoint } => {
-        const actTime: number = Math.ceil(calculateActivityTime(walk.walkTimeStamps) / 60);
+        const actTime: number = Math.ceil(calculateActivityTime(walk.activityTimeStamps) / 60);
         const length = walkLength(walk.walk)
-        const computedDateIndex: string = getDay(walk.walkTimeStamps[0]);
+        const computedDateIndex: string = getDay(walk.activityTimeStamps[0]);
         const existingGraphData = accum[computedDateIndex];
         
         let graphDataPt: IGraphDataPoint
@@ -38,7 +38,7 @@ const groupByDate = (walks: IWalk[]): { [key: string]: IGraphDataPoint }  => {
           }
         } else {
             graphDataPt = {
-              date: new Date(walk.walkTimeStamps[0]),
+              date: new Date(walk.activityTimeStamps[0]),
               short: length === 'short'? actTime : 0,
               medium: length === 'medium'? actTime : 0,
               long: length === 'long'? actTime : 0,

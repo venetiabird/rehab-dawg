@@ -2,13 +2,13 @@ export interface Dictionary<T> {
   [key: string]: T;
 }
 export interface IWalk {
-  walkTimeStamps: number[];
+  activityTimeStamps: number[];
   walk: WalkName;
 }
 
 export interface ICavaletti {
-  trickGrade: TrickGrade;
-  cavalettieStartEnd: [number, number]
+  cavaletti: TrickGrade;
+  activityTimeStamps: number[]
 }
 
 export interface IDisplayGraphDataPoint {

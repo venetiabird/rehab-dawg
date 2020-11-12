@@ -20,27 +20,27 @@ const PauseResumeContainer = styled.div`
   display: flex;
 `;
 interface IProps {
-  walkTimeStamps: number[];
+  activityTimeStamps: number[];
   activityTime: number;
-  setWalkTimeStamps: (walkTimeStamp: React.Dispatch<number[]> | number[]) => void;
+  setActivityTimeStamps: (activityTimeStamp: React.Dispatch<number[]> | number[]) => void;
 }
 
-export const Timer: React.FC<IProps> = ({ activityTime: activityTime, walkTimeStamps, setWalkTimeStamps }) => {
+export const Timer: React.FC<IProps> = ({ activityTime: activityTime, activityTimeStamps, setActivityTimeStamps }) => {
   const [timeElapsed, setTimeElapsed] = useState(0);
   let walkTimeSeconds = activityTime * 60;
   const [isActive, setIsActive] = useState(true);
   
   useInterval(() => {
     const activeWalkTime = calculateActivityTime([
-      ...walkTimeStamps, 
-      ...(walkTimeStamps.length % 2 === 0 ? [] : [Date.now()])
+      ...activityTimeStamps, 
+      ...(activityTimeStamps.length % 2 === 0 ? [] : [Date.now()])
     ]);
     setTimeElapsed(activeWalkTime);
   }, 1000);
 
   const toggle = (): void => {
     setIsActive(!isActive);
-    setWalkTimeStamps((x: number[]) => [...x, Date.now()])
+    setActivityTimeStamps((x: number[]) => [...x, Date.now()])
   }
   
   return (

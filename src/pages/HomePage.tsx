@@ -43,14 +43,13 @@ justify-content: space-around;
 `
 
 interface IProps {
-  setWalkTimeStamps: (walkTimeStamp: React.Dispatch<number[]> | number[]) => void;
-  walkTimeStamps: number[];
-  cavalettiTimeStamps: [number, number]
+  setActivityTimeStamps: (activityTimeStamp: React.Dispatch<number[]> | number[]) => void;
+  activityTimeStamps: number[];
 };
 
-export const HomePage: React.FC<IProps> = ({ setWalkTimeStamps, walkTimeStamps, cavalettiTimeStamps }) => {
-  const handleStartWalkButtonClick = () => setWalkTimeStamps([Date.now()]);
-  const handleStartCavalettiButtonClick = () => setWalkTimeStamps([Date.now()]);
+export const HomePage: React.FC<IProps> = ({ setActivityTimeStamps, activityTimeStamps }) => {
+  const handleStartWalkButtonClick = () => setActivityTimeStamps([Date.now()]);
+  const handleStartCavalettiButtonClick = () => setActivityTimeStamps([Date.now()]);
   return (
     <>
       <Page heading={''}>
@@ -88,19 +87,19 @@ export const HomePage: React.FC<IProps> = ({ setWalkTimeStamps, walkTimeStamps, 
           <ActivityContainer>
           <StartButton to="/cavaletti/bronze" onClick={handleStartCavalettiButtonClick}>
               <ColouredHat fill={colors.bronze}/>
-              {GradeMap['bronze']} mins
+              Rookie
             </StartButton>
             <StartButton to="/cavaletti/silver" onClick={handleStartCavalettiButtonClick}>
               <ColouredHat fill={colors.silver}/>
-              {GradeMap['silver']} mins
+              Hot Dawg
             </StartButton>
             <StartButton to="/cavaletti/gold" onClick={handleStartCavalettiButtonClick}>
               <ColouredHat fill={colors.gold}/>
-              {GradeMap['gold']} mins
+              Pro Dawg
             </StartButton>
           </ActivityContainer>
         </RehabActivityContainer>
-        <Notification walkTimeStamps={walkTimeStamps}/>
+        <Notification activityTimeStamps={activityTimeStamps}/>
       </Page>
     </>
   );

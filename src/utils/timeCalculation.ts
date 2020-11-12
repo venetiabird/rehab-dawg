@@ -11,7 +11,7 @@ export const sessionTime = (activityName: WalkName | TrickGrade ): number => {
 export const calculateWeeklyActivityTime = (walks: IWalk[]): number => {
   let result = 0;
   result = walks.reduce((accum: number, walk: IWalk) => {
-    return accum = accum + calculateActivityTime(walk.walkTimeStamps);
+    return accum = accum + calculateActivityTime(walk.activityTimeStamps);
   }, 0);
   return result;
 }

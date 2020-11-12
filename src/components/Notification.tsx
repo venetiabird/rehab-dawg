@@ -24,12 +24,12 @@ const StrongSpan = styled.span`
 `;
 
 interface IProps {
-  walkTimeStamps: number[] 
+  activityTimeStamps: number[] 
 }
 
-export const Notification: React.FC<IProps> = ({ walkTimeStamps }) => {
-  if (walkTimeStamps.length) {
-    const lastWalkTimeStamp = walkTimeStamps.slice(walkTimeStamps.length - 1).shift();
+export const Notification: React.FC<IProps> = ({ activityTimeStamps }) => {
+  if (activityTimeStamps.length) {
+    const lastWalkTimeStamp = activityTimeStamps.slice(activityTimeStamps.length - 1).shift();
     const formatLastWalkTime = moment(lastWalkTimeStamp).format('MMMM Do YYYY, h:mm:ss a');
 
     return (

@@ -13,7 +13,7 @@ import { sessionTime } from '../../utils/timeCalculation';
 
 interface IProps {
   setCavalettiHistory: ICavaletti[];
-  setCavalettiTimeStamps: (cavalettiTimeStamp: React.Dispatch<[number, number]> | [number, number]) => void;
+  setCavalettiTimeStamps: (cavalettiTimeStamp: React.Dispatch<number[]> | number[]) => void;
 }
 export const Caveletti: React.FC<IProps> = ({ setCavalettiHistory, setCavalettiTimeStamps}) => {
     const { grade } = useParams();
@@ -31,7 +31,7 @@ export const Caveletti: React.FC<IProps> = ({ setCavalettiHistory, setCavalettiT
             </DawgContainer>
           </Logo>
         </LogoWrapper>
-        {/* <Timer activityTime={activityTime} /> */}
+        {/* Free timer <Timer activityTime={activityTime} /> */}
         <DoneButton to="/home" onClick={handleClickOnDone}>
           <DoneActivity fill={colors.white} />
           Done

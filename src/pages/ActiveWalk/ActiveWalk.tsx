@@ -15,18 +15,18 @@ import { GradeMap } from '../../utils/constants';
 
 interface IProps {
   setWalkHistory: (walk: React.Dispatch<IWalk[]>) => void
-  setWalkTimeStamps: (walkTimeStamp: React.Dispatch<number[]> | number[]) => void
-  walkTimeStamps: number[]
+  setActivityTimeStamps: (activityTimeStamp: React.Dispatch<number[]> | number[]) => void
+  activityTimeStamps: number[]
 }
 
-export const ActiveWalk: React.FC<IProps> = ({ setWalkHistory, walkTimeStamps, setWalkTimeStamps }) => {
+export const ActiveWalk: React.FC<IProps> = ({ setWalkHistory, activityTimeStamps, setActivityTimeStamps }) => {
   const { grade } = useParams();
   const walkTime = sessionTime(grade);
   const handleClickOnDone = (): void => {
     let doneTime = Date.now()
-    const activeWalkTime = calculateActivityTime([...walkTimeStamps, doneTime])
+    const activeWalkTime = calculateActivityTime([...activityTimeStamps, doneTime])
     const setWalkTime = walkTime * 60;
-    let tempTimeStamps = walkTimeStamps.slice();
+    let tempTimeStamps = activityTimeStamps.slice();
     // this is not ideal because we are overriting the history. But maybe thats ok?
     if(activeWalkTime > setWalkTime) {
       tempTimeStamps = [tempTimeStamps[0], new Date(tempTimeStamps[0]).setSeconds(setWalkTime)]
@@ -35,7 +35,7 @@ export const ActiveWalk: React.FC<IProps> = ({ setWalkHistory, walkTimeStamps, s
     }
     let currentWalk: IWalk = {
       walk: grade,
-      walkTimeStamps: tempTimeStamps
+      activityTimeStamps: tempTimeStamps
     }
     setWalkHistory((history: IWalk[]): IWalk[] => [...history, currentWalk]);
   };
@@ -51,7 +51,7 @@ export const ActiveWalk: React.FC<IProps> = ({ setWalkHistory, walkTimeStamps, s
             </DawgContainer>
           </Logo>
         </LogoWrapper>
-        <Timer activityTime={walkTime} walkTimeStamps={walkTimeStamps} setWalkTimeStamps={setWalkTimeStamps} />
+        <Timer activityTime={walkTime} activityTimeStamps={activityTimeStamps} setActivityTimeStamps={setActivityTimeStamps} />
         <DoneButton to="/progress" onClick={handleClickOnDone}>
           <DoneActivity fill={colors.white} />
             Done

@@ -41,9 +41,9 @@ export const DawgWalkItem: React.FC<IProps> = ({ walk, loading }) => {
   if (loading) {
     return <h2>Loading...</h2>;
   }
-  const lastWalkTimeStamp = walk.walkTimeStamps.slice(walk.walkTimeStamps.length - 1).shift(); //.format('MMM Do YYYY, h:mm a')
+  const lastWalkTimeStamp = walk.activityTimeStamps.slice(walk.activityTimeStamps.length - 1).shift(); //.format('MMM Do YYYY, h:mm a')
   if(lastWalkTimeStamp) {
-    const activityTime = calculateActivityTime(walk.walkTimeStamps) * 1000;
+    const activityTime = calculateActivityTime(walk.activityTimeStamps) * 1000;
     const walkTime = moment(activityTime).format('mm:ss');
     const walkName = walkGrade(walk.walk);
     const dateTime = moment(lastWalkTimeStamp).format('MMM Do YYYY, h:mm a');
