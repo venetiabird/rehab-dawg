@@ -8,7 +8,7 @@ import { DoneActivity } from '../../assets/svg/Done';
 import { RehabDawg } from '../../assets/svg/Dawg';
 import { DoneButton, Logo, LogoWrapper, DawgContainer } from '../../components/SharedStyles';
 import { colors } from '../../utils/constants';
-import { IWalk, WalkName } from '../../utils/types';
+import { ActivityType, IWalk, WalkName } from '../../utils/types';
 import { calculateActivityTime, sessionTime } from '../../utils/timeCalculation';
 import { GradeMap } from '../../utils/constants';
 
@@ -51,7 +51,7 @@ export const ActiveWalk: React.FC<IProps> = ({ setWalkHistory, activityTimeStamp
             </DawgContainer>
           </Logo>
         </LogoWrapper>
-        <Timer activityTime={walkTime} activityTimeStamps={activityTimeStamps} setActivityTimeStamps={setActivityTimeStamps} />
+        <Timer activityType={ActivityType.Walk} activityTime={walkTime} activityTimeStamps={activityTimeStamps} setActivityTimeStamps={setActivityTimeStamps} />
         <DoneButton to="/progress" onClick={handleClickOnDone}>
           <DoneActivity fill={colors.white} />
             Done

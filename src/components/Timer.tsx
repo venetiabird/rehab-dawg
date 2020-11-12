@@ -7,6 +7,7 @@ import {PauseWalk} from '../assets/svg/Pause';
 import {formatTimeLeft } from '../utils/timeFormatter';
 import {calculateActivityTime } from '../utils/timeCalculation';
 import { colors } from '../utils/constants';
+import { ActivityType } from '../utils/types';
 
 const CountDownDawg = styled.div`
   height: 10px;
@@ -22,13 +23,16 @@ const PauseResumeContainer = styled.div`
 interface IProps {
   activityTimeStamps: number[];
   activityTime: number;
+  activityType: ActivityType;
   setActivityTimeStamps: (activityTimeStamp: React.Dispatch<number[]> | number[]) => void;
 }
 
-export const Timer: React.FC<IProps> = ({ activityTime: activityTime, activityTimeStamps, setActivityTimeStamps }) => {
+// activity type could part of the Activity Type ... refactor!
+export const Timer: React.FC<IProps> = ({ activityType, activityTime, activityTimeStamps, setActivityTimeStamps }) => {
   const [timeElapsed, setTimeElapsed] = useState(0);
   let walkTimeSeconds = activityTime * 60;
   const [isActive, setIsActive] = useState(true);
+  const isWalk = activityType === ActivityType.Walk ? true : false;
   
   useInterval(() => {
     const activeWalkTime = calculateActivityTime([
@@ -46,7 +50,7 @@ export const Timer: React.FC<IProps> = ({ activityTime: activityTime, activityTi
   return (
     <>
       <CountDownDawg>
-        {formatTimeLeft(walkTimeSeconds - timeElapsed)}
+        {isWalk ? formatTimeLeft(walkTimeSeconds - timeElapsed) : formatTimeLeft(walkTimeSeconds )}
       </CountDownDawg>
       <PauseResumeContainer>
         {isActive ? (

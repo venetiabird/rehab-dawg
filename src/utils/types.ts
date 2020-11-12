@@ -6,6 +6,11 @@ export interface IWalk {
   walk: WalkName;
 }
 
+export enum ActivityType {
+  Walk,
+  Cavaletti
+}
+
 export interface ICavaletti {
   cavaletti: TrickGrade;
   activityTimeStamps: number[]

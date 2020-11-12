@@ -81,7 +81,7 @@ export const HomePage: React.FC<IProps> = ({ setActivityTimeStamps, activityTime
               {GradeMap['red']} mins
             </StartButton>
           </ActivityContainer>
-          <HeadingContainer>
+          {/* <HeadingContainer>
             Cavaletti
           </HeadingContainer>
           <ActivityContainer>
@@ -97,7 +97,7 @@ export const HomePage: React.FC<IProps> = ({ setActivityTimeStamps, activityTime
               <ColouredHat fill={colors.gold}/>
               Pro Dawg
             </StartButton>
-          </ActivityContainer>
+          </ActivityContainer> */}
         </RehabActivityContainer>
         <Notification activityTimeStamps={activityTimeStamps}/>
       </Page>
