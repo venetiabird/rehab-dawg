@@ -4,22 +4,14 @@ import { useParams } from 'react-router-dom';
 
 import {Page} from '../../components/Page';
 import {Timer} from '../../components/Timer';
-import {DoneWalk} from '../../assets/svg/Done';
-import {RehabDawg} from '../../assets/svg/Dawg';
-import {ButtonBaseWithLink, Logo, LogoWrapper, DawgContainer } from '../../components/SharedStyles';
-import { white } from '../../utils/constants';
+import { DoneActivity } from '../../assets/svg/Done';
+import { RehabDawg } from '../../assets/svg/Dawg';
+import { DoneButton, Logo, LogoWrapper, DawgContainer } from '../../components/SharedStyles';
+import { colors } from '../../utils/constants';
 import { IWalk, WalkName } from '../../utils/types';
-import { calculateActivityTime } from '../../utils/timeCalculation';
+import { calculateActivityTime, sessionTime } from '../../utils/timeCalculation';
 import { GradeMap } from '../../utils/constants';
 
-const DoneButton = styled(ButtonBaseWithLink)`
-  background: black;
-  width: 25%;
-`;
-
-const sessionTime = (walkName: WalkName): number => {
-  return GradeMap[walkName];
-};
 
 interface IProps {
   setWalkHistory: (walk: React.Dispatch<IWalk[]>) => void
@@ -59,11 +51,11 @@ export const ActiveWalk: React.FC<IProps> = ({ setWalkHistory, walkTimeStamps, s
             </DawgContainer>
           </Logo>
         </LogoWrapper>
-        <Timer walkTime={walkTime} walkTimeStamps={walkTimeStamps} setWalkTimeStamps={setWalkTimeStamps} />
+        <Timer activityTime={walkTime} walkTimeStamps={walkTimeStamps} setWalkTimeStamps={setWalkTimeStamps} />
         <DoneButton to="/progress" onClick={handleClickOnDone}>
-          <DoneWalk fill={white} />
+          <DoneActivity fill={colors.white} />
             Done
-          <DoneWalk fill={white} />
+          {/* <DoneActivity fill={white} /> */}
         </DoneButton>
       </Page>
     </>

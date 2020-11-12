@@ -1,4 +1,9 @@
-import { IWalk} from './types'
+import { IWalk, WalkName, TrickGrade} from './types'
+import { GradeMap } from './constants';
+
+export const sessionTime = (activityName: WalkName | TrickGrade ): number => {
+  return GradeMap[activityName];
+};
 
 /** 
  * The return time is in seconds

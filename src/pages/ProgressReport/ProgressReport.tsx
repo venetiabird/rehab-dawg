@@ -8,12 +8,12 @@ import { Pagination } from '../../components/Pagination';
 import { ProgressNotification } from '../../components/ProgressNotification';
 import { IWalk } from '../../utils/types';
 import { LogoWrapper, Logo } from '../../components/SharedStyles';
-import { red } from '../../utils/constants';
+import { colors } from '../../utils/constants';
 import { calculateWeeklyActivityTime } from '../../utils/timeCalculation';
 
 const ReportContainer = styled.div`
   padding: 1
-  border: 3px solid ${red};
+  border: 3px solid ${colors.red};
   height: 350px;
   width: 75%;
   alignment-baseline: baseline

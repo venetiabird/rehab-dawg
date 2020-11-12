@@ -2,11 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 import moment from 'moment';
 import { IWalk, WalkName } from '../utils/types';
-import { blue } from '../utils/constants';
+import { colors } from '../utils/constants';
 import { calculateActivityTime } from '../utils/timeCalculation'
 
 const WalkContainer = styled.div`
-  border: 0px solid ${blue};
+  border: 0px solid ${colors.blue};
   border-radius: 5px;
   padding: 10px;
   margin: 0 12px;
@@ -15,7 +15,7 @@ const WalkContainer = styled.div`
 `;
 
 const ReportItemText = styled.div`
-    color: ${blue};
+    color: ${colors.blue};
     font-size: 12px;
 `;
 

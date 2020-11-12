@@ -3,8 +3,8 @@ import styled from 'styled-components';
 
 import { Page } from '../components/Page';
 import { ButtonBaseWithLink, LogoWrapper, Logo, DawgContainer } from '../components/SharedStyles';
-import { ColouredPaw } from '../assets/svg/ColouredShapes';
-import { green, red, blue, gutterWidth } from '../utils/constants';
+import { ColouredPaw, ColouredHat } from '../assets/svg/ColouredShapes';
+import { colors, gutterWidth } from '../utils/constants';
 import { RehabDawg } from '../assets/svg/Dawg';
 import Notification from '../components/Notification';
 import { GradeMap } from '../utils/constants';
@@ -18,9 +18,11 @@ const StartButton = styled(ButtonBaseWithLink)`
 const RehabActivityContainer = styled.div`
 flex-direction: column;
 display: flex;
-align-items: center;
+align-items: left;
 justify-content: space-around;
-padding: 0 ${gutterWidth}px;
+border: 0px solid ${colors.red};
+margin: 0px 0 20px;
+padding: 0px ${gutterWidth}px 40px 0px;
 `;
 
 const HeadingContainer = styled.h3`
@@ -30,7 +32,7 @@ align-items: left
 font-size: 1.5em;
 border-radius: 0;
 text-align: left;
-border: 0px solid ${blue};
+border: 0px solid ${colors.blue};
 flex-direction: row
 `
 
@@ -43,10 +45,12 @@ justify-content: space-around;
 interface IProps {
   setWalkTimeStamps: (walkTimeStamp: React.Dispatch<number[]> | number[]) => void;
   walkTimeStamps: number[];
+  cavalettiTimeStamps: [number, number]
 };
 
-export const HomePage: React.FC<IProps> = ({ setWalkTimeStamps, walkTimeStamps }) => {
-  const handleStartButtonClick = () => setWalkTimeStamps([Date.now()]);
+export const HomePage: React.FC<IProps> = ({ setWalkTimeStamps, walkTimeStamps, cavalettiTimeStamps }) => {
+  const handleStartWalkButtonClick = () => setWalkTimeStamps([Date.now()]);
+  const handleStartCavalettiButtonClick = () => setWalkTimeStamps([Date.now()]);
   return (
     <>
       <Page heading={''}>
@@ -54,9 +58,9 @@ export const HomePage: React.FC<IProps> = ({ setWalkTimeStamps, walkTimeStamps }
           <Logo>
             Rehab Dawg
             <DawgContainer>
-              <RehabDawg fill={green}/>
-              <RehabDawg fill={blue}/>
-              <RehabDawg fill={red}/>
+              <RehabDawg fill={colors.green}/>
+              <RehabDawg fill={colors.blue}/>
+              <RehabDawg fill={colors.red}/>
             </DawgContainer>
           </Logo>
         </LogoWrapper>
@@ -65,28 +69,36 @@ export const HomePage: React.FC<IProps> = ({ setWalkTimeStamps, walkTimeStamps }
             Walks
           </HeadingContainer>
           <ActivityContainer>
-            <StartButton to="/walks/green" onClick={handleStartButtonClick}>
-              <ColouredPaw fill={green} />
+            <StartButton to="/walks/green" onClick={handleStartWalkButtonClick}>
+              <ColouredPaw fill={colors.green} />
                 {GradeMap['green']} mins
             </StartButton>
-            <StartButton to="/walks/blue" onClick={handleStartButtonClick}>
-              <ColouredPaw fill={blue} />
+            <StartButton to="/walks/blue" onClick={handleStartWalkButtonClick}>
+              <ColouredPaw fill={colors.blue} />
               {GradeMap['blue']} mins
             </StartButton>
-            <StartButton to="/walks/red" onClick={handleStartButtonClick}>
-              <ColouredPaw fill={red}/>
+            <StartButton to="/walks/red" onClick={handleStartWalkButtonClick}>
+              <ColouredPaw fill={colors.red}/>
               {GradeMap['red']} mins
             </StartButton>
           </ActivityContainer>
-          {/* <HeadingContainer>
+          <HeadingContainer>
             Cavaletti
-          </HeadingContainer> */}
-          {/* <ActivityContainer>
-          <StartButton to="/cavaletti/green" onClick={handleStartButtonClick}>
-              <ColouredSquare fill={red}/>
-              15 mins
+          </HeadingContainer>
+          <ActivityContainer>
+          <StartButton to="/cavaletti/bronze" onClick={handleStartCavalettiButtonClick}>
+              <ColouredHat fill={colors.bronze}/>
+              {GradeMap['bronze']} mins
             </StartButton>
-          </ActivityContainer> */}
+            <StartButton to="/cavaletti/silver" onClick={handleStartCavalettiButtonClick}>
+              <ColouredHat fill={colors.silver}/>
+              {GradeMap['silver']} mins
+            </StartButton>
+            <StartButton to="/cavaletti/gold" onClick={handleStartCavalettiButtonClick}>
+              <ColouredHat fill={colors.gold}/>
+              {GradeMap['gold']} mins
+            </StartButton>
+          </ActivityContainer>
         </RehabActivityContainer>
         <Notification walkTimeStamps={walkTimeStamps}/>
       </Page>

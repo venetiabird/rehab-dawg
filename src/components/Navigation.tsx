@@ -5,12 +5,12 @@ import styled from 'styled-components';
 import { RehabHome } from '../assets/svg/Home';
 import { RehabProgress } from '../assets/svg/Progress';
 
-import { white, blue, navBarHeight} from '../utils/constants';
+import { colors, navBarHeight} from '../utils/constants';
 
 const NavIconContainer = styled.div`
   display: flex;
   justify-content: space-around;
-  border-top: solid 2px ${white};
+  border-top: solid 2px ${colors.white};
   // padding: 5px 0;
   flex-grow: 0;
   flex-basis: 50px;
@@ -20,7 +20,7 @@ const NavIconContainer = styled.div`
   justify-content: space-around;
   // add an extra 0.5 to the height to account for the 0.5px border
   min-height: ${navBarHeight}.5px;
-  background-color: ${white};
+  background-color: ${colors.white};
   color: black;
   box-sizing: border-box;
   align-items: center;
@@ -43,10 +43,10 @@ export const Navigation: React.FC = () => {
     <>
       <NavIconContainer>
         <NavLink to='/'>
-          <RehabHome fill={blue}/>
+          <RehabHome fill={colors.blue}/>
         </NavLink>
         <NavLink to='/progress'>
-          <RehabProgress fill={blue}/>
+          <RehabProgress fill={colors.blue}/>
         </NavLink>
       </NavIconContainer>
     </>

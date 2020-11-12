@@ -2,10 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import moment from 'moment';
 
-import {blue, silver } from '../utils/constants';
+import { colors } from '../utils/constants';
 
 const NotificationContainer = styled.div`
-    border: 1px solid ${silver};
+    border: 1px solid ${colors.silver};
     border-radius: 5px;
     padding: 6px;
     margin: 0 12px 12px;
@@ -14,13 +14,13 @@ const NotificationContainer = styled.div`
 
 const NotificationText = styled.p`
     font-size: 16px;
-    color: ${blue};
+    color: ${colors.blue};
     text-align: center;
 `;
 
 const StrongSpan = styled.span`
   font-weight: 700;
-  color: ${blue};
+  color: ${colors.blue};
 `;
 
 interface IProps {

@@ -1,13 +1,21 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Paw } from '@styled-icons/ionicons-solid/Paw';
+import { HatCowboy } from '@styled-icons/fa-solid/HatCowboy';
 
-const RedPaw = styled(Paw)`
+const DawgPaw = styled(Paw)`
   height: 20px;
   display: inline;
   width: 20px;
   margin-right: 10px;
 `;
+
+const DawgHat = styled(HatCowboy)`
+  height: 20px;
+  display: inline;
+  width: 20px;
+  margin-right: 10px;
+`
 
 const Svg = styled.svg`
   height: 8px;
@@ -28,5 +36,9 @@ export const ColouredSquare: React.FC<IProps> = ({ fill = 'black' }) => (
 );
 
 export const ColouredPaw: React.FC<IProps> = ({ fill = 'black'}) => (
-  <RedPaw color={fill}/>
+  <DawgPaw color={fill} />
+);
+
+export const ColouredHat: React.FC<IProps> = ( { fill = 'black'}) => (
+  <DawgHat color={fill} />
 );

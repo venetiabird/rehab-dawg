@@ -6,7 +6,7 @@ import {ResumeWalk} from '../assets/svg/Resume';
 import {PauseWalk} from '../assets/svg/Pause';
 import {formatTimeLeft } from '../utils/timeFormatter';
 import {calculateActivityTime } from '../utils/timeCalculation';
-import { darkgreen, orange } from '../utils/constants';
+import { colors } from '../utils/constants';
 
 const CountDownDawg = styled.div`
   height: 10px;
@@ -21,13 +21,13 @@ const PauseResumeContainer = styled.div`
 `;
 interface IProps {
   walkTimeStamps: number[];
-  walkTime: number;
+  activityTime: number;
   setWalkTimeStamps: (walkTimeStamp: React.Dispatch<number[]> | number[]) => void;
 }
 
-export const Timer: React.FC<IProps> = ({ walkTime, walkTimeStamps, setWalkTimeStamps }) => {
+export const Timer: React.FC<IProps> = ({ activityTime: activityTime, walkTimeStamps, setWalkTimeStamps }) => {
   const [timeElapsed, setTimeElapsed] = useState(0);
-  let walkTimeSeconds = walkTime * 60;
+  let walkTimeSeconds = activityTime * 60;
   const [isActive, setIsActive] = useState(true);
   
   useInterval(() => {
@@ -50,9 +50,9 @@ export const Timer: React.FC<IProps> = ({ walkTime, walkTimeStamps, setWalkTimeS
       </CountDownDawg>
       <PauseResumeContainer>
         {isActive ? (
-        <PauseWalk fill={orange} handleClick={toggle} />
+        <PauseWalk fill={colors.orange} handleClick={toggle} />
         ) : (
-          <ResumeWalk fill={darkgreen} handleClick={toggle} />
+          <ResumeWalk fill={colors.darkgreen} handleClick={toggle} />
         )}
       </PauseResumeContainer>
     </>

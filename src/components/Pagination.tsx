@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-import { blue } from '../utils/constants'; 
+import { colors } from '../utils/constants'; 
 
 const paginationButtonStyle = `
   border: none;
@@ -16,8 +16,8 @@ const paginationButtonStyle = `
 
 export const PaginationButton = styled(Link)`
 ${paginationButtonStyle}
-  color: ${blue};
-  border: 1px solid ${blue};
+  color: ${colors.blue};
+  border: 1px solid ${colors.blue};
   margin: 2px;
 `;
 
