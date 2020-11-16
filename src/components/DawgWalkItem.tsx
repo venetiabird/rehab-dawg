@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import moment from 'moment';
-import { IWalk, WalkName } from '../utils/types';
+import { IActivity, IWalk, WalkName } from '../utils/types';
 import { colors } from '../utils/constants';
 import { calculateActivityTime } from '../utils/timeCalculation'
 

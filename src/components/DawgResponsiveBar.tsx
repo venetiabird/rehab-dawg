@@ -1,11 +1,12 @@
 import React from 'react';
 
-import { IWalk, WalkName, IDisplayGraphDataPoint } from '../utils/types';
+import { IActivity, IWalk, ICavaletti, WalkName, IDisplayGraphDataPoint } from '../utils/types';
 import { calculateActivityTime } from '../utils/timeCalculation';
 import { ResponsiveDawgActivityRenderer } from './ResponsiveDawgActivityRenderer';
 
 interface IProps {
     walkHistory: IWalk[];
+    cavalettiHistory: IActivity[];
   }
 
 const walkLength = (walkName: WalkName): string => {
@@ -184,16 +185,16 @@ interface IGraphDataPoint {
 //   ]
 
 
-export const DawgResponsiveBar: React.FC<IProps> = ( { walkHistory } ) => {
-  const graphData = groupByDate(walkHistory);
-  const graphDataPts:IDisplayGraphDataPoint[] = Object.entries(graphData).map(
+export const DawgResponsiveBar: React.FC<IProps> = ( { walkHistory, cavalettiHistory } ) => {
+  const walkGraphData = groupByDate(walkHistory);
+  const walkGraphDataPts:IDisplayGraphDataPoint[] = Object.entries(walkGraphData).map(
     ([key, value]) => {
       return {date: key, short: value.short, medium: value.medium, long: value.long}
     }
   );
-  if(graphDataPts.length > 0) {
-    return <ResponsiveDawgActivityRenderer graphDataPts={graphDataPts}/>
+  if(walkGraphDataPts.length > 0) {
+    return <ResponsiveDawgActivityRenderer graphDataPts={walkGraphDataPts}/>
   }
-    return null // vs <></> both are ok
+  return null // vs <></> both are ok
   }
 export default DawgResponsiveBar;

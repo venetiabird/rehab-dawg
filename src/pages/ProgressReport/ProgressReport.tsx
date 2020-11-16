@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { Page } from '../../components/Page';
 import { DawgResponsiveBar } from '../../components/DawgResponsiveBar';
 import { ProgressNotification } from '../../components/ProgressNotification';
-import { IWalk } from '../../utils/types';
+import { ICavaletti, IWalk, IActivity } from '../../utils/types';
 import { LogoWrapper, Logo } from '../../components/SharedStyles';
 import { colors } from '../../utils/constants';
 import { calculateWeeklyActivityTime } from '../../utils/timeCalculation';
@@ -19,10 +19,12 @@ const ReportContainer = styled.div`
 
 interface IProps {
   walkHistory: IWalk[]
+  cavalettiHistory: IActivity[]
 }
-export const ProgressReport: React.FC<IProps> = ({ walkHistory }) => {
+export const ProgressReport: React.FC<IProps> = ({ walkHistory, cavalettiHistory }) => {
   // Get current walks
-  const totalActivityTime = calculateWeeklyActivityTime(walkHistory) * 1000;
+  const totalWalkActivityTime = calculateWeeklyActivityTime(walkHistory) * 1000;
+  const totalCavelettieActivityTime = calculateWeeklyActivityTime(cavalettiHistory) * 1000;
 
   return (
     <>
@@ -33,8 +35,8 @@ export const ProgressReport: React.FC<IProps> = ({ walkHistory }) => {
           </Logo>
         </LogoWrapper>
         <ReportContainer>
-          <ProgressNotification totalActivityTime={totalActivityTime}/>
-        <DawgResponsiveBar walkHistory={walkHistory}/>   
+          <ProgressNotification totalWalkActivityTime={totalWalkActivityTime} totalCavelettiActivityTime={totalCavelettieActivityTime}/>
+        <DawgResponsiveBar walkHistory={walkHistory} cavalettiHistory={cavalettiHistory}/>   
         </ReportContainer>
       </Page>
     </>

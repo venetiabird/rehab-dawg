@@ -19,6 +19,7 @@ export const Caveletti: React.FC<IProps> = ({ setCavalettiHistory, setActivityTi
     const handleClickOnDone = (): void => {
       const currentActivity: ICavaletti = {
         cavaletti: grade,
+        activityType: ActivityType.Cavaletti,
         activityTimeStamps: [...activityTimeStamps, Date.now()]
       }
       setCavalettiHistory((history: ICavaletti[]): ICavaletti[] => [...history, currentActivity]);

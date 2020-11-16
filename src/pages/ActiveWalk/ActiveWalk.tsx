@@ -7,12 +7,12 @@ import { DoneActivity } from '../../assets/svg/Done';
 import { RehabDawg } from '../../assets/svg/Dawg';
 import { DoneButton, Logo, LogoWrapper, DawgContainer } from '../../components/SharedStyles';
 import { colors } from '../../utils/constants';
-import { ActivityType, IWalk } from '../../utils/types';
+import { ActivityType, IActivity, IWalk } from '../../utils/types';
 import { calculateActivityTime, sessionTime } from '../../utils/timeCalculation';
 
 
 interface IProps {
-  setWalkHistory: (walk: React.Dispatch<IWalk[]>) => void
+  setWalkHistory: (walk: React.Dispatch<IActivity[]>) => void
   setActivityTimeStamps: (activityTimeStamp: React.Dispatch<number[]> | number[]) => void
   activityTimeStamps: number[]
 }
@@ -33,9 +33,10 @@ export const ActiveWalk: React.FC<IProps> = ({ setWalkHistory, activityTimeStamp
     }
     let currentWalk: IWalk = {
       walk: grade,
+      activityType: ActivityType.Walk,
       activityTimeStamps: tempTimeStamps
     }
-    setWalkHistory((history: IWalk[]): IWalk[] => [...history, currentWalk]);
+    setWalkHistory((history: IActivity[]): IActivity[] => [...history, currentWalk]);
   };
   
   return (

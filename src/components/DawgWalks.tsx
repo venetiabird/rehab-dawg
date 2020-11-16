@@ -1,7 +1,7 @@
 import React from 'react';
 import { Guid } from "guid-typescript";
 
-import { IWalk } from '../utils/types';
+import { IActivity, IWalk } from '../utils/types';
 import { DawgWalkItem } from '../components/DawgWalkItem'; 
 
 interface IProps {

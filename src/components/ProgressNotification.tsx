@@ -24,16 +24,21 @@ const StrongSpan = styled.span`
 `;
 
 interface IProps {
-  totalActivityTime: number
+  totalWalkActivityTime: number
+  totalCavelettiActivityTime: number
 }
 
-export const ProgressNotification: React.FC<IProps> = ({ totalActivityTime }) => {
-  const formatActivityTime = moment(totalActivityTime).format('mm:ss');
-    if(totalActivityTime > 0) {
+export const ProgressNotification: React.FC<IProps> = ({ totalWalkActivityTime, totalCavelettiActivityTime }) => {
+  const formatWalkActivityTime = moment(totalWalkActivityTime).format('mm:ss');
+  const formatCavalettiActivityTime = moment(totalCavelettiActivityTime).format('mm:ss');
+    if(totalWalkActivityTime > 0 || totalCavelettiActivityTime > 0) {
     return (
       <NotificationContainer>
-        <NotificationText>Total Activity Time 
-          <StrongSpan> {formatActivityTime}</StrongSpan>
+        <NotificationText>Walk Activity Time 
+          <StrongSpan> {formatWalkActivityTime}</StrongSpan>
+        </NotificationText>
+        <NotificationText>Cavaletti Activity Time 
+          <StrongSpan> {formatCavalettiActivityTime}</StrongSpan>
         </NotificationText>
       </NotificationContainer>
     );
