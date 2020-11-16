@@ -17,10 +17,9 @@ const MaxWidthContainer = styled.div`
 
 const Routes: React.FC = () => {
   const location = useLocation();
-  const [ walkHistory, setWalkHistory ] = useLocalStorage<IWalk[]>('walkHistory', []); 
-  // const [ cavalettiHistory, setCavalettiHistory ] = useLocalStorage<ICavaletti[]>('cavalettiHistory', []); 
-  // const [ cavalettiTimeStamps, setCavalettiStamps ] = useLocalStorage<number[]>('cavalettiTimeStamps', []); 
-  const [ activityTimeStamps, setActivityTimeStamps ] = useLocalStorage<number[]>('activityTimeStamps', []); 
+  const [ walkHistory, setWalkHistory ] = useLocalStorage<IWalk[]>('walkHistory', []);
+  const [ cavalettiHistory, setCavalettiHistory ] = useLocalStorage<ICavaletti[]>('cavalettiHistory', []);
+  const [ activityTimeStamps, setActivityTimeStamps ] = useLocalStorage<number[]>('activityTimeStamps', []);
   return (
     <MaxWidthContainer>
       <Switch location={location}>
@@ -33,7 +32,9 @@ const Routes: React.FC = () => {
 
         </Route>
         {/* Below is a different style of adding a route */}
-        <Route path="/cavaletti/:grade/" exact component={Caveletti} setActivityTimeStamps={setActivityTimeStamps} /> 
+        <Route path="/cavaletti/:grade/" exact>
+          <Caveletti setCavalettiHistory={setCavalettiHistory} activityTimeStamps={activityTimeStamps} setActivityTimeStamps={setActivityTimeStamps} />
+        </Route>
         <Route path="/progress" exact>
           <ProgressReport walkHistory={walkHistory} />
         </Route>

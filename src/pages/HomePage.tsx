@@ -48,8 +48,7 @@ interface IProps {
 };
 
 export const HomePage: React.FC<IProps> = ({ setActivityTimeStamps, activityTimeStamps }) => {
-  const handleStartWalkButtonClick = () => setActivityTimeStamps([Date.now()]);
-  const handleStartCavalettiButtonClick = () => setActivityTimeStamps([Date.now()]);
+  const handleStartActivityButtonClick = () => setActivityTimeStamps([Date.now()]);
   return (
     <>
       <Page heading={''}>
@@ -68,36 +67,36 @@ export const HomePage: React.FC<IProps> = ({ setActivityTimeStamps, activityTime
             Walks
           </HeadingContainer>
           <ActivityContainer>
-            <StartButton to="/walks/green" onClick={handleStartWalkButtonClick}>
+            <StartButton to="/walks/green" onClick={handleStartActivityButtonClick}>
               <ColouredPaw fill={colors.green} />
                 {GradeMap['green']} mins
             </StartButton>
-            <StartButton to="/walks/blue" onClick={handleStartWalkButtonClick}>
+            <StartButton to="/walks/blue" onClick={handleStartActivityButtonClick}>
               <ColouredPaw fill={colors.blue} />
               {GradeMap['blue']} mins
             </StartButton>
-            <StartButton to="/walks/red" onClick={handleStartWalkButtonClick}>
+            <StartButton to="/walks/red" onClick={handleStartActivityButtonClick}>
               <ColouredPaw fill={colors.red}/>
               {GradeMap['red']} mins
             </StartButton>
           </ActivityContainer>
-          {/* <HeadingContainer>
+          <HeadingContainer>
             Cavaletti
           </HeadingContainer>
           <ActivityContainer>
-          <StartButton to="/cavaletti/bronze" onClick={handleStartCavalettiButtonClick}>
+          <StartButton to="/cavaletti/bronze" onClick={handleStartActivityButtonClick}>
               <ColouredHat fill={colors.bronze}/>
               Rookie
             </StartButton>
-            <StartButton to="/cavaletti/silver" onClick={handleStartCavalettiButtonClick}>
+            <StartButton to="/cavaletti/silver" onClick={handleStartActivityButtonClick}>
               <ColouredHat fill={colors.silver}/>
               Hot Dawg
             </StartButton>
-            <StartButton to="/cavaletti/gold" onClick={handleStartCavalettiButtonClick}>
+            <StartButton to="/cavaletti/gold" onClick={handleStartActivityButtonClick}>
               <ColouredHat fill={colors.gold}/>
               Pro Dawg
             </StartButton>
-          </ActivityContainer> */}
+          </ActivityContainer>
         </RehabActivityContainer>
         <Notification activityTimeStamps={activityTimeStamps}/>
       </Page>

@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import { useInterval } from '../hooks/useInterval';
-import {ResumeWalk} from '../assets/svg/Resume';
-import {PauseWalk} from '../assets/svg/Pause';
-import {formatTimeLeft } from '../utils/timeFormatter';
-import {calculateActivityTime } from '../utils/timeCalculation';
+import { ResumeWalk } from '../assets/svg/Resume';
+import { PauseWalk } from '../assets/svg/Pause';
+import { formatTimeLeft, formatTimeLeftCountUp } from '../utils/timeFormatter';
+import { calculateActivityTime } from '../utils/timeCalculation';
 import { colors } from '../utils/constants';
 import { ActivityType } from '../utils/types';
 
@@ -32,8 +32,8 @@ export const Timer: React.FC<IProps> = ({ activityType, activityTime, activityTi
   const [timeElapsed, setTimeElapsed] = useState(0);
   let walkTimeSeconds = activityTime * 60;
   const [isActive, setIsActive] = useState(true);
-  const isWalk = activityType === ActivityType.Walk ? true : false;
-  
+  console.log(" activityTimeStamps==>", activityTimeStamps)
+  console.log(" activityType==>", activityType)
   useInterval(() => {
     const activeWalkTime = calculateActivityTime([
       ...activityTimeStamps, 
@@ -50,7 +50,10 @@ export const Timer: React.FC<IProps> = ({ activityType, activityTime, activityTi
   return (
     <>
       <CountDownDawg>
-        {isWalk ? formatTimeLeft(walkTimeSeconds - timeElapsed) : formatTimeLeft(walkTimeSeconds )}
+        {activityType === ActivityType.Walk ?
+          formatTimeLeft(walkTimeSeconds - timeElapsed) : 
+          formatTimeLeftCountUp(walkTimeSeconds + timeElapsed)
+        }
       </CountDownDawg>
       <PauseResumeContainer>
         {isActive ? (

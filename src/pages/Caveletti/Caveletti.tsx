@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 
 import { useParams } from 'react-router-dom';
 import {Page} from '../../components/Page';
@@ -9,18 +8,21 @@ import { ICavaletti, ActivityType } from '../../utils/types';
 import {Logo, LogoWrapper, DawgContainer, DoneButton } from '../../components/SharedStyles';
 import { DoneActivity } from '../../assets/svg/Done';
 import { RehabFigure8Dawg } from '../../assets/svg/Dawg';
-import { sessionTime } from '../../utils/timeCalculation';
 
 interface IProps {
-  setCavalettiHistory: ICavaletti[];
+  setCavalettiHistory: (cavaletti: React.Dispatch<ICavaletti[]>) => void
+  setActivityTimeStamps: (activityTimeStamp: React.Dispatch<number[]> | number[]) => void;
   activityTimeStamps: number[];
-  setActivityTimeStamps: (cavalettiTimeStamp: React.Dispatch<number[]> | number[]) => void;
 }
 export const Caveletti: React.FC<IProps> = ({ setCavalettiHistory, setActivityTimeStamps, activityTimeStamps}) => {
     const { grade } = useParams();
-    console.log('grade', grade)
-    const activityTime = sessionTime(grade);
-    const handleClickOnDone = (): void => { console.log('hi')}
+    const handleClickOnDone = (): void => {
+      const currentActivity: ICavaletti = {
+        cavaletti: grade,
+        activityTimeStamps: [...activityTimeStamps, Date.now()]
+      }
+      setCavalettiHistory((history: ICavaletti[]): ICavaletti[] => [...history, currentActivity]);
+    };
   return (
     <>
       <Page heading={''}>
@@ -32,9 +34,8 @@ export const Caveletti: React.FC<IProps> = ({ setCavalettiHistory, setActivityTi
             </DawgContainer>
           </Logo>
         </LogoWrapper>
-        {/* Free timer <Timer activityTime={activityTime} /> */}
-        <Timer activityType={ActivityType.Cavaletti} activityTime={1} activityTimeStamps={activityTimeStamps} setActivityTimeStamps={setActivityTimeStamps} />
-        <DoneButton to="/home" onClick={handleClickOnDone}>
+        <Timer activityType={ActivityType.Cavaletti} activityTime={0} activityTimeStamps={activityTimeStamps} setActivityTimeStamps={setActivityTimeStamps} />
+        <DoneButton to="/progress" onClick={handleClickOnDone}>
           <DoneActivity fill={colors.white} />
           Done
         </DoneButton>

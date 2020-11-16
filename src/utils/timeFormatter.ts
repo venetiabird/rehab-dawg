@@ -26,12 +26,9 @@ export const formatTimeLeft = (difference: number): Dictionary<number> | string 
   return 'All done!';
 };
 
-export const formatTimeLeftCountUp = (difference: number, walkTime: number): Dictionary<number> | string => {
-  if (difference < walkTime) {
+export const formatTimeLeftCountUp = (difference: number): Dictionary<number> | string => {
     const timeLeftMap = formatTime(difference);
     return `${pad(timeLeftMap['minutes'])}:${pad(timeLeftMap['seconds'])}`;
-  } 
-  return 'All done!';
 };
 
 const pad = (input: number): string => input.toString().padStart(2, '0');

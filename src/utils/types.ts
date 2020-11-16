@@ -5,16 +5,16 @@ export interface IWalk {
   activityTimeStamps: number[];
   walk: WalkName;
 }
+export interface ICavaletti {
+  activityTimeStamps: number[]
+  cavaletti: TrickGrade;
+}
 
 export enum ActivityType {
   Walk,
   Cavaletti
 }
 
-export interface ICavaletti {
-  cavaletti: TrickGrade;
-  activityTimeStamps: number[]
-}
 
 export interface IDisplayGraphDataPoint {
   date: string;

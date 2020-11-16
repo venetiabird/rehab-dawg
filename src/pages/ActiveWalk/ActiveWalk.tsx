@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 import { useParams } from 'react-router-dom';
 
 import {Page} from '../../components/Page';
@@ -8,9 +7,8 @@ import { DoneActivity } from '../../assets/svg/Done';
 import { RehabDawg } from '../../assets/svg/Dawg';
 import { DoneButton, Logo, LogoWrapper, DawgContainer } from '../../components/SharedStyles';
 import { colors } from '../../utils/constants';
-import { ActivityType, IWalk, WalkName } from '../../utils/types';
+import { ActivityType, IWalk } from '../../utils/types';
 import { calculateActivityTime, sessionTime } from '../../utils/timeCalculation';
-import { GradeMap } from '../../utils/constants';
 
 
 interface IProps {
@@ -55,7 +53,6 @@ export const ActiveWalk: React.FC<IProps> = ({ setWalkHistory, activityTimeStamp
         <DoneButton to="/progress" onClick={handleClickOnDone}>
           <DoneActivity fill={colors.white} />
             Done
-          {/* <DoneActivity fill={white} /> */}
         </DoneButton>
       </Page>
     </>
