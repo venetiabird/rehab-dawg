@@ -34,10 +34,10 @@ export const ProgressNotification: React.FC<IProps> = ({ totalWalkActivityTime, 
     if(totalWalkActivityTime > 0 || totalCavelettiActivityTime > 0) {
     return (
       <NotificationContainer>
-        <NotificationText>Walk Activity Time 
+        <NotificationText>Total Walk Time 
           <StrongSpan> {formatWalkActivityTime}</StrongSpan>
         </NotificationText>
-        <NotificationText>Cavaletti Activity Time 
+        <NotificationText>Total Cavaletti Time 
           <StrongSpan> {formatCavalettiActivityTime}</StrongSpan>
         </NotificationText>
       </NotificationContainer>

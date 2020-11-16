@@ -4,25 +4,25 @@ import { useParams } from 'react-router-dom';
 import {Page} from '../../components/Page';
 import {Timer} from '../../components/Timer';
 import { colors } from '../../utils/constants';
-import { ICavaletti, ActivityType } from '../../utils/types';
+import { IActivity, ActivityType } from '../../utils/types';
 import {Logo, LogoWrapper, DawgContainer, DoneButton } from '../../components/SharedStyles';
 import { DoneActivity } from '../../assets/svg/Done';
 import { RehabFigure8Dawg } from '../../assets/svg/Dawg';
 
 interface IProps {
-  setCavalettiHistory: (cavaletti: React.Dispatch<ICavaletti[]>) => void
+  setCavalettiHistory: (activity: React.Dispatch<IActivity[]>) => void
   setActivityTimeStamps: (activityTimeStamp: React.Dispatch<number[]> | number[]) => void;
   activityTimeStamps: number[];
 }
 export const Caveletti: React.FC<IProps> = ({ setCavalettiHistory, setActivityTimeStamps, activityTimeStamps}) => {
     const { grade } = useParams();
     const handleClickOnDone = (): void => {
-      const currentActivity: ICavaletti = {
-        cavaletti: grade,
+      const currentActivity: IActivity = {
+        name: grade,
         activityType: ActivityType.Cavaletti,
         activityTimeStamps: [...activityTimeStamps, Date.now()]
       }
-      setCavalettiHistory((history: ICavaletti[]): ICavaletti[] => [...history, currentActivity]);
+      setCavalettiHistory((history: IActivity[]): IActivity[] => [...history, currentActivity]);
     };
   return (
     <>

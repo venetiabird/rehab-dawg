@@ -4,14 +4,15 @@ export interface Dictionary<T> {
 export interface IActivity {
   activityTimeStamps: number[];
   activityType: ActivityType
+  name: WalkName | TrickGrade
 }
 
-export interface IWalk extends IActivity{
-  walk: WalkName;
-}
-export interface ICavaletti extends IActivity {
-  cavaletti: TrickGrade;
-}
+// export interface IWalk extends IActivity{
+//   walk: WalkName;
+// }
+// export interface ICavaletti extends IActivity {
+//   cavaletti: TrickGrade;
+// }
 
 export enum ActivityType {
   Walk,

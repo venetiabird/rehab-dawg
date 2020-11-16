@@ -32,8 +32,6 @@ export const Timer: React.FC<IProps> = ({ activityType, activityTime, activityTi
   const [timeElapsed, setTimeElapsed] = useState(0);
   let walkTimeSeconds = activityTime * 60;
   const [isActive, setIsActive] = useState(true);
-  console.log(" activityTimeStamps==>", activityTimeStamps)
-  console.log(" activityType==>", activityType)
   useInterval(() => {
     const activeWalkTime = calculateActivityTime([
       ...activityTimeStamps, 

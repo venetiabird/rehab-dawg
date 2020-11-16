@@ -7,7 +7,7 @@ import { DoneActivity } from '../../assets/svg/Done';
 import { RehabDawg } from '../../assets/svg/Dawg';
 import { DoneButton, Logo, LogoWrapper, DawgContainer } from '../../components/SharedStyles';
 import { colors } from '../../utils/constants';
-import { ActivityType, IActivity, IWalk } from '../../utils/types';
+import { ActivityType, IActivity } from '../../utils/types';
 import { calculateActivityTime, sessionTime } from '../../utils/timeCalculation';
 
 
@@ -31,8 +31,8 @@ export const ActiveWalk: React.FC<IProps> = ({ setWalkHistory, activityTimeStamp
     } else {
       tempTimeStamps = [...tempTimeStamps, doneTime]
     }
-    let currentWalk: IWalk = {
-      walk: grade,
+    let currentWalk: IActivity = {
+      name: grade,
       activityType: ActivityType.Walk,
       activityTimeStamps: tempTimeStamps
     }

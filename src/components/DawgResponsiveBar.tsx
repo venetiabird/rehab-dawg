@@ -1,32 +1,35 @@
 import React from 'react';
 
-import { IActivity, IWalk, ICavaletti, WalkName, IDisplayGraphDataPoint } from '../utils/types';
+import { IActivity, WalkName, IDisplayGraphDataPoint, TrickGrade } from '../utils/types';
 import { calculateActivityTime } from '../utils/timeCalculation';
-import { ResponsiveDawgActivityRenderer } from './ResponsiveDawgActivityRenderer';
+import { ResponsiveDawgActivityRenderer as ResponsiveDawgActivityRenderer } from './ResponsiveDawgActivityRenderer';
 
 interface IProps {
-    walkHistory: IWalk[];
+    walkHistory: IActivity[];
     cavalettiHistory: IActivity[];
   }
 
-const walkLength = (walkName: WalkName): string => {
+const activityLength = (activityName: WalkName | TrickGrade): string => {
     const walkMap = {
         'green': 'short',
         'blue': 'medium',
         'red': 'long',
+        'bronze': 'basic poles',
+        'silver': 'figure of 8s',
+        'gold': 'competition ready'
     }   
-    return walkMap[walkName];
+    return walkMap[activityName];
 }
 
 const getDay = (datetime: number): string => {
     return new Date(datetime).toLocaleDateString('en-EN');
 }
 
-const groupByDate = (walks: IWalk[]): { [key: string]: IGraphDataPoint }  => {
-    const data =  walks.reduce((accum: { [key: string]: IGraphDataPoint }, walk: IWalk): { [key: string]: IGraphDataPoint } => {
-        const actTime: number = Math.ceil(calculateActivityTime(walk.activityTimeStamps) / 60);
-        const length = walkLength(walk.walk)
-        const computedDateIndex: string = getDay(walk.activityTimeStamps[0]);
+const groupByDate = (activity: IActivity[]): { [key: string]: IGraphDataPoint }  => {
+    const data =  activity.reduce((accum: { [key: string]: IGraphDataPoint }, a: IActivity): { [key: string]: IGraphDataPoint } => {
+        const actTime: number = Math.ceil(calculateActivityTime(a.activityTimeStamps) / 60);
+        const length = activityLength(a.name)
+        const computedDateIndex: string = getDay(a.activityTimeStamps[0]);
         const existingGraphData = accum[computedDateIndex];
         
         let graphDataPt: IGraphDataPoint
@@ -39,7 +42,7 @@ const groupByDate = (walks: IWalk[]): { [key: string]: IGraphDataPoint }  => {
           }
         } else {
             graphDataPt = {
-              date: new Date(walk.activityTimeStamps[0]),
+              date: new Date(a.activityTimeStamps[0]),
               short: length === 'short'? actTime : 0,
               medium: length === 'medium'? actTime : 0,
               long: length === 'long'? actTime : 0,
@@ -185,9 +188,15 @@ interface IGraphDataPoint {
 //   ]
 
 
-export const DawgResponsiveBar: React.FC<IProps> = ( { walkHistory, cavalettiHistory } ) => {
+export const DawgResponsiveGraphs: React.FC<IProps> = ( { walkHistory, cavalettiHistory } ) => {
   const walkGraphData = groupByDate(walkHistory);
+  const cavalettiGraphData = groupByDate(cavalettiHistory);
   const walkGraphDataPts:IDisplayGraphDataPoint[] = Object.entries(walkGraphData).map(
+    ([key, value]) => {
+      return {date: key, short: value.short, medium: value.medium, long: value.long}
+    }
+  );
+  const cavalettiGraphDataPts:IDisplayGraphDataPoint[] = Object.entries(cavalettiGraphData).map(
     ([key, value]) => {
       return {date: key, short: value.short, medium: value.medium, long: value.long}
     }
@@ -195,6 +204,9 @@ export const DawgResponsiveBar: React.FC<IProps> = ( { walkHistory, cavalettiHis
   if(walkGraphDataPts.length > 0) {
     return <ResponsiveDawgActivityRenderer graphDataPts={walkGraphDataPts}/>
   }
+  if(cavalettiGraphDataPts.length > 0) {
+    return <ResponsiveDawgActivityRenderer graphDataPts={walkGraphDataPts}/>
+  }
   return null // vs <></> both are ok
   }
-export default DawgResponsiveBar;
+export default DawgResponsiveGraphs;

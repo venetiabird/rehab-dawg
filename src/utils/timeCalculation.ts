@@ -1,4 +1,4 @@
-import { IActivity, WalkName, TrickGrade, ICavaletti} from './types'
+import { IActivity, WalkName, TrickGrade} from './types'
 import { GradeMap } from './constants';
 
 export const sessionTime = (activityName: WalkName | TrickGrade ): number => {

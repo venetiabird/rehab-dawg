@@ -7,7 +7,7 @@ import { HomePage } from '../pages/HomePage';
 import { ActiveWalk } from '../pages/ActiveWalk';
 import { Caveletti } from '../pages/Caveletti';
 import { ProgressReport } from '../pages/ProgressReport';
-import { IActivity, ICavaletti } from '../utils/types';
+import { IActivity } from '../utils/types';
 import { useLocalStorage } from '../hooks/useLocalStorage';
 
 const MaxWidthContainer = styled.div`
@@ -18,7 +18,7 @@ const MaxWidthContainer = styled.div`
 const Routes: React.FC = () => {
   const location = useLocation();
   const [ walkHistory, setWalkHistory ] = useLocalStorage<IActivity[]>('walkHistory', []);
-  const [ cavalettiHistory, setCavalettiHistory ] = useLocalStorage<ICavaletti[]>('cavalettiHistory', []);
+  const [ cavalettiHistory, setCavalettiHistory ] = useLocalStorage<IActivity[]>('cavalettiHistory', []);
   const [ activityTimeStamps, setActivityTimeStamps ] = useLocalStorage<number[]>('activityTimeStamps', []);
   return (
     <MaxWidthContainer>

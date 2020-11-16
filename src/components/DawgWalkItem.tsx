@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import moment from 'moment';
-import { IActivity, IWalk, WalkName } from '../utils/types';
+import { IActivity, WalkName } from '../utils/types';
 import { colors } from '../utils/constants';
 import { calculateActivityTime } from '../utils/timeCalculation'
 
@@ -24,7 +24,7 @@ const StrongSpan = styled.span`
 `;
 
 interface IProps {
-  walk: IWalk;
+  walk: IActivity;
   loading: boolean;
 }
 
@@ -45,13 +45,13 @@ export const DawgWalkItem: React.FC<IProps> = ({ walk, loading }) => {
   if(lastWalkTimeStamp) {
     const activityTime = calculateActivityTime(walk.activityTimeStamps) * 1000;
     const walkTime = moment(activityTime).format('mm:ss');
-    const walkName = walkGrade(walk.walk);
+    // const walkName = walkGrade(walk.name);
     const dateTime = moment(lastWalkTimeStamp).format('MMM Do YYYY, h:mm a');
   return (
     <WalkContainer key={lastWalkTimeStamp}>
       <ReportItemText><StrongSpan>{dateTime}</StrongSpan></ReportItemText>
       <ReportItemText><StrongSpan>Total walk time: </StrongSpan>{walkTime}</ReportItemText>
-      <ReportItemText><StrongSpan>Walk grade: </StrongSpan>{walkName}</ReportItemText>
+      {/* <ReportItemText><StrongSpan>Walk grade: </StrongSpan>{walkName}</ReportItemText> */}
     </WalkContainer>
   )}
   return <WalkContainer><ReportItemText>View your Dawg's Rehab progress!</ReportItemText></WalkContainer>;
