@@ -55,7 +55,7 @@ export const Timer: React.FC<IProps> = ({ activityType, activityTime, activityTi
       </CountDownDawg>
       <PauseResumeContainer>
         {isActive ? (
-        <PauseWalk fill={colors.orange} handleClick={toggle} />
+          <PauseWalk fill={colors.orange} handleClick={toggle} />
         ) : (
           <ResumeWalk fill={colors.darkgreen} handleClick={toggle} />
         )}

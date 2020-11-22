@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { Page } from '../../components/Page';
-import { DawgResponsiveGraphs } from '../../components/DawgResponsiveBar';
+import { DawgResponsiveGraph } from '../../components/DawgResponsiveGraph';
 import { ProgressNotification } from '../../components/ProgressNotification';
 import { IActivity } from '../../utils/types';
 import { LogoWrapper, Logo } from '../../components/SharedStyles';
@@ -22,7 +22,6 @@ interface IProps {
   cavalettiHistory: IActivity[]
 }
 export const ProgressReport: React.FC<IProps> = ({ walkHistory, cavalettiHistory }) => {
-  // Get current walks
   const totalWalkActivityTime = calculateWeeklyActivityTime(walkHistory) * 1000;
   const totalCavelettieActivityTime = calculateWeeklyActivityTime(cavalettiHistory) * 1000;
 
@@ -36,7 +35,8 @@ export const ProgressReport: React.FC<IProps> = ({ walkHistory, cavalettiHistory
         </LogoWrapper>
         <ReportContainer>
           <ProgressNotification totalWalkActivityTime={totalWalkActivityTime} totalCavelettiActivityTime={totalCavelettieActivityTime}/>
-        <DawgResponsiveGraphs walkHistory={walkHistory} cavalettiHistory={cavalettiHistory}/>   
+          {/* <DawgActivityReport walkHistory={walkHistory} cavalettiHistory={cavalettiHistory}/> */}
+          <DawgResponsiveGraph walkHistory={walkHistory} cavalettiHistory={cavalettiHistory}/>   
         </ReportContainer>
       </Page>
     </>

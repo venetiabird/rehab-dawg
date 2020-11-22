@@ -7,24 +7,22 @@ export interface IActivity {
   name: WalkName | TrickGrade
 }
 
-// export interface IWalk extends IActivity{
-//   walk: WalkName;
-// }
-// export interface ICavaletti extends IActivity {
-//   cavaletti: TrickGrade;
-// }
-
 export enum ActivityType {
   Walk,
   Cavaletti
 }
-
-
-export interface IDisplayGraphDataPoint {
+export interface IWalkDisplayGraphDataPoint {
   date: string;
   short: number;
   medium: number;
   long: number; 
+}
+
+export interface ICavalettiDisplayGraphDataPoint {
+  date: string;
+  rookie: number;
+  hotdawg: number;
+  prodawg: number;
 }
 
 export type WalkName = 'green' | 'blue' | 'red'
