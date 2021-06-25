@@ -5,7 +5,7 @@
   "homepage": "https://www.rehabdawg.com",
   "dependencies": {
     "@nivo/bar": "0.71.0",
-    "@styled-icons/boxicons-regular": "10.18.0",
+    "@styled-icons/boxicons-regular": "10.34.0",
     "@styled-icons/fa-solid": "10.22.0",
     "@styled-icons/foundation": "10.18.0",
     "@styled-icons/ionicons-solid": "10.18.0",
