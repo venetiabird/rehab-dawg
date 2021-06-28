@@ -34,7 +34,7 @@ border-radius: 0;
 text-align: left;
 border: 0px solid ${colors.blue};
 flex-direction: row
-`
+`;
 
 const ActivityContainer = styled.div`
 display: flex;
@@ -45,7 +45,7 @@ justify-content: space-around;
 interface IProps {
   setActivityTimeStamps: (activityTimeStamp: React.Dispatch<number[]> | number[]) => void;
   activityTimeStamps: number[];
-};
+}
 
 export const HomePage: React.FC<IProps> = ({ setActivityTimeStamps, activityTimeStamps }) => {
   const handleStartActivityButtonClick = () => setActivityTimeStamps([Date.now()]);
@@ -69,7 +69,7 @@ export const HomePage: React.FC<IProps> = ({ setActivityTimeStamps, activityTime
           <ActivityContainer>
             <StartButton to="/walks/green" onClick={handleStartActivityButtonClick}>
               <ColouredPaw fill={colors.green} />
-                {GradeMap['green']} mins
+              {GradeMap['green']} mins
             </StartButton>
             <StartButton to="/walks/blue" onClick={handleStartActivityButtonClick}>
               <ColouredPaw fill={colors.blue} />
@@ -84,7 +84,7 @@ export const HomePage: React.FC<IProps> = ({ setActivityTimeStamps, activityTime
             Cavaletti
           </HeadingContainer>
           <ActivityContainer>
-          <StartButton to="/cavaletti/bronze" onClick={handleStartActivityButtonClick}>
+            <StartButton to="/cavaletti/bronze" onClick={handleStartActivityButtonClick}>
               <ColouredHat fill={colors.bronze}/>
               Rookie
             </StartButton>

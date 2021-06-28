@@ -1,11 +1,11 @@
-import { IActivity, WalkName, TrickGrade} from './types'
+import { IActivity, WalkName, TrickGrade} from './types';
 import { GradeMap } from './constants';
 
 export const sessionTime = (activityName: WalkName | TrickGrade ): number => {
   return GradeMap[activityName];
 };
 
-/** 
+/**
  * The return time is in seconds
 */
 export const calculateWeeklyActivityTime = (activity: IActivity[]): number => {
@@ -14,9 +14,9 @@ export const calculateWeeklyActivityTime = (activity: IActivity[]): number => {
     return accum = accum + calculateActivityTime(a.activityTimeStamps);
   }, 0);
   return result;
-}
+};
 
-/** 
+/**
  * The return time is in seconds
  */
 export const calculateActivityTime = (activityTimeStamps: number[]): number => {
@@ -26,4 +26,4 @@ export const calculateActivityTime = (activityTimeStamps: number[]): number => {
     result += timeDiff;
   }
   return Math.round(result / 1000);
-}
+};

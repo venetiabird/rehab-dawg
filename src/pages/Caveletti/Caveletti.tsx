@@ -15,15 +15,15 @@ interface IProps {
   activityTimeStamps: number[];
 }
 export const Caveletti: React.FC<IProps> = ({ setCavalettiHistory, setActivityTimeStamps, activityTimeStamps}) => {
-    const { grade } = useParams();
-    const handleClickOnDone = (): void => {
-      const currentActivity: IActivity = {
-        name: grade,
-        activityType: ActivityType.Cavaletti,
-        activityTimeStamps: [...activityTimeStamps, Date.now()]
-      }
-      setCavalettiHistory((history: IActivity[]): IActivity[] => [...history, currentActivity]);
+  const { grade } = useParams();
+  const handleClickOnDone = (): void => {
+    const currentActivity: IActivity = {
+      name: grade,
+      activityType: ActivityType.Cavaletti,
+      activityTimeStamps: [...activityTimeStamps, Date.now()]
     };
+    setCavalettiHistory((history: IActivity[]): IActivity[] => [...history, currentActivity]);
+  };
   return (
     <>
       <Page heading={''}>

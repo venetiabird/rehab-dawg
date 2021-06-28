@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { GuideDog } from '@styled-icons/foundation/GuideDog';
-import { InfinityOutline }  from '@styled-icons/typicons/InfinityOutline'
-import { getColor } from '../../utils/constants'
+import { InfinityOutline }  from '@styled-icons/typicons/InfinityOutline';
+import { getColor } from '../../utils/constants';
 
 const Dawg = styled(GuideDog)`
   height: 45px;

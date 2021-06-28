@@ -21,24 +21,24 @@ export const ActiveWalk: React.FC<IProps> = ({ setWalkHistory, activityTimeStamp
   const { grade } = useParams();
   const walkTime = sessionTime(grade);
   const handleClickOnDone = (): void => {
-    let doneTime = Date.now()
-    const activeWalkTime = calculateActivityTime([...activityTimeStamps, doneTime])
+    let doneTime = Date.now();
+    const activeWalkTime = calculateActivityTime([...activityTimeStamps, doneTime]);
     const setWalkTime = walkTime * 60;
     let tempTimeStamps = activityTimeStamps.slice();
     // this is not ideal because we are overriting the history. But maybe thats ok?
     if(activeWalkTime > setWalkTime) {
-      tempTimeStamps = [tempTimeStamps[0], new Date(tempTimeStamps[0]).setSeconds(setWalkTime)]
+      tempTimeStamps = [tempTimeStamps[0], new Date(tempTimeStamps[0]).setSeconds(setWalkTime)];
     } else {
-      tempTimeStamps = [...tempTimeStamps, doneTime]
+      tempTimeStamps = [...tempTimeStamps, doneTime];
     }
     let currentWalk: IActivity = {
       name: grade,
       activityType: ActivityType.Walk,
       activityTimeStamps: tempTimeStamps
-    }
+    };
     setWalkHistory((history: IActivity[]): IActivity[] => [...history, currentWalk]);
   };
-  
+
   return (
     <>
       <Page heading={''}>
