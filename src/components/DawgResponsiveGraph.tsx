@@ -2,7 +2,7 @@ import React from 'react';
 
 import { IActivity, WalkName, IWalkDisplayGraphDataPoint, ICavalettiDisplayGraphDataPoint, TrickGrade, ActivityType } from '../utils/types';
 import { calculateActivityTime } from '../utils/timeCalculation';
-import { ResponsiveDawgActivityRenderer } from './ResponsiveDawgActivityRenderer';
+// import { ResponsiveDawgActivityRenderer } from './ResponsiveDawgActivityRenderer';
 
 interface IProps {
   walkHistory: IActivity[];
@@ -100,15 +100,15 @@ const groupedActivity = (activities: IActivity[]): GraphDataPointDictionary => {
     let graphDataPt: IWalkGraphDataPoint | ICavalettiGraphDataPoint
     if(isWalkActivity(activity.activityType)) {
       graphDataPt = walkGraphDataPts({
-        activityTime, 
-        activityName, 
-        activity, 
+        activityTime,
+        activityName,
+        activity,
         existingGraphData: (existingGraphData as IWalkGraphDataPoint)})
       } else {
         graphDataPt = cavallettiGraphDataPts({
-          activityTime, 
-          activityName, 
-          activity, 
+          activityTime,
+          activityName,
+          activity,
           existingGraphData: (existingGraphData as ICavalettiGraphDataPoint)})
     }
     return {
@@ -163,9 +163,7 @@ function createGraphDataPoints(data: WalkGraphDataPointDictionary | CavelettiGra
 export const DawgResponsiveGraph: React.FC<IProps> = ({ walkHistory, cavalettiHistory }) => {
   const walkGraphDataPts = createGraphDataPoints(activityGroupedByDate(walkHistory));
   const cavalettiGraphDataPts = createGraphDataPoints(activityGroupedByDate(cavalettiHistory));
-  return (<> 
-    <ResponsiveDawgActivityRenderer graphDataPts={walkGraphDataPts} chartTitle={"Walk Chart"} chartKeys={['short', 'medium', 'long']} />
-    <ResponsiveDawgActivityRenderer graphDataPts={cavalettiGraphDataPts} chartTitle={"Caveletti Chart"} chartKeys={['rookie', 'hotdawg', 'prodawg']}/>
+  return (<>
   </>)
 }
 export default DawgResponsiveGraph;
