@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import React from 'react';
 import styled from 'styled-components';
 import moment from 'moment';
@@ -31,13 +32,13 @@ interface IProps {
 export const ProgressNotification: React.FC<IProps> = ({ totalWalkActivityTime, totalCavelettiActivityTime }) => {
   const formatWalkActivityTime = moment(totalWalkActivityTime).format('mm:ss');
   const formatCavalettiActivityTime = moment(totalCavelettiActivityTime).format('mm:ss');
-    if(totalWalkActivityTime > 0 || totalCavelettiActivityTime > 0) {
+  if(totalWalkActivityTime > 0 || totalCavelettiActivityTime > 0) {
     return (
       <NotificationContainer>
-        <NotificationText>Total Walk Time 
+        <NotificationText>Total Walk Time
           <StrongSpan> {formatWalkActivityTime}</StrongSpan>
         </NotificationText>
-        <NotificationText>Total Cavaletti Time 
+        <NotificationText>Total Cavaletti Time
           <StrongSpan> {formatCavalettiActivityTime}</StrongSpan>
         </NotificationText>
       </NotificationContainer>
@@ -46,7 +47,7 @@ export const ProgressNotification: React.FC<IProps> = ({ totalWalkActivityTime, 
 
   return (
     <NotificationContainer>
-      <NotificationText>View your Dawg's activity feed here!</NotificationText>
+      <NotificationText>View your Dawgs activity feed here!</NotificationText>
     </NotificationContainer>
   );
 };

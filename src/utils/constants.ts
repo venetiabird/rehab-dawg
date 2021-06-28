@@ -34,11 +34,11 @@ export const colors: Colors = {
   white: '#ffffff',
   lightblue: '#0277bd',
   darkgreen: '#006400',
-}
+};
 
 export const getColor = ( fill: string): string => {
   return colors[fill];
-}
+};
 
 export const GradeMap = {
   green: 5,

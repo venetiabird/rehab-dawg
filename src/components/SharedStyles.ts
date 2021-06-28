@@ -43,7 +43,7 @@ export const DawgContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-`
+`;
 
 export const ButtonBaseWithLink = styled(Link)<ButtonStyleProps>`
   ${buttonStyle}

@@ -13,7 +13,7 @@ const CountDownDawg = styled.div`
   height: 10px;
   font-size: 28px;
   font: courier;
-  font-weight: 800; 
+  font-weight: 800;
   text-align: center;
   display: flex;
 `;
@@ -34,7 +34,7 @@ export const Timer: React.FC<IProps> = ({ activityType, activityTime, activityTi
   const [isActive, setIsActive] = useState(true);
   useInterval(() => {
     const activeWalkTime = calculateActivityTime([
-      ...activityTimeStamps, 
+      ...activityTimeStamps,
       ...(activityTimeStamps.length % 2 === 0 ? [] : [Date.now()])
     ]);
     setTimeElapsed(activeWalkTime);
@@ -42,14 +42,14 @@ export const Timer: React.FC<IProps> = ({ activityType, activityTime, activityTi
 
   const toggle = (): void => {
     setIsActive(!isActive);
-    setActivityTimeStamps((x: number[]) => [...x, Date.now()])
-  }
-  
+    setActivityTimeStamps((x: number[]) => [...x, Date.now()]);
+  };
+
   return (
     <>
       <CountDownDawg>
         {activityType === ActivityType.Walk ?
-          formatTimeLeft(walkTimeSeconds - timeElapsed) : 
+          formatTimeLeft(walkTimeSeconds - timeElapsed) :
           formatTimeLeftCountUp(walkTimeSeconds + timeElapsed)
         }
       </CountDownDawg>

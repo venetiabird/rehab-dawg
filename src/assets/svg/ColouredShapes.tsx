@@ -15,7 +15,7 @@ const DawgHat = styled(HatCowboy)`
   display: inline;
   width: 20px;
   margin-right: 10px;
-`
+`;
 
 const Svg = styled.svg`
   height: 8px;
